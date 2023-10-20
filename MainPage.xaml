@@ -3,20 +3,4 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Mensa_App.MainPage">
 
-    <ScrollView>
-        <VerticalStackLayout
-            Spacing="25"
-            Padding="30,0"
-            VerticalOptions="Center">
-
-            
-            
-            <Button
-                Text="Aktualisieren"
-                Clicked="Button_Clicked"
-                />
-
-        </VerticalStackLayout>
-    </ScrollView>
-
 </ContentPage>
