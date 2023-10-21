@@ -11,11 +11,8 @@
 
             <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Padding="20">
                 <Label Text="Hauptgerichte" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Black" FontSize="Large"/>
-                <CollectionView SelectionMode="Multiple"
+                <CollectionView SelectionMode="None"
                                 ItemsSource="{Binding Menu.MainMenu}"
-                                SelectedItems="{Binding SelectedMains}"
-                                SelectionChangedCommand="{Binding SelectedMainsCommand}"
-                                SelectionChanged="CollectionView_SelectionChanged"
                                 HorizontalOptions="Center" VerticalOptions="Center">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
@@ -30,7 +27,7 @@
 
             <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Padding="20">
                 <Label Text="Nebengerichte" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Black" FontSize="Large"/>
-                <CollectionView SelectionMode="Multiple"
+                <CollectionView SelectionMode="None"
                                 ItemsSource="{Binding Menu.SideMenu}"
                                 HorizontalOptions="Center" VerticalOptions="Center">
                     <CollectionView.ItemTemplate>
@@ -46,7 +43,7 @@
 
             <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Padding="20">
                 <Label Text="Suppe" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Black" FontSize="Large"/>
-                <CollectionView SelectionMode="Multiple"
+                <CollectionView SelectionMode="None"
                                 ItemsSource="{Binding Menu.SoupMenu}"
                                 HorizontalOptions="Center" VerticalOptions="Center">
                     <CollectionView.ItemTemplate>
@@ -62,7 +59,7 @@
 
             <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Padding="20">
                 <Label Text="Dessert" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Black" FontSize="Large"/>
-                <CollectionView SelectionMode="Multiple"
+                <CollectionView SelectionMode="None"
                                 ItemsSource="{Binding Menu.DessertMenu}"
                                 HorizontalOptions="Center" VerticalOptions="Center">
                     <CollectionView.ItemTemplate>
@@ -74,40 +71,6 @@
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
-            </VerticalStackLayout>
-
-            <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Padding="20">
-                
-                <Label Text="Auswahl" HorizontalTextAlignment="Center" TextColor="Black" FontSize="Large"/>
-                
-                <HorizontalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Padding="10">
-                    <Label Text="Preis: " HorizontalTextAlignment="Center" Padding="5" TextColor="Black" FontSize="Subtitle"/>
-                    <Label Text="{Binding SelectedMainsSum}" BindingContext="{Binding MenuView}" HorizontalTextAlignment="Center" Padding="5" TextColor="Black" FontSize="Small"/>
-                </HorizontalStackLayout>
-
-                <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Padding="10">
-
-                    <HorizontalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Padding="5">
-                        <Label Text="Kalorien: " HorizontalTextAlignment="Center" Padding="5" TextColor="Black" FontSize="Subtitle"/>
-                        <Label Text="XXX" HorizontalTextAlignment="Center" Padding="5" TextColor="Black" FontSize="Small"/>
-                        <Label Text="Fett: " HorizontalTextAlignment="Center" Padding="5" TextColor="Black" FontSize="Subtitle"/>
-                        <Label Text="XXX" HorizontalTextAlignment="Center" Padding="5" TextColor="Black" FontSize="Small"/>
-                    </HorizontalStackLayout>
-
-                    <HorizontalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Padding="5">
-                        <Label Text="Kohlenhydrate: " HorizontalTextAlignment="Center" Padding="5" TextColor="Black" FontSize="Subtitle"/>
-                        <Label Text="XXX" HorizontalTextAlignment="Center" Padding="5" TextColor="Black" FontSize="Small"/>
-                        <Label Text="Eiweiß: " HorizontalTextAlignment="Center" Padding="5" TextColor="Black" FontSize="Subtitle"/>
-                        <Label Text="XXX" HorizontalTextAlignment="Center" Padding="5" TextColor="Black" FontSize="Small"/>
-                    </HorizontalStackLayout>
-
-                </VerticalStackLayout>
-
-                <VerticalStackLayout WidthRequest="400" HorizontalOptions="Center" VerticalOptions="Center" Padding="10">
-                    <Label Text="Inhaltsstoffe: " HorizontalTextAlignment="Center" Padding="5" TextColor="Black" FontSize="Subtitle"/>
-                    <Label Text="XXX" HorizontalTextAlignment="Center" Padding="5" TextColor="Black" FontSize="Small"/>
-                </VerticalStackLayout>
-
             </VerticalStackLayout>
 
         </VerticalStackLayout>
