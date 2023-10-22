@@ -5,7 +5,7 @@ using System.Windows.Input;
 
 namespace Mensa_App.Classes.View;
 
-public partial class MenuView : ContentPage
+public partial class MenuView : TabbedPage
 {
     MenuViewModel MenuViewModel {  get; set; }
     public MenuView()
