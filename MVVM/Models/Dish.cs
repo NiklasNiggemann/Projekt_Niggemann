@@ -12,6 +12,13 @@ public class Dish
 {
     public string? Name { get; set; }
     public double? Price { get; set; }
+    public string PriceString
+    {
+        get
+        {
+            return String.Format("{0:0.00}", Price) + "€";
+        }
+    }
     public string? Ingredients { get; set; }
     public string? Nutritions { get; set; }
     public Dish(string name, double price, string ingredients, string nutritions)

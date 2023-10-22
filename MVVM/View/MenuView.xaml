@@ -18,7 +18,7 @@
                     <DataTemplate>
                         <VerticalStackLayout WidthRequest="400" HorizontalOptions="Center" VerticalOptions="Center" Padding="10">
                             <Label Text="{Binding Name}" HorizontalTextAlignment="Center" Padding="5" TextColor="Black" FontSize="Subtitle"/>
-                            <Label Text="{Binding Price}" HorizontalTextAlignment="Center" Padding="5" TextColor="Black" FontSize="Small"/>
+                            <Label Text="{Binding PriceString}" HorizontalTextAlignment="Center" Padding="5" TextColor="Black" FontSize="Small"/>
                         </VerticalStackLayout>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
@@ -34,7 +34,7 @@
                         <DataTemplate>
                             <VerticalStackLayout WidthRequest="400" HorizontalOptions="Center" VerticalOptions="Center" Padding="10">
                                 <Label Text="{Binding Name}" HorizontalTextAlignment="Center" Padding="5" TextColor="Black" FontSize="Subtitle"/>
-                                <Label Text="{Binding Price}" HorizontalTextAlignment="Center" Padding="5" TextColor="Black" FontSize="Small"/>
+                                <Label Text="{Binding PriceString}" HorizontalTextAlignment="Center" Padding="5" TextColor="Black" FontSize="Small"/>
                             </VerticalStackLayout>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
@@ -50,7 +50,7 @@
                         <DataTemplate>
                             <VerticalStackLayout WidthRequest="400" HorizontalOptions="Center" VerticalOptions="Center" Padding="10">
                                 <Label Text="{Binding Name}" HorizontalTextAlignment="Center" Padding="5" TextColor="Black" FontSize="Subtitle"/>
-                                <Label Text="{Binding Price}" HorizontalTextAlignment="Center" Padding="5" TextColor="Black" FontSize="Small"/>
+                                <Label Text="{Binding PriceString}" HorizontalTextAlignment="Center" Padding="5" TextColor="Black" FontSize="Small"/>
                             </VerticalStackLayout>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
@@ -66,7 +66,7 @@
                         <DataTemplate>
                             <VerticalStackLayout WidthRequest="400" HorizontalOptions="Center" VerticalOptions="Center" Padding="10">
                                 <Label Text="{Binding Name}" HorizontalTextAlignment="Center" Padding="5" TextColor="Black" FontSize="Subtitle"/>
-                                <Label Text="{Binding Price}" HorizontalTextAlignment="Center" Padding="5" TextColor="Black" FontSize="Small"/>
+                                <Label Text="{Binding PriceString}" HorizontalTextAlignment="Center" Padding="5" TextColor="Black" FontSize="Small"/>
                             </VerticalStackLayout>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
