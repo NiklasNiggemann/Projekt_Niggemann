@@ -1,4 +1,5 @@
 ﻿using HtmlAgilityPack;
+using Microsoft.Maui.Platform;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,10 @@ public class Menu
 {
     public string? Date { get; set; }
     public DateTime UserTimeDateTime { get; set; }
+    private bool IsOpen = false;
+    private bool WillOpen = false;
+    private bool WillClose = false;
+    private bool IsClosedForToday = false;
     public string UserTimeString
     {
         get
@@ -24,27 +29,89 @@ public class Menu
         {
             if (UserTimeDateTime.Hour < ClosingTime.Hour)
             {
-                if (UserTimeDateTime.Hour > OpeningTime.Hour)
+                if (UserTimeDateTime.Hour >= OpeningTime.Hour)
                 {
+                    IsOpen = true;
+                    WillClose = true;
                     if (UserTimeDateTime.Hour == 11)
                     {
                         if (UserTimeDateTime.Minute >= OpeningTime.Minute)
-                            return " die Mensa ist geöffnet.";
+                        {
+                            WillClose = true;
+                            IsOpen = true;
+                        }
                         else
-                            return " die Mensa ist geschlossen.";
+                        {
+                            WillClose = false;
+                            IsOpen = false;
+                            IsClosedForToday = true;
+                        }
                     }
-                    return " die Mensa ist geöffnet.";
                 }
-                return " die Mensa ist geschlossen.";
+                IsOpen = false;
+                WillOpen = true;
             }
-            return " die Mensa ist geschlossen.";
+            else
+            {
+                IsOpen = false;
+                WillOpen = false;
+                IsClosedForToday = true;
+            }
+
+            if (IsOpen)
+                return " die Mensa ist geöffnet.";
+            else
+                return " die Mensa ist geschlossen.";
+        }
+    }
+    public TimeSpan TimeTillOpen
+    {
+        get
+        {
+            TimeSpan span = new TimeSpan();
+            if (WillOpen)
+            {
+                span = OpeningTime - UserTimeDateTime;
+            }
+            return span;
+        }
+    }
+    public string TimeTillOpenString
+    {
+        get
+        {
+            if (WillOpen)
+                return "Sie öffnet in " + TimeTillOpen.ToFormattedString("t") + "h.";
+            return "";
+        }
+    }
+    public TimeSpan TimeTillClosed
+    {
+        get
+        {
+            TimeSpan span = new TimeSpan();
+            if (WillClose)
+            {
+                span = UserTimeDateTime - ClosingTime;
+            }
+            return span;
+        }
+    }
+    public string TimeTillClosedString
+    {
+        get
+        {
+            if (WillClose)
+                return "Sie schließt in " + TimeTillOpen.ToFormattedString("t") + "h.";
+            else
+                return "Die Mensa öffnet erst morgen wieder."
         }
     }
     public DateTime OpeningTime
     {
         get
         {
-            DateTime dateTime = new DateTime(2000, 01, 01, 11, 30, 0, 0);
+            DateTime dateTime = new DateTime(2023, 10, 23, 11, 30, 0, 0);
             return dateTime;
         }
     }
@@ -52,7 +119,7 @@ public class Menu
     {
         get
         {
-            DateTime dateTime = new DateTime(2000, 01, 01, 13, 00, 0, 0);
+            DateTime dateTime = new DateTime(2023, 10, 23, 13, 00, 0, 0);
             return dateTime;
         }
     }

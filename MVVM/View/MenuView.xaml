@@ -4,12 +4,19 @@
             x:Class="Mensa_App.Classes.View.MenuView">
 
     <ContentPage Title="Hauptgerichte" BackgroundColor="WhiteSmoke">
+        
         <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Padding="20">
-            <HorizontalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Padding="20">
-                <Label Text="{Binding UserTimeString}" BindingContext="{Binding Menu}" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Black" FontSize="Small"/>
-                <Label Text="{Binding CheckIfOpen}" BindingContext="{Binding Menu}" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Black" FontSize="Small"/>
-            </HorizontalStackLayout>
+            
+            <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Padding="20">
+                <HorizontalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Padding="10">
+                    <Label Text="{Binding UserTimeString}" BindingContext="{Binding Menu}" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Black" FontSize="Small"/>
+                    <Label Text="{Binding CheckIfOpen}" BindingContext="{Binding Menu}" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Black" FontSize="Small"/>
+                </HorizontalStackLayout>
+                <Label Text="{Binding TimeTillOpenString}" BindingContext="{Binding Menu}" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Black" FontSize="Small"/>
+            </VerticalStackLayout>
+                
             <Label Text="Hauptgerichte" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Black" FontSize="Large"/>
+                
             <CollectionView SelectionMode="None"
                             ItemsSource="{Binding Menu.MainMenu}"
                             HorizontalOptions="Center" VerticalOptions="Center">
@@ -22,7 +29,9 @@
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
+            
         </VerticalStackLayout>
+        
     </ContentPage>
 
     <ContentPage Title="Beilagen" BackgroundColor="WhiteSmoke">
