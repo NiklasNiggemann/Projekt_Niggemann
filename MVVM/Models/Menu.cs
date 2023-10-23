@@ -2,6 +2,7 @@
 using Microsoft.Maui.Platform;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,11 +13,19 @@ public class Menu
 {
     public string? Date { get; set; }
     public DateTime CurrentTime { get; set; }
+    public string CurrentDate
+    {
+        get
+        {
+            // var culture = new CultureInfo("ger-GER");
+            return CurrentTime.DayOfWeek + ", der " + CurrentTime.ToString("dd.MM.yyyy") + ".";
+        }
+    }
     public string CurrentTimeString
     {
         get
         {
-            return "Es ist " + CurrentTime.ToString("t") + " Uhr, ";
+            return CurrentTime.ToString("t") + " Uhr -";
         }
     }
     public DateTime OpeningTime
@@ -31,7 +40,7 @@ public class Menu
     {
         get
         {
-            DateTime openingTime = new DateTime(CurrentTime.Year, CurrentTime.Month, CurrentTime.Day, 13, 0, 0);
+            DateTime openingTime = new DateTime(CurrentTime.Year, CurrentTime.Month, CurrentTime.Day, 14, 0, 0);
             return openingTime;
         }
     }

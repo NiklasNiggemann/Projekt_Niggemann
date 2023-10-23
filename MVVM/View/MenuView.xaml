@@ -1,36 +1,74 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <TabbedPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
             x:Class="Mensa_App.Classes.View.MenuView">
 
     <ContentPage Title="Hauptgerichte" BackgroundColor="WhiteSmoke">
-        
-        <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Padding="20">
+
+        <ScrollView>
             
             <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Padding="20">
-                <HorizontalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Padding="10">
-                    <Label Text="{Binding CurrentTimeString}" BindingContext="{Binding Menu}" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Black" FontSize="Small"/>
-                    <Label Text="{Binding IsOpenString}" BindingContext="{Binding Menu}" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Black" FontSize="Small"/>
-                </HorizontalStackLayout>
-                <Label Text="{Binding WhenOpeningOrClosingAgain}" BindingContext="{Binding Menu}" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Black" FontSize="Small"/>
-            </VerticalStackLayout>
-                
-            <Label Text="Hauptgerichte" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Black" FontSize="Large"/>
-                
-            <CollectionView SelectionMode="None"
+
+                <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Padding="20">
+                    <Label Text="{Binding CurrentDate}" BindingContext="{Binding Menu}" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Black" FontSize="Small"/>
+                    <HorizontalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Padding="10">
+                        <Label Text="{Binding CurrentTimeString}" BindingContext="{Binding Menu}" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Black" FontSize="Small"/>
+                        <Label Text="{Binding IsOpenString}" BindingContext="{Binding Menu}" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Black" FontSize="Small"/>
+                    </HorizontalStackLayout>
+                    <Label Text="{Binding WhenOpeningOrClosingAgain}" BindingContext="{Binding Menu}" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Black" FontSize="Small"/>
+                </VerticalStackLayout>
+
+                <Label Text="Hauptgerichte" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Black" FontSize="Large"/>
+
+                <CollectionView SelectionMode="None"
                             ItemsSource="{Binding Menu.MainMenu}"
                             HorizontalOptions="Center" VerticalOptions="Center">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <VerticalStackLayout WidthRequest="400" HorizontalOptions="Center" VerticalOptions="Center" Padding="10">
-                            <Label Text="{Binding Name}" HorizontalTextAlignment="Center" Padding="5" TextColor="Black" FontSize="Subtitle"/>
-                            <Label Text="{Binding PriceString}" HorizontalTextAlignment="Center" Padding="5" TextColor="Black" FontSize="Small"/>
-                        </VerticalStackLayout>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
+                    
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            
+                            <VerticalStackLayout WidthRequest="400" HorizontalOptions="Center" VerticalOptions="Center" Padding="10">
+                                <Label Text="{Binding Name}" HorizontalTextAlignment="Center" Padding="5" TextColor="Black" FontSize="Subtitle"/>
+                                <Label Text="{Binding PriceString}" HorizontalTextAlignment="Center" Padding="5" TextColor="Black" FontSize="Small"/>
+                                <VerticalStackLayout>
+
+                                    <toolkit:Expander>
+                                        
+                                        <toolkit:Expander.Header>
+                                            <Label Text="Inhaltsstoffe" HorizontalTextAlignment="Center" Padding="5" TextColor="Black" FontSize="Small"/>
+                                        </toolkit:Expander.Header>
+                                        
+                                        <toolkit:Expander.Content>
+                                            <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Padding="10">
+                                                <ListView SelectionMode="None" ItemsSource="{Binding IngredientList}"
+                                                        HorizontalOptions="Center" VerticalOptions="Center">
+                                                    <ListView.ItemTemplate>
+                                                        <DataTemplate>
+                                                            <VerticalStackLayout WidthRequest="400" HorizontalOptions="Center" VerticalOptions="Center" Padding="5">
+                                                                <Label Text="{Binding Name}" HorizontalTextAlignment="Center" Padding="5" TextColor="Black" FontSize="Micro"/>
+                                                            </VerticalStackLayout>
+                                                        </DataTemplate>
+                                                    </ListView.ItemTemplate>
+                                                </ListView>
+                                            </VerticalStackLayout>
+                                        </toolkit:Expander.Content>
+                                        
+                                    </toolkit:Expander>
+                                    
+                                </VerticalStackLayout>
+                                
+                            </VerticalStackLayout>
+                            
+                        </DataTemplate>
+                        
+                    </CollectionView.ItemTemplate>
+                    
+                </CollectionView>
+
+            </VerticalStackLayout>
             
-        </VerticalStackLayout>
+        </ScrollView>
         
     </ContentPage>
 
@@ -86,6 +124,10 @@
                 </CollectionView.ItemTemplate>
             </CollectionView>
         </VerticalStackLayout>
+    </ContentPage>
+
+    <ContentPage Title="Einstellungen" BackgroundColor="WhiteSmoke">
+        
     </ContentPage>
 
 </TabbedPage>
