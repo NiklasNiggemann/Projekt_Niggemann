@@ -9,10 +9,10 @@
             
             <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Padding="20">
                 <HorizontalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Padding="10">
-                    <Label Text="{Binding UserTimeString}" BindingContext="{Binding Menu}" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Black" FontSize="Small"/>
-                    <Label Text="{Binding CheckIfOpen}" BindingContext="{Binding Menu}" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Black" FontSize="Small"/>
+                    <Label Text="{Binding CurrentTimeString}" BindingContext="{Binding Menu}" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Black" FontSize="Small"/>
+                    <Label Text="{Binding IsOpenString}" BindingContext="{Binding Menu}" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Black" FontSize="Small"/>
                 </HorizontalStackLayout>
-                <Label Text="{Binding TimeTillOpenString}" BindingContext="{Binding Menu}" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Black" FontSize="Small"/>
+                <Label Text="{Binding WhenOpeningOrClosingAgain}" BindingContext="{Binding Menu}" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Black" FontSize="Small"/>
             </VerticalStackLayout>
                 
             <Label Text="Hauptgerichte" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Black" FontSize="Large"/>
