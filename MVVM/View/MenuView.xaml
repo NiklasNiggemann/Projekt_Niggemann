@@ -41,16 +41,16 @@
                                         
                                         <toolkit:Expander.Content>
                                             <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Padding="10">
-                                                <ListView SelectionMode="None" ItemsSource="{Binding IngredientList}"
+                                                <CollectionView SelectionMode="None" ItemsSource="{Binding IngredientList}"
                                                         HorizontalOptions="Center" VerticalOptions="Center">
-                                                    <ListView.ItemTemplate>
+                                                    <CollectionView.ItemTemplate>
                                                         <DataTemplate>
                                                             <VerticalStackLayout WidthRequest="400" HorizontalOptions="Center" VerticalOptions="Center" Padding="5">
                                                                 <Label Text="{Binding Name}" HorizontalTextAlignment="Center" Padding="5" TextColor="Black" FontSize="Micro"/>
                                                             </VerticalStackLayout>
                                                         </DataTemplate>
-                                                    </ListView.ItemTemplate>
-                                                </ListView>
+                                                    </CollectionView.ItemTemplate>
+                                                </CollectionView>
                                             </VerticalStackLayout>
                                         </toolkit:Expander.Content>
                                         
