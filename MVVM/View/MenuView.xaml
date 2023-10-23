@@ -33,28 +33,20 @@
                                 <Label Text="{Binding PriceString}" HorizontalTextAlignment="Center" Padding="5" TextColor="Black" FontSize="Small"/>
                                 <VerticalStackLayout>
 
-                                    <toolkit:Expander>asdfsd
+                                    <Label Text="Inhaltsstoffe" HorizontalTextAlignment="Center" Padding="5" TextColor="Black" FontSize="Small"/>
                                         
-                                        <toolkit:Expander.Header>
-                                            <Label Text="Inhaltsstoffe" HorizontalTextAlignment="Center" Padding="5" TextColor="Black" FontSize="Small"/>
-                                        </toolkit:Expander.Header>
-                                        
-                                        <toolkit:Expander.Content>
-                                            <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Padding="10">
-                                                <CollectionView SelectionMode="None" ItemsSource="{Binding IngredientList}"
-                                                        HorizontalOptions="Center" VerticalOptions="Center">
-                                                    <CollectionView.ItemTemplate>
-                                                        <DataTemplate>
-                                                            <VerticalStackLayout WidthRequest="400" HorizontalOptions="Center" VerticalOptions="Center" Padding="5">
-                                                                <Label Text="{Binding Name}" HorizontalTextAlignment="Center" Padding="5" TextColor="Black" FontSize="Micro"/>
-                                                            </VerticalStackLayout>
-                                                        </DataTemplate>
-                                                    </CollectionView.ItemTemplate>
-                                                </CollectionView>
-                                            </VerticalStackLayout>
-                                        </toolkit:Expander.Content>
-                                        
-                                    </toolkit:Expander>
+                                    <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Padding="10">
+                                        <CollectionView SelectionMode="None" ItemsSource="{Binding IngredientList}"
+                                                HorizontalOptions="Center" VerticalOptions="Center">
+                                            <CollectionView.ItemTemplate>
+                                                <DataTemplate>
+                                                    <VerticalStackLayout WidthRequest="400" HorizontalOptions="Center" VerticalOptions="Center" Padding="5">
+                                                        <Label Text="{Binding Name}" HorizontalTextAlignment="Center" Padding="5" TextColor="Black" FontSize="Micro"/>
+                                                    </VerticalStackLayout>
+                                                </DataTemplate>
+                                            </CollectionView.ItemTemplate>
+                                        </CollectionView>
+                                    </VerticalStackLayout>
                                     
                                 </VerticalStackLayout>
                                 
