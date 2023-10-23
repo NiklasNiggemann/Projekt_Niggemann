@@ -17,15 +17,15 @@ public class Menu
     {
         get
         {
-            // var culture = new CultureInfo("ger-GER");
-            return CurrentTime.DayOfWeek + ", der " + CurrentTime.ToString("dd.MM.yyyy") + ".";
+            var culture = new CultureInfo("de-DE");
+            return culture.DateTimeFormat.GetDayName(DateTime.Today.DayOfWeek) + ", der " + CurrentTime.ToString("dd.MM.yyyy") + ", ";
         }
     }
     public string CurrentTimeString
     {
         get
         {
-            return CurrentTime.ToString("t") + " Uhr -";
+            return " " + CurrentTime.ToString("t") + " Uhr.";
         }
     }
     public DateTime OpeningTime
@@ -44,26 +44,57 @@ public class Menu
             return openingTime;
         }
     }
+    private bool willOpen = false;
+    private bool willClose = false;
+    private bool isWeekend = false;
     public string IsOpenString
     {
         get
         {
             if (CurrentTime.DayOfWeek == DayOfWeek.Saturday || CurrentTime.DayOfWeek == DayOfWeek.Sunday)
             {
-                return " die Mensa öffnet erst am Montag wieder.";
+                isWeekend = true;
+                return "Die Mensa öffnet erst am Montag wieder.";
             }
             if (CurrentTime.Hour == 11)
             {
                 if (CurrentTime.Minute >= 30)
                 {
-                    return " die Mensa ist geöffnet.";
+                    willClose = true;
+                    return "Die Mensa ist geöffnet.";
                 }
+                willOpen = true;
             }
             else if (CurrentTime.Hour > OpeningTime.Hour && CurrentTime.Hour < ClosingTime.Hour)
             {
-                return " die Mensa ist geöffnet.";
+                willClose = true;
+                return "Die Mensa ist geöffnet.";
             }
-            return " die Mensa ist geschlossen.";
+            if (CurrentTime.Hour > ClosingTime.Hour)
+            {
+                willClose = false;
+                willOpen = false;
+            }
+            return "Die Mensa ist geschlossen.";
+        }
+    }
+    public string TimeTillOpenOrClosed
+    {
+        get
+        {
+            if (willOpen)
+            {
+                TimeSpan ts = OpeningTime - CurrentTime;
+                return "Sie wird in " + ts.ToFormattedString("t") + " öffnen.";
+            }
+            if (willClose)
+            {
+                TimeSpan ts = OpeningTime - CurrentTime;
+                return "Sie wird in " + ts.ToFormattedString("t") + " schließen.";
+            }
+            else if (!isWeekend)
+                return "Sie wird morgen wieder öffnen.";
+            return "";
         }
     }
     public List<Dish>? MainMenu { get; set; }
