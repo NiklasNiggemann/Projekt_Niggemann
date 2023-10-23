@@ -7,7 +7,7 @@
     <ContentPage Title="Hauptgerichte" BackgroundColor="WhiteSmoke">
 
         <ScrollView>
-            
+
             <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Padding="20">
 
                 <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Padding="20">
@@ -24,17 +24,17 @@
                 <CollectionView SelectionMode="None"
                             ItemsSource="{Binding Menu.MainMenu}"
                             HorizontalOptions="Center" VerticalOptions="Center">
-                    
+
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
-                            
+
                             <VerticalStackLayout WidthRequest="400" HorizontalOptions="Center" VerticalOptions="Center" Padding="10">
                                 <Label Text="{Binding Name}" HorizontalTextAlignment="Center" Padding="5" TextColor="Black" FontSize="Subtitle"/>
                                 <Label Text="{Binding PriceString}" HorizontalTextAlignment="Center" Padding="5" TextColor="Black" FontSize="Small"/>
                                 <VerticalStackLayout>
 
                                     <Label Text="Inhaltsstoffe" HorizontalTextAlignment="Center" Padding="5" TextColor="Black" FontSize="Small"/>
-                                        
+
                                     <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Padding="10">
                                         <CollectionView SelectionMode="None" ItemsSource="{Binding IngredientList}"
                                                 HorizontalOptions="Center" VerticalOptions="Center">
@@ -47,21 +47,21 @@
                                             </CollectionView.ItemTemplate>
                                         </CollectionView>
                                     </VerticalStackLayout>
-                                    
+
                                 </VerticalStackLayout>
-                                
+
                             </VerticalStackLayout>
-                            
+
                         </DataTemplate>
-                        
+
                     </CollectionView.ItemTemplate>
-                    
+
                 </CollectionView>
 
             </VerticalStackLayout>
-            
+
         </ScrollView>
-        
+
     </ContentPage>
 
     <ContentPage Title="Beilagen" BackgroundColor="WhiteSmoke">
@@ -119,7 +119,38 @@
     </ContentPage>
 
     <ContentPage Title="Einstellungen" BackgroundColor="WhiteSmoke">
-        
+        <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Padding="20">
+            <Label Text="Allergene, Unverträglichkeiten und Präferenzen" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Black" FontSize="Large"/>
+            <HorizontalStackLayout>
+                <Label Text="Schweinefleisch" HorizontalTextAlignment="Center" Padding="5" TextColor="Black" FontSize="Subtitle"/>
+                <CheckBox/>
+            </HorizontalStackLayout>
+            <HorizontalStackLayout>
+                <Label Text="Geflügelfleisch" HorizontalTextAlignment="Center" Padding="5" TextColor="Black" FontSize="Subtitle"/>
+                <CheckBox/>
+            </HorizontalStackLayout>
+            <HorizontalStackLayout>
+                <Label Text="Rindfleisch" HorizontalTextAlignment="Center" Padding="5" TextColor="Black" FontSize="Subtitle"/>
+                <CheckBox/>
+            </HorizontalStackLayout>
+            <HorizontalStackLayout>
+                <Label Text="Fisch" HorizontalTextAlignment="Center" Padding="5" TextColor="Black" FontSize="Subtitle"/>
+                <CheckBox/>
+            </HorizontalStackLayout>
+            <HorizontalStackLayout>
+                <Label Text="Meeresfrüchte" HorizontalTextAlignment="Center" Padding="5" TextColor="Black" FontSize="Subtitle"/>
+                <CheckBox/>
+            </HorizontalStackLayout>
+            <HorizontalStackLayout>
+                <Label Text="Milch" HorizontalTextAlignment="Center" Padding="5" TextColor="Black" FontSize="Subtitle"/>
+                <CheckBox/>
+            </HorizontalStackLayout>
+            <HorizontalStackLayout>
+                <Label Text="Farbstoffe" HorizontalTextAlignment="Center" Padding="5" TextColor="Black" FontSize="Subtitle"/>
+                <CheckBox/>
+            </HorizontalStackLayout>
+            <Button Text="Speichern"/>
+        </VerticalStackLayout>
     </ContentPage>
 
 </TabbedPage>
