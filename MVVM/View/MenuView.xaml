@@ -33,7 +33,7 @@
                                 <Label Text="{Binding PriceString}" HorizontalTextAlignment="Center" Padding="5" TextColor="Black" FontSize="Small"/>
                                 <VerticalStackLayout>
 
-                                    <toolkit:Expander>
+                                    <toolkit:Expander>asdfsd
                                         
                                         <toolkit:Expander.Header>
                                             <Label Text="Inhaltsstoffe" HorizontalTextAlignment="Center" Padding="5" TextColor="Black" FontSize="Small"/>
