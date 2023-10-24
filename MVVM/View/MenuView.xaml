@@ -21,7 +21,7 @@
 
                 <Label Text="Hauptgerichte" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Black" FontSize="Large"/>
 
-                <!--<CollectionView SelectionMode="None"
+                <CollectionView SelectionMode="None"
                             ItemsSource="{Binding Menu.MainMenu}"
                             HorizontalOptions="Center" VerticalOptions="Center">
 
@@ -33,6 +33,8 @@
                                 <Label Text="{Binding PriceString}" HorizontalTextAlignment="Center" Padding="5" TextColor="Black" FontSize="Small"/>
                                 <VerticalStackLayout>
 
+                                    <!-- 
+                                    
                                     <Label Text="Inhaltsstoffe" HorizontalTextAlignment="Center" Padding="5" TextColor="Black" FontSize="Small"/>
 
                                     <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Padding="10">
@@ -47,6 +49,8 @@
                                             </CollectionView.ItemTemplate>
                                         </CollectionView>
                                     </VerticalStackLayout>
+                
+                                    -->
 
                                 </VerticalStackLayout>
 
@@ -56,7 +60,7 @@
 
                     </CollectionView.ItemTemplate>
 
-                </CollectionView> !-->
+                </CollectionView> !
 
             </VerticalStackLayout>
 
