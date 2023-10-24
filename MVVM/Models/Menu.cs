@@ -84,15 +84,15 @@ public class Menu
             }
             else
             {
+                willOpen = true;
+                willClose = false;
+                isWeekend = false;
                 if (CurrentTime.Hour > ClosingTime.Hour)
                 {
                     willOpen = false;
                     willClose = false;
                     isWeekend = false;
                 }
-                willOpen = true;
-                willClose = false;
-                isWeekend = false;
             }
             return "Die Mensa ist geschlossen.";
         }
@@ -108,7 +108,7 @@ public class Menu
             }
             else if (willClose && !isWeekend)
             {
-                TimeSpan ts = OpeningTime - CurrentTime;
+                TimeSpan ts = ClosingTime - CurrentTime;
                 return "Sie wird in " + ts.ToFormattedString("t") + "h schließen.";
             }
             else if (!willClose && !isWeekend)

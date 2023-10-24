@@ -31,10 +31,9 @@
                             <VerticalStackLayout WidthRequest="400" HorizontalOptions="Center" VerticalOptions="Center" Padding="10">
                                 <Label Text="{Binding Name}" HorizontalTextAlignment="Center" Padding="5" TextColor="Black" FontSize="Subtitle"/>
                                 <Label Text="{Binding PriceString}" HorizontalTextAlignment="Center" Padding="5" TextColor="Black" FontSize="Small"/>
-                                <VerticalStackLayout>
 
-                                    <!-- 
-                                    
+                                <VerticalStackLayout WidthRequest="400" HorizontalOptions="Center" VerticalOptions="Center" Padding="10">
+
                                     <Label Text="Inhaltsstoffe" HorizontalTextAlignment="Center" Padding="5" TextColor="Black" FontSize="Small"/>
 
                                     <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Padding="10">
@@ -50,8 +49,6 @@
                                         </CollectionView>
                                     </VerticalStackLayout>
                 
-                                    -->
-
                                 </VerticalStackLayout>
 
                             </VerticalStackLayout>
@@ -60,7 +57,7 @@
 
                     </CollectionView.ItemTemplate>
 
-                </CollectionView> !
+                </CollectionView> 
 
             </VerticalStackLayout>
 
@@ -123,38 +120,169 @@
     </ContentPage>
 
     <ContentPage Title="Einstellungen" BackgroundColor="WhiteSmoke">
-        <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Padding="20">
-            <Label Text="Allergene, Unverträglichkeiten und Präferenzen" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Black" FontSize="Large"/>
-            <HorizontalStackLayout>
-                <Label Text="Schweinefleisch" HorizontalTextAlignment="Center" Padding="5" TextColor="Black" FontSize="Subtitle"/>
-                <CheckBox/>
-            </HorizontalStackLayout>
-            <HorizontalStackLayout>
-                <Label Text="Geflügelfleisch" HorizontalTextAlignment="Center" Padding="5" TextColor="Black" FontSize="Subtitle"/>
-                <CheckBox/>
-            </HorizontalStackLayout>
-            <HorizontalStackLayout>
-                <Label Text="Rindfleisch" HorizontalTextAlignment="Center" Padding="5" TextColor="Black" FontSize="Subtitle"/>
-                <CheckBox/>
-            </HorizontalStackLayout>
-            <HorizontalStackLayout>
-                <Label Text="Fisch" HorizontalTextAlignment="Center" Padding="5" TextColor="Black" FontSize="Subtitle"/>
-                <CheckBox/>
-            </HorizontalStackLayout>
-            <HorizontalStackLayout>
-                <Label Text="Meeresfrüchte" HorizontalTextAlignment="Center" Padding="5" TextColor="Black" FontSize="Subtitle"/>
-                <CheckBox/>
-            </HorizontalStackLayout>
-            <HorizontalStackLayout>
-                <Label Text="Milch" HorizontalTextAlignment="Center" Padding="5" TextColor="Black" FontSize="Subtitle"/>
-                <CheckBox/>
-            </HorizontalStackLayout>
-            <HorizontalStackLayout>
-                <Label Text="Farbstoffe" HorizontalTextAlignment="Center" Padding="5" TextColor="Black" FontSize="Subtitle"/>
-                <CheckBox/>
-            </HorizontalStackLayout>
-            <Button Text="Speichern"/>
-        </VerticalStackLayout>
+        <ScrollView>
+            <Grid HorizontalOptions="Center" VerticalOptions="Center" Padding="20">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="200"/>
+                    <ColumnDefinition Width="80"/>
+                    <ColumnDefinition Width="80"/>
+                    <ColumnDefinition Width="80"/>
+                </Grid.ColumnDefinitions>
+
+                <Label Text="Inhaltsstoff" TextColor="Black" Grid.Column="0" Grid.Row="0" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <Label Text="Ja" TextColor="Black" Grid.Column="1" Grid.Row="0" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <Label Text="Nein" TextColor="Black" Grid.Column="2" Grid.Row="0" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <Label Text="Vielleicht" TextColor="Black" Grid.Column="3" Grid.Row="0" HorizontalOptions="Center" VerticalOptions="Center"/>
+
+                <Label Text="Schwein" TextColor="Black" Grid.Column="0" Grid.Row="1" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <RadioButton GroupName="Schwein" Grid.Column="1" Grid.Row="1" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <RadioButton GroupName="Schwein" Grid.Column="2" Grid.Row="1" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <RadioButton GroupName="Schwein" Grid.Column="3" Grid.Row="1" HorizontalOptions="Center" VerticalOptions="Center"/>
+
+                <Label Text="Rind" TextColor="Black" Grid.Column="0" Grid.Row="2" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <RadioButton GroupName="Rind" Grid.Column="1" Grid.Row="2" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <RadioButton GroupName="Rind" Grid.Column="2" Grid.Row="2" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <RadioButton GroupName="Rind" Grid.Column="3" Grid.Row="2" HorizontalOptions="Center" VerticalOptions="Center"/>
+
+                <Label Text="Geflügel" TextColor="Black" Grid.Column="0" Grid.Row="3" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <RadioButton GroupName="Geflügel" Grid.Column="1" Grid.Row="3" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <RadioButton GroupName="Geflügel" Grid.Column="2" Grid.Row="3" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <RadioButton GroupName="Geflügel" Grid.Column="3" Grid.Row="3" HorizontalOptions="Center" VerticalOptions="Center"/>
+
+                <Label Text="Farbstoffe" TextColor="Black" Grid.Column="0" Grid.Row="4" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <RadioButton GroupName="Farbstoffe" Grid.Column="1" Grid.Row="4" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <RadioButton GroupName="Farbstoffe" Grid.Column="2" Grid.Row="4" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <RadioButton GroupName="Farbstoffe" Grid.Column="3" Grid.Row="4" HorizontalOptions="Center" VerticalOptions="Center"/>
+
+                <Label Text="Gluten" TextColor="Black" Grid.Column="0" Grid.Row="5" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <RadioButton GroupName="Gluten" Grid.Column="1" Grid.Row="5" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <RadioButton GroupName="Gluten" Grid.Column="2" Grid.Row="5" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <RadioButton GroupName="Gluten" Grid.Column="3" Grid.Row="5" HorizontalOptions="Center" VerticalOptions="Center"/>
+
+                <Label Text="Schalenfrüchte" TextColor="Black" Grid.Column="0" Grid.Row="6" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <RadioButton GroupName="Schalenfrüchte" Grid.Column="1" Grid.Row="6" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <RadioButton GroupName="Schalenfrüchte" Grid.Column="2" Grid.Row="6" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <RadioButton GroupName="Schalenfrüchte" Grid.Column="3" Grid.Row="6" HorizontalOptions="Center" VerticalOptions="Center"/>
+
+                <Label Text="Schwefeldioxid" TextColor="Black" Grid.Column="0" Grid.Row="7" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <RadioButton GroupName="Schwefeldioxid" Grid.Column="1" Grid.Row="7" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <RadioButton GroupName="Schwefeldioxid" Grid.Column="2" Grid.Row="7" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <RadioButton GroupName="Schwefeldioxid" Grid.Column="3" Grid.Row="7" HorizontalOptions="Center" VerticalOptions="Center"/>
+
+                <Label Text="Konservierungsstoffe" TextColor="Black" Grid.Column="0" Grid.Row="8" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <RadioButton GroupName="Konservierungsstoffe" Grid.Column="1" Grid.Row="8" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <RadioButton GroupName="Konservierungsstoffe" Grid.Column="2" Grid.Row="8" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <RadioButton GroupName="Konservierungsstoffe" Grid.Column="3" Grid.Row="8" HorizontalOptions="Center" VerticalOptions="Center"/>
+
+                <Label Text="Antioxidationsmittel" TextColor="Black" Grid.Column="0" Grid.Row="9" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <RadioButton GroupName="Antioxidationsmittel" Grid.Column="1" Grid.Row="9" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <RadioButton GroupName="Antioxidationsmittel" Grid.Column="2" Grid.Row="9" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <RadioButton GroupName="Antioxidationsmittel" Grid.Column="3" Grid.Row="9" HorizontalOptions="Center" VerticalOptions="Center"/>
+
+                <Label Text="Geschmacksverstärker" TextColor="Black" Grid.Column="0" Grid.Row="10" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <RadioButton GroupName="Geschmacksverstärker" Grid.Column="1" Grid.Row="10" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <RadioButton GroupName="Geschmacksverstärker" Grid.Column="2" Grid.Row="10" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <RadioButton GroupName="Geschmacksverstärker" Grid.Column="3" Grid.Row="10" HorizontalOptions="Center" VerticalOptions="Center"/>
+
+                <Label Text="Nitratpökelsalz" TextColor="Black" Grid.Column="0" Grid.Row="11" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <RadioButton GroupName="Nitratpökelsalz" Grid.Column="1" Grid.Row="11" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <RadioButton GroupName="Nitratpökelsalz" Grid.Column="2" Grid.Row="11" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <RadioButton GroupName="Nitratpökelsalz" Grid.Column="3" Grid.Row="11" HorizontalOptions="Center" VerticalOptions="Center"/>
+
+                <Label Text="Milch" TextColor="Black" Grid.Column="0" Grid.Row="12" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <RadioButton GroupName="Milch" Grid.Column="1" Grid.Row="12" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <RadioButton GroupName="Milch" Grid.Column="2" Grid.Row="12" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <RadioButton GroupName="Milch" Grid.Column="3" Grid.Row="12" HorizontalOptions="Center" VerticalOptions="Center"/>
+
+                <Label Text="Milcherzeugnisse" TextColor="Black" Grid.Column="0" Grid.Row="13" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <RadioButton GroupName="Milcherzeugnisse" Grid.Column="1" Grid.Row="13" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <RadioButton GroupName="Milcherzeugnisse" Grid.Column="2" Grid.Row="13" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <RadioButton GroupName="Milcherzeugnisse" Grid.Column="3" Grid.Row="13" HorizontalOptions="Center" VerticalOptions="Center"/>
+
+                <Label Text="Milcheiweiß" TextColor="Black" Grid.Column="0" Grid.Row="14" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <RadioButton GroupName="Milcheiweiß" Grid.Column="1" Grid.Row="14" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <RadioButton GroupName="Milcheiweiß" Grid.Column="2" Grid.Row="14" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <RadioButton GroupName="Milcheiweiß" Grid.Column="3" Grid.Row="14" HorizontalOptions="Center" VerticalOptions="Center"/>
+
+                <Label Text="Sellerie" TextColor="Black" Grid.Column="0" Grid.Row="15" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <RadioButton GroupName="Sellerie" Grid.Column="1" Grid.Row="15" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <RadioButton GroupName="Sellerie" Grid.Column="2" Grid.Row="15" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <RadioButton GroupName="Sellerie" Grid.Column="3" Grid.Row="15" HorizontalOptions="Center" VerticalOptions="Center"/>
+
+                <Label Text="Sellerieerzeugnisse" TextColor="Black" Grid.Column="0" Grid.Row="16" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <RadioButton GroupName="Sellerieerzeugnisse" Grid.Column="1" Grid.Row="16" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <RadioButton GroupName="Sellerieerzeugnisse" Grid.Column="2" Grid.Row="16" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <RadioButton GroupName="Sellerieerzeugnisse" Grid.Column="3" Grid.Row="16" HorizontalOptions="Center" VerticalOptions="Center"/>
+
+                <Label Text="Süßungsmittel" TextColor="Black" Grid.Column="0" Grid.Row="17" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <RadioButton GroupName="Süßungsmittel" Grid.Column="1" Grid.Row="17" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <RadioButton GroupName="Süßungsmittel" Grid.Column="2" Grid.Row="17" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <RadioButton GroupName="Süßungsmittel" Grid.Column="3" Grid.Row="17" HorizontalOptions="Center" VerticalOptions="Center"/>
+
+                <Label Text="Gerste" TextColor="Black" Grid.Column="0" Grid.Row="18" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <RadioButton GroupName="Gerste" Grid.Column="1" Grid.Row="18" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <RadioButton GroupName="Gerste" Grid.Column="2" Grid.Row="18" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <RadioButton GroupName="Gerste" Grid.Column="3" Grid.Row="18" HorizontalOptions="Center" VerticalOptions="Center"/>
+
+                <Label Text="Weizen" TextColor="Black" Grid.Column="0" Grid.Row="19" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <RadioButton GroupName="Weizen" Grid.Column="1" Grid.Row="19" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <RadioButton GroupName="Weizen" Grid.Column="2" Grid.Row="19" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <RadioButton GroupName="Weizen" Grid.Column="3" Grid.Row="19" HorizontalOptions="Center" VerticalOptions="Center"/>
+
+                <Label Text="Soja" TextColor="Black" Grid.Column="0" Grid.Row="20" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <RadioButton GroupName="Soja" Grid.Column="1" Grid.Row="20" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <RadioButton GroupName="Soja" Grid.Column="2" Grid.Row="20" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <RadioButton GroupName="Soja" Grid.Column="3" Grid.Row="20" HorizontalOptions="Center" VerticalOptions="Center"/>
+
+                <Label Text="Sojaerzeugnisse" TextColor="Black" Grid.Column="0" Grid.Row="21" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <RadioButton GroupName="Sojaerzeugnisse" Grid.Column="1" Grid.Row="21" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <RadioButton GroupName="Sojaerzeugnisse" Grid.Column="2" Grid.Row="21" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <RadioButton GroupName="Sojaerzeugnisse" Grid.Column="3" Grid.Row="21" HorizontalOptions="Center" VerticalOptions="Center"/>
+
+                <Label Text="Senf" TextColor="Black" Grid.Column="0" Grid.Row="22" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <RadioButton GroupName="Senf" Grid.Column="1" Grid.Row="22" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <RadioButton GroupName="Senf" Grid.Column="2" Grid.Row="22" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <RadioButton GroupName="Senf" Grid.Column="3" Grid.Row="22" HorizontalOptions="Center" VerticalOptions="Center"/>
+
+                <Label Text="Senferzeugnisse" TextColor="Black" Grid.Column="0" Grid.Row="23" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <RadioButton GroupName="Senferzeugnisse" Grid.Column="1" Grid.Row="23" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <RadioButton GroupName="Senferzeugnisse" Grid.Column="2" Grid.Row="23" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <RadioButton GroupName="Senferzeugnisse" Grid.Column="3" Grid.Row="23" HorizontalOptions="Center" VerticalOptions="Center"/>
+
+                <Label Text="Geschwärzt" TextColor="Black" Grid.Column="0" Grid.Row="24" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <RadioButton GroupName="Geschwärzt" Grid.Column="1" Grid.Row="24" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <RadioButton GroupName="Geschwärzt" Grid.Column="2" Grid.Row="24" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <RadioButton GroupName="Geschwärzt" Grid.Column="3" Grid.Row="24" HorizontalOptions="Center" VerticalOptions="Center"/>
+
+            </Grid>
+        </ScrollView>
     </ContentPage>
 
 </TabbedPage>

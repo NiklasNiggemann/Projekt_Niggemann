@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Xml;
 using HtmlAgilityPack;
 using Mensa_App.MVVM.Models;
+using Microsoft.Maui.Controls;
 
 namespace Mensa_App.Classes.Models;
 
@@ -17,7 +18,7 @@ public class Dish
     {
         get
         {
-            return String.Format("{0:0.00}", Price) + "€";
+            return String.Format("{0:0.00}", Price) + " €";
         }
     }
     public string[]? Ingredients { get; set; }
@@ -28,7 +29,15 @@ public class Dish
             List<Ingredient> ingredientList = new List<Ingredient>();
             foreach (var x in Ingredients)
             {
-                ingredientList.Add(new Ingredient(x));
+                if (x.Trim() != "")
+                {
+                    ingredientList.Add(new Ingredient(x.Trim()));
+                }
+            }
+            if (ingredientList[0].Name == "Für")
+            {
+                ingredientList = new List<Ingredient>();
+                ingredientList.Add(new Ingredient("Keine Nährstoffe angegeben."));
             }
             return ingredientList;
         }
@@ -84,11 +93,24 @@ public class Dish
         Dish dish = new Dish(name, price / 100, ingredientsArray, nutritionsString);
         return dish;
     }
+
     public static string PrepareIngredients(string element)
     {
         element = element.Trim();
         element = element.Remove(0, element.IndexOf(" ")).Trim();
-        if (element.Contains("mit")) element = element.Remove(element.IndexOf("mit"), 4);
+
+        bool containsMit = true;
+        while (containsMit == true)
+        {
+            int prevLength = element.Length;
+            if (element.Contains("mit "))
+            {
+                element = element.Remove(element.IndexOf("mit "), 4);
+            }
+            if (element.Length == prevLength)
+                containsMit = false;
+        }
+
         bool containsUnd = true;
         while (containsUnd == true)
         {
@@ -100,6 +122,7 @@ public class Dish
             if (element.Length == prevLength)
                 containsUnd = false;
         }
+
         bool containsKlammern = true;
         while (containsKlammern == true)
         {
@@ -111,6 +134,7 @@ public class Dish
             if (element.Length == prevLength)
                 containsKlammern = false;
         }
+
         bool containsSowie = true;
         while (containsSowie == true)
         {
@@ -122,6 +146,7 @@ public class Dish
             if (element.Length == prevLength)
                 containsSowie = false;
         }
+
         return element;
     }
     public static string CleanUpString(string elementType, string element)
