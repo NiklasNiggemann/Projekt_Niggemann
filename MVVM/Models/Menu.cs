@@ -53,6 +53,8 @@ public class Menu
         {
             if (CurrentTime.DayOfWeek == DayOfWeek.Saturday || CurrentTime.DayOfWeek == DayOfWeek.Sunday)
             {
+                willOpen = false;
+                willClose = false;
                 isWeekend = true;
                 return "Die Mensa öffnet erst am Montag wieder.";
             }
@@ -60,20 +62,37 @@ public class Menu
             {
                 if (CurrentTime.Minute >= 30)
                 {
+                    willOpen = false;
                     willClose = true;
+                    isWeekend = false;
                     return "Die Mensa ist geöffnet.";
                 }
-                willOpen = true;
+                else
+                {
+                    willOpen = true;
+                    willClose = false;
+                    isWeekend = false;
+                    return "Die Mensa ist geschlossen";
+                }
             }
             else if (CurrentTime.Hour > OpeningTime.Hour && CurrentTime.Hour < ClosingTime.Hour)
             {
+                willOpen = false;
                 willClose = true;
+                isWeekend = false;
                 return "Die Mensa ist geöffnet.";
             }
-            if (CurrentTime.Hour > ClosingTime.Hour)
+            else
             {
+                if (CurrentTime.Hour > ClosingTime.Hour)
+                {
+                    willOpen = false;
+                    willClose = false;
+                    isWeekend = false;
+                }
+                willOpen = true;
                 willClose = false;
-                willOpen = false;
+                isWeekend = false;
             }
             return "Die Mensa ist geschlossen.";
         }
@@ -82,17 +101,17 @@ public class Menu
     {
         get
         {
-            if (willOpen)
+            if (willOpen && !isWeekend)
             {
                 TimeSpan ts = OpeningTime - CurrentTime;
-                return "Sie wird in " + ts.ToFormattedString("t") + " öffnen.";
+                return "Sie wird in " + ts.ToFormattedString("t") + "h öffnen.";
             }
-            if (willClose)
+            else if (willClose && !isWeekend)
             {
                 TimeSpan ts = OpeningTime - CurrentTime;
-                return "Sie wird in " + ts.ToFormattedString("t") + " schließen.";
+                return "Sie wird in " + ts.ToFormattedString("t") + "h schließen.";
             }
-            else if (!isWeekend)
+            else if (!willClose && !isWeekend)
                 return "Sie wird morgen wieder öffnen.";
             return "";
         }
