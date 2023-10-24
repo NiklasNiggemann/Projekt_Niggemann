@@ -41,7 +41,7 @@
                                             <CollectionView.ItemTemplate>
                                                 <DataTemplate>
                                                     <VerticalStackLayout WidthRequest="400" HorizontalOptions="Center" VerticalOptions="Center" Padding="5">
-                                                        <Label Text="{Binding Name}" HorizontalTextAlignment="Center" Padding="5" TextColor="Black" FontSize="Micro"/>
+                                                        <Label Text="{Binding Name}" HorizontalTextAlignment="Center" Padding="5" FontSize="Micro"/>
                                                     </VerticalStackLayout>
                                                 </DataTemplate>
                                             </CollectionView.ItemTemplate>
