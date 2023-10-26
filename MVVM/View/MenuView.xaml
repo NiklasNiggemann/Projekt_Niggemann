@@ -38,7 +38,7 @@
 
                                     <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Padding="10">
                                         <CollectionView SelectionMode="None" ItemsSource="{Binding IngredientList}"
-                                                HorizontalOptions="Center" VerticalOptions="Center">
+                                                        HorizontalOptions="Center" VerticalOptions="Center">
                                             <CollectionView.ItemTemplate>
                                                 <DataTemplate>
                                                     <VerticalStackLayout WidthRequest="400" HorizontalOptions="Center" VerticalOptions="Center" Padding="5">
@@ -49,6 +49,34 @@
                                         </CollectionView>
                                     </VerticalStackLayout>
                 
+                                </VerticalStackLayout>
+
+                                <VerticalStackLayout WidthRequest="400" HorizontalOptions="Center" VerticalOptions="Center" Padding="10">
+
+                                    <Label Text="Nährwerte" HorizontalTextAlignment="Center" Padding="5" TextColor="Black" FontSize="Small"/>
+
+                                    <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Padding="10">
+                                        <CollectionView SelectionMode="None" ItemsSource="{Binding Nutrition}"
+                                                        HorizontalOptions="Center" VerticalOptions="Center">
+                                            <CollectionView.ItemTemplate>
+                                                <DataTemplate>
+                                                    <VerticalStackLayout WidthRequest="400" HorizontalOptions="Center" VerticalOptions="Center" Padding="5">
+                                                        <HorizontalStackLayout WidthRequest="400" HorizontalOptions="Center" VerticalOptions="Center" Padding="5">
+                                                            <Label Text="Kalorien: " HorizontalTextAlignment="Center" Padding="5" TextColor="Black" FontSize="Micro"/>
+                                                            <Label Text="{Binding Kalorien}" HorizontalTextAlignment="Center" Padding="5" TextColor="Black" FontSize="Micro"/>
+                                                            <Label Text="Fett: " HorizontalTextAlignment="Center" Padding="5" TextColor="Black" FontSize="Micro"/>
+                                                            <Label Text="{Binding Fett}" HorizontalTextAlignment="Center" Padding="5" TextColor="Black" FontSize="Micro"/>
+                                                            <Label Text="Kohlenhydrate: " HorizontalTextAlignment="Center" Padding="5" TextColor="Black" FontSize="Micro"/>
+                                                            <Label Text="{Binding Kohlenhydrate}" HorizontalTextAlignment="Center" Padding="5" TextColor="Black" FontSize="Micro"/>
+                                                            <Label Text="Eiweiß: " HorizontalTextAlignment="Center" Padding="5" TextColor="Black" FontSize="Micro"/>
+                                                            <Label Text="{Binding Eiweiß}" HorizontalTextAlignment="Center" Padding="5" TextColor="Black" FontSize="Micro"/>
+                                                        </HorizontalStackLayout>
+                                                    </VerticalStackLayout>
+                                                </DataTemplate>
+                                            </CollectionView.ItemTemplate>
+                                        </CollectionView>
+                                    </VerticalStackLayout>
+
                                 </VerticalStackLayout>
 
                             </VerticalStackLayout>

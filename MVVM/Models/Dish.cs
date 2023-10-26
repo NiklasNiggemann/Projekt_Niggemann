@@ -43,6 +43,7 @@ public class Dish
         }
     }
     public string? Nutritions { get; set; }
+    
     public Dish(string name, double price, string[] ingredients, string nutritions)
     {
         Name = name;
