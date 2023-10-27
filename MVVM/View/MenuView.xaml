@@ -21,9 +21,7 @@
 
                 <Label Text="Hauptgerichte" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Black" FontSize="Large"/>
 
-                <CollectionView SelectionMode="None"
-                            ItemsSource="{Binding Menu.MainMenu}"
-                            HorizontalOptions="Center" VerticalOptions="Center">
+                <CollectionView SelectionMode="None" ItemsSource="{Binding Menu.MainMenu}" HorizontalOptions="Center" VerticalOptions="Center">
 
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
@@ -77,8 +75,7 @@
                                     <Label Text="Inhaltsstoffe" HorizontalTextAlignment="Center" Padding="5" TextColor="Black" FontSize="Small"/>
 
                                     <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Padding="10">
-                                        <CollectionView SelectionMode="None" ItemsSource="{Binding IngredientList}"
-                                                        HorizontalOptions="Center" VerticalOptions="Center">
+                                        <CollectionView SelectionMode="None" ItemsSource="{Binding IngredientList}" HorizontalOptions="Center" VerticalOptions="Center">
                                             <CollectionView.ItemTemplate>
                                                 <DataTemplate>
                                                     <HorizontalStackLayout WidthRequest="400" HorizontalOptions="Center" VerticalOptions="Center" Padding="5">
@@ -113,9 +110,7 @@
                 
                 <Label Text="Beilagen" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Black" FontSize="Large"/>
                 
-                <CollectionView SelectionMode="None"
-                                ItemsSource="{Binding Menu.SideMenu}"
-                                HorizontalOptions="Center" VerticalOptions="Center">
+                <CollectionView SelectionMode="None" ItemsSource="{Binding Menu.SideMenu}" HorizontalOptions="Center" VerticalOptions="Center">
                     
                     <CollectionView.ItemTemplate>
                         
@@ -170,8 +165,7 @@
                                     <Label Text="Inhaltsstoffe" HorizontalTextAlignment="Center" Padding="5" TextColor="Black" FontSize="Small"/>
 
                                     <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Padding="10">
-                                        <CollectionView SelectionMode="None" ItemsSource="{Binding IngredientList}"
-                                                        HorizontalOptions="Center" VerticalOptions="Center">
+                                        <CollectionView SelectionMode="None" ItemsSource="{Binding IngredientList}" HorizontalOptions="Center" VerticalOptions="Center">
                                             <CollectionView.ItemTemplate>
                                                 <DataTemplate>
                                                     <HorizontalStackLayout WidthRequest="400" HorizontalOptions="Center" VerticalOptions="Center" Padding="5">
@@ -206,9 +200,7 @@
 
                 <Label Text="Suppe" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Black" FontSize="Large"/>
 
-                <CollectionView SelectionMode="None"
-                                ItemsSource="{Binding Menu.SoupMenu}"
-                                HorizontalOptions="Center" VerticalOptions="Center">
+                <CollectionView SelectionMode="None" ItemsSource="{Binding Menu.SoupMenu}" HorizontalOptions="Center" VerticalOptions="Center">
 
                     <CollectionView.ItemTemplate>
 
@@ -300,9 +292,7 @@
             
                 <Label Text="Dessert" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Black" FontSize="Large"/>
             
-                <CollectionView SelectionMode="None"
-                                ItemsSource="{Binding Menu.DessertMenu}"
-                                HorizontalOptions="Center" VerticalOptions="Center">
+                <CollectionView SelectionMode="None" ItemsSource="{Binding Menu.DessertMenu}" HorizontalOptions="Center" VerticalOptions="Center">
                 
                     <CollectionView.ItemTemplate>
                     
@@ -358,8 +348,7 @@
                                     <Label Text="Inhaltsstoffe" HorizontalTextAlignment="Center" Padding="5" TextColor="Black" FontSize="Small"/>
 
                                     <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Padding="10">
-                                        <CollectionView SelectionMode="None" ItemsSource="{Binding IngredientList}"
-                                                        HorizontalOptions="Center" VerticalOptions="Center">
+                                        <CollectionView SelectionMode="None" ItemsSource="{Binding IngredientList}" HorizontalOptions="Center" VerticalOptions="Center">
                                             <CollectionView.ItemTemplate>
                                                 <DataTemplate>
                                                     <HorizontalStackLayout WidthRequest="400" HorizontalOptions="Center" VerticalOptions="Center" Padding="5">
