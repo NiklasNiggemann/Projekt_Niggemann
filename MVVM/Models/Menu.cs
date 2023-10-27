@@ -129,10 +129,17 @@ public class Menu
         HtmlWeb web = new HtmlWeb();
         CurrentTime = new DateTime();
         CurrentTime = DateTime.Now;
-        HtmlDocument document = web.Load("https://www.studierendenwerk-pb.de/gastronomie/speiseplaene/mensa-basilica-hamm/");
-        GenerateIndividualMenus(document, ".main-dishes");
-        GenerateIndividualMenus(document, ".side-dishes");
-        GenerateIndividualMenus(document, ".soups");
+        try
+        {
+            HtmlDocument document = web.Load("https://www.studierendenwerk-pb.de/gastronomie/speiseplaene/mensa-basilica-hamm/");
+            GenerateIndividualMenus(document, ".main-dishes");
+            GenerateIndividualMenus(document, ".side-dishes");
+            GenerateIndividualMenus(document, ".soups");
+        }
+        catch (System.Net.WebException ex)
+        {
+           
+        }
     }
     public void GenerateIndividualMenus(HtmlDocument document, string dishType)
     {

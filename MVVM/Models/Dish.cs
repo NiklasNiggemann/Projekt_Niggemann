@@ -37,19 +37,30 @@ public class Dish
             if (ingredientList[0].Name == "Für")
             {
                 ingredientList = new List<Ingredient>();
-                ingredientList.Add(new Ingredient("Keine Nährstoffe angegeben."));
+                ingredientList.Add(new Ingredient("Keine Inhaltsstoffe angegeben."));
             }
             return ingredientList;
         }
     }
-    public string? Nutritions { get; set; }
-    
-    public Dish(string name, double price, string[] ingredients, string nutritions)
+    public Nutrition Nutrition
     {
-        Name = name;
-        Price = price;
-        Ingredients = ingredients;
-        Nutritions = nutritions;
+        get
+        {
+            string[] nutritionsArray = NutritionsString.Split(" ");
+            List<string> nutritionsList = new List<string>();
+            foreach (var x in nutritionsArray)
+            {
+                if (x != "")
+                    nutritionsList.Add(x);
+            }
+            Nutrition nutritions = new Nutrition();
+            nutritions.BrennwertString = nutritionsList[0].Trim();
+            nutritions.KalorienString = nutritionsList[1].Trim();
+            nutritions.FettString = nutritionsList[2].Trim();
+            nutritions.KohlenhydrateString = nutritionsList[3].Trim();
+            nutritions.EiweißString = nutritionsList[4].Trim();
+            return nutritions;
+        }
     }
     public static List<Dish> DeleteDessertsFromSoupMenu(List<Dish> soupMenu)
     {
@@ -147,7 +158,22 @@ public class Dish
             if (element.Length == prevLength)
                 containsSowie = false;
         }
-
+        return element;
+    }
+    public static string PrepareNutritions(string element)
+    {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int i = 0; i < element.Length; i++)
+        {
+            if (element[i] == '1' || element[i] == '2' || element[i] == '3' || element[i] == '4' || element[i] == '5' ||
+                element[i] == '6' || element[i] == '7' || element[i] == '8' || element[i] == '9' || element[i] == '0' || element[i] == ',')
+            {
+                stringBuilder.Append(element[i]);
+            }
+            if (element[i] == ' ')
+                stringBuilder.Append(' ');
+        }
+        element = stringBuilder.ToString().Trim();
         return element;
     }
     public static string CleanUpString(string elementType, string element)
@@ -163,8 +189,7 @@ public class Dish
             case "nutritions":
                 element = element.Trim();
                 element = element.Remove(0, element.IndexOf(" ")).Trim();
-
-                return element;
+                return PrepareNutritions(element);
             default:
                 return "ERROR";
         }
@@ -182,4 +207,12 @@ public class Dish
         }
         return mainDishesList;
     }
+    public Dish(string name, double price, string[] ingredients, string nutritions)
+    {
+        Name = name;
+        Price = price;
+        Ingredients = ingredients;
+        NutritionsString = nutritions;
+    }
+    public string NutritionsString { get; set; }
 }
