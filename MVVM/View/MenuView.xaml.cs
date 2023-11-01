@@ -1,5 +1,6 @@
 using Mensa_App.Classes.Models;
 using Mensa_App.Classes.ViewModels;
+using Mensa_App.MVVM.Models;
 using System.Diagnostics;
 using System.Windows.Input;
 
@@ -12,6 +13,7 @@ public partial class MenuView : TabbedPage
 	{
 		InitializeComponent();
         MenuViewModel = new MenuViewModel();
+        Date date = new Date();
         BindingContext = MenuViewModel;
 	}
 }

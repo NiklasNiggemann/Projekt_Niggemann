@@ -7,8 +7,12 @@
     <ContentPage Title="Hauptgerichte" BackgroundColor="WhiteSmoke">
 
         <ScrollView>
-
+            
             <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Padding="20">
+
+                <Label Text="{Binding MaxDay}" BindingContext="{Binding Date}" TextColor="Black"/>
+
+                <DatePicker MinimumDate="{Binding CurrentDay}" MaximumDate="{Binding MaxDay}" Date="{Binding MaxDay}" BindingContext="{Binding Date}" TextColor="Black" VerticalOptions="Center" HorizontalOptions="Center"/>
 
                 <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Padding="20">
                     <HorizontalStackLayout>
