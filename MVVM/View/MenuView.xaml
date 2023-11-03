@@ -26,67 +26,84 @@
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
 
-                            <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Padding="10">
-                                <Label Text="{Binding Name}" HorizontalTextAlignment="Center" Padding="5" TextColor="Black" FontSize="Subtitle"/>
-                                <Label Text="{Binding PriceString}" HorizontalTextAlignment="Center" Padding="5" TextColor="Black" FontSize="Small"/>
-                                
-                                <!-- Nährwerte -->
+                            <VerticalStackLayout Padding="20">
 
-                                <VerticalStackLayout WidthRequest="400" HorizontalOptions="Center" VerticalOptions="Center" Padding="10">
+                                <Border Padding="5" StrokeThickness="2">
 
-                                    <Label Text="Nährwerte" HorizontalTextAlignment="Center" Padding="5" TextColor="Black" FontSize="Small"/>
+                                    <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Padding="5">
 
-                                    <HorizontalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Padding="5">
-                                        <Label Text="Brennwert: " HorizontalTextAlignment="Center" TextColor="Black" FontSize="Micro"/>
-                                        <Label Text="{Binding BrennwertString}" BindingContext="{Binding Nutrition}" HorizontalTextAlignment="Center" TextColor="Black" FontSize="Micro"/>
-                                        <Label Text=" kJ" HorizontalTextAlignment="Center" TextColor="Black" FontSize="Micro"/>
-                                    </HorizontalStackLayout>
+                                        <Label Text="{Binding Name}" HorizontalTextAlignment="Center" Padding="5" TextColor="Black" FontSize="Subtitle"/>
+                                        <Label Text="{Binding PriceString}" HorizontalTextAlignment="Center" Padding="5" TextColor="Black" FontSize="Small"/>
 
-                                    <HorizontalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Padding="5">
-                                        <Label Text="Kalorien: " HorizontalTextAlignment="Center" TextColor="Black" FontSize="Micro"/>
-                                        <Label Text="{Binding KalorienString}" BindingContext="{Binding Nutrition}" HorizontalTextAlignment="Center" TextColor="Black" FontSize="Micro"/>
-                                        <Label Text=" kcal" HorizontalTextAlignment="Center" TextColor="Black" FontSize="Micro"/>
-                                    </HorizontalStackLayout>
+                                        <!-- Nährwerte -->
 
-                                    <HorizontalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Padding="5">
-                                        <Label Text="Kohlenhydrate: " HorizontalTextAlignment="Center" TextColor="Black" FontSize="Micro"/>
-                                        <Label Text="{Binding KohlenhydrateString}" BindingContext="{Binding Nutrition}" HorizontalTextAlignment="Center" TextColor="Black" FontSize="Micro"/>
-                                        <Label Text="g" HorizontalTextAlignment="Center" TextColor="Black" FontSize="Micro"/>
-                                    </HorizontalStackLayout>
+                                        <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Padding="10" WidthRequest="400">
 
-                                    <HorizontalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Padding="5">
-                                        <Label Text="Fett: " HorizontalTextAlignment="Center" TextColor="Black" FontSize="Micro"/>
-                                        <Label Text="{Binding FettString}" BindingContext="{Binding Nutrition}" HorizontalTextAlignment="Center" TextColor="Black" FontSize="Micro"/>
-                                        <Label Text="g" HorizontalTextAlignment="Center" TextColor="Black" FontSize="Micro"/>
-                                    </HorizontalStackLayout>
+                                            <Label Text="Nährwerte" HorizontalTextAlignment="Center" Padding="5" TextColor="Black" FontSize="Small"/>
 
-                                    <HorizontalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Padding="5">
-                                        <Label Text="Eiweiß: " HorizontalTextAlignment="Center" TextColor="Black" FontSize="Micro"/>
-                                        <Label Text="{Binding EiweißString}" BindingContext="{Binding Nutrition}" HorizontalTextAlignment="Center" TextColor="Black" FontSize="Micro"/>
-                                        <Label Text="g" HorizontalTextAlignment="Center" TextColor="Black" FontSize="Micro"/>
-                                    </HorizontalStackLayout>
+                                            <Grid>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition/>
+                                                    <RowDefinition/>
+                                                    <RowDefinition/>
+                                                    <RowDefinition/>
+                                                    <RowDefinition/>
+                                                    <RowDefinition/>
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="100"/>
+                                                    <ColumnDefinition Width="100"/>
+                                                    <ColumnDefinition Width="100"/>
+                                                    <ColumnDefinition Width="100"/>
+                                                </Grid.ColumnDefinitions>
+                                            </Grid>
 
-                                </VerticalStackLayout>
+                                            <Label Text="Brennwert: " TextColor="Black" FontSize="Micro" Grid.Row="1" Grid.Column="0"/>
+                                            <Label Text="{Binding BrennwertString}" BindingContext="{Binding Nutrition}" TextColor="Black" FontSize="Micro" Grid.Row="1" Grid.Column="1"/>
+                                            <Label Text=" kJ" TextColor="Black" FontSize="Micro" Grid.Row="1" Grid.Column="1"/>
 
-                                <!-- Inhaltsstoffe -->
+                                            <Label Text="Kalorien: " TextColor="Black" FontSize="Micro" Grid.Row="2" Grid.Column="0"/>
+                                            <Label Text="{Binding KalorienString}" BindingContext="{Binding Nutrition}" TextColor="Black" FontSize="Micro" Grid.Row="2" Grid.Column="1"/>
+                                            <Label Text=" kcal" TextColor="Black" FontSize="Micro" Grid.Row="2" Grid.Column="1"/>
 
-                                <VerticalStackLayout WidthRequest="400" HorizontalOptions="Center" VerticalOptions="Center" Padding="10">
+                                            <Label Text="Kohlenhydrate: " TextColor="Black" FontSize="Micro" Grid.Row="3" Grid.Column="0"/>
+                                            <Label Text="{Binding KohlenhydrateString}" BindingContext="{Binding Nutrition}" TextColor="Black" FontSize="Micro" Grid.Row="3" Grid.Column="1"/>
+                                            <Label Text="g" TextColor="Black" FontSize="Micro" Grid.Row="3" Grid.Column="1"/>
 
-                                    <Label Text="Inhaltsstoffe" HorizontalTextAlignment="Center" Padding="5" TextColor="Black" FontSize="Small"/>
+                                            <Label Text="Fett: " TextColor="Black" FontSize="Micro" Grid.Row="4" Grid.Column="0"/>
+                                            <Label Text="{Binding FettString}" BindingContext="{Binding Nutrition}" TextColor="Black" FontSize="Micro" Grid.Row="4" Grid.Column="1"/>
+                                            <Label Text="g" TextColor="Black" FontSize="Micro" Grid.Row="4" Grid.Column="1"/>
 
-                                    <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Padding="10">
-                                        <CollectionView SelectionMode="None" ItemsSource="{Binding IngredientList}" HorizontalOptions="Center" VerticalOptions="Center">
-                                            <CollectionView.ItemTemplate>
-                                                <DataTemplate>
-                                                    <HorizontalStackLayout WidthRequest="400" HorizontalOptions="Center" VerticalOptions="Center" Padding="5">
-                                                        <Label Text="{Binding Name}" HorizontalTextAlignment="Center" TextColor="Black" FontSize="Micro"/>
-                                                    </HorizontalStackLayout>
-                                                </DataTemplate>
-                                            </CollectionView.ItemTemplate>
-                                        </CollectionView>
+                                            <Label Text="Eiweiß: " TextColor="Black" FontSize="Micro" Grid.Row="5" Grid.Column="0"/>
+                                            <Label Text="{Binding EiweißString}" BindingContext="{Binding Nutrition}" TextColor="Black" FontSize="Micro" Grid.Row="5" Grid.Column="1"/>
+                                            <Label Text="g" TextColor="Black" FontSize="Micro" Grid.Row="5" Grid.Column="1"/>
+
+                                        </VerticalStackLayout>
+
+                                        <!-- Inhaltsstoffe -->
+
+                                        <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Padding="10">
+
+                                            <Label Text="Inhaltsstoffe" HorizontalTextAlignment="Center" Padding="5" TextColor="Black" FontSize="Small"/>
+
+                                            <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Padding="10">
+                                                <CollectionView SelectionMode="None" ItemsSource="{Binding IngredientList}" HorizontalOptions="Center" VerticalOptions="Center">
+                                                    <CollectionView.ItemTemplate>
+                                                        <DataTemplate>
+                                                            <HorizontalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Padding="5">
+                                                                <Label Text="-" TextColor="Black" FontSize="Micro"/>
+                                                                <Label Text="{Binding Name}" TextColor="Black" FontSize="Micro"/>
+                                                            </HorizontalStackLayout>
+                                                        </DataTemplate>
+                                                    </CollectionView.ItemTemplate>
+                                                </CollectionView>
+                                            </VerticalStackLayout>
+
+                                        </VerticalStackLayout>
+
                                     </VerticalStackLayout>
-                
-                                </VerticalStackLayout>
+
+                                </Border>
 
                             </VerticalStackLayout>
 
