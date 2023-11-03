@@ -9,10 +9,10 @@ namespace Mensa_App.MVVM.Models;
 public class Ingredient
 {
     public string Name { get; set; }
-    public bool Allergic { get; set; }
+    public bool IsAllergic { get; set; }
     public Ingredient(string name)
     {
         Name = name;
-        Allergic = false;
+        IsAllergic = false;
     }
 }

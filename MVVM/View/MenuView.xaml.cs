@@ -13,7 +13,6 @@ public partial class MenuView : TabbedPage
 	{
 		InitializeComponent();
         MenuViewModel = new MenuViewModel();
-        Date date = new Date();
         BindingContext = MenuViewModel;
 	}
 }
