@@ -1,4 +1,5 @@
 ﻿using HtmlAgilityPack;
+using Mensa_App.MVVM.Models;
 using Microsoft.Maui.Platform;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,48 @@ namespace Mensa_App.Classes.Models;
 
 public class Menu
 {
+    public Menu()
+    {
+        MainMenu = new List<Dish>();
+        SideMenu = new List<Dish>();
+        SoupMenu = new List<Dish>();
+        DessertMenu = new List<Dish>();
+        HtmlWeb web = new HtmlWeb();
+        CurrentTime = new DateTime();
+        CurrentTime = DateTime.Now;
+        try
+        {
+            HtmlDocument document = web.Load("https://www.studierendenwerk-pb.de/gastronomie/speiseplaene/mensa-basilica-hamm/");
+            GenerateIndividualMenus(document, ".main-dishes");
+            GenerateIndividualMenus(document, ".side-dishes");
+            GenerateIndividualMenus(document, ".soups");
+        }
+        catch (System.Net.WebException ex)
+        {
+
+        }
+    }
+    public DateTime CurrentDay
+    {
+        get
+        {
+            return DateTime.Now;
+        }
+    }
+    public DateTime MaxDay
+    {
+        get
+        {
+            DateTime d = DateTime.Now;
+            int days = 5;
+            for (int i = 0; i <= 5; i++)
+            {
+                if (d.AddDays(i).DayOfWeek.ToString() == "Saturdays" || d.AddDays(i).DayOfWeek.ToString() == "Saturdays")
+                    days++;
+            }
+            return d.AddDays(days);
+        }
+    }
     public string? Date { get; set; }
     public DateTime CurrentTime { get; set; }
     public string CurrentDate
@@ -120,27 +163,6 @@ public class Menu
     public List<Dish>? SideMenu { get; set; }
     public List<Dish>? SoupMenu { get; set; }
     public List<Dish>? DessertMenu { get; set; }
-    public Menu()
-    {
-        MainMenu = new List<Dish>();
-        SideMenu = new List<Dish>();
-        SoupMenu = new List<Dish>();
-        DessertMenu = new List<Dish>();
-        HtmlWeb web = new HtmlWeb();
-        CurrentTime = new DateTime();
-        CurrentTime = DateTime.Now;
-        try
-        {
-            HtmlDocument document = web.Load("https://www.studierendenwerk-pb.de/gastronomie/speiseplaene/mensa-basilica-hamm/");
-            GenerateIndividualMenus(document, ".main-dishes");
-            GenerateIndividualMenus(document, ".side-dishes");
-            GenerateIndividualMenus(document, ".soups");
-        }
-        catch (System.Net.WebException ex)
-        {
-           
-        }
-    }
     public void GenerateIndividualMenus(HtmlDocument document, string dishType)
     {
         switch (dishType)
