@@ -18,6 +18,7 @@ public class Menu
         SideMenu = new List<Dish>();
         SoupMenu = new List<Dish>();
         DessertMenu = new List<Dish>();
+        UserMenu = new List<Dish>();
         HtmlWeb web = new HtmlWeb();
         CurrentTime = new DateTime();
         CurrentTime = DateTime.Now;
@@ -159,10 +160,12 @@ public class Menu
             return "";
         }
     }
-    public List<Dish>? MainMenu { get; set; }
-    public List<Dish>? SideMenu { get; set; }
-    public List<Dish>? SoupMenu { get; set; }
-    public List<Dish>? DessertMenu { get; set; }
+    public List<Dish> MainMenu { get; set; }
+    public List<Dish> SideMenu { get; set; }
+    public List<Dish> SoupMenu { get; set; }
+    public List<Dish> DessertMenu { get; set; }
+    public List<Dish> UserMenu { get; set; }
+    public double UserMenuSum { get; set; }
     public void GenerateIndividualMenus(HtmlDocument document, string dishType)
     {
         switch (dishType)

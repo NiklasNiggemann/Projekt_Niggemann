@@ -15,4 +15,13 @@ public partial class MenuView : TabbedPage
         MenuViewModel = new MenuViewModel();
         BindingContext = MenuViewModel;
 	}
+
+    private void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+    {
+        MenuViewModel.Menu.UserMenu.Add(e.SelectedItem as Dish);
+        foreach (var dish in MenuViewModel.Menu.UserMenu)
+        {
+            MenuViewModel.Menu.UserMenuSum += dish.Price;
+        }
+    }
 }
