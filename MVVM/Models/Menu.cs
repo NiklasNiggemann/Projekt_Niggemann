@@ -18,10 +18,8 @@ public class Menu
         SideMenu = new List<Dish>();
         SoupMenu = new List<Dish>();
         DessertMenu = new List<Dish>();
-        UserMenu = new List<Dish>();
+        UserMenu = new Dish[4];
         HtmlWeb web = new HtmlWeb();
-        CurrentTime = new DateTime();
-        CurrentTime = DateTime.Now;
         try
         {
             HtmlDocument document = web.Load("https://www.studierendenwerk-pb.de/gastronomie/speiseplaene/mensa-basilica-hamm/");
@@ -34,138 +32,14 @@ public class Menu
 
         }
     }
-    public DateTime CurrentDay
-    {
-        get
-        {
-            return DateTime.Now;
-        }
-    }
-    public DateTime MaxDay
-    {
-        get
-        {
-            DateTime d = DateTime.Now;
-            int days = 5;
-            for (int i = 0; i <= 5; i++)
-            {
-                if (d.AddDays(i).DayOfWeek.ToString() == "Saturdays" || d.AddDays(i).DayOfWeek.ToString() == "Saturdays")
-                    days++;
-            }
-            return d.AddDays(days);
-        }
-    }
-    public string? Date { get; set; }
-    public DateTime CurrentTime { get; set; }
-    public string CurrentDate
-    {
-        get
-        {
-            var culture = new CultureInfo("de-DE");
-            return culture.DateTimeFormat.GetDayName(DateTime.Today.DayOfWeek) + ", der " + CurrentTime.ToString("dd.MM.yyyy") + ", ";
-        }
-    }
-    public string CurrentTimeString
-    {
-        get
-        {
-            return " " + CurrentTime.ToString("t") + " Uhr.";
-        }
-    }
-    public DateTime OpeningTime
-    {
-        get
-        {
-            DateTime openingTime = new DateTime(CurrentTime.Year, CurrentTime.Month, CurrentTime.Day, 11, 30, 0);
-            return openingTime;
-        }
-    }
-    public DateTime ClosingTime
-    {
-        get
-        {
-            DateTime openingTime = new DateTime(CurrentTime.Year, CurrentTime.Month, CurrentTime.Day, 14, 0, 0);
-            return openingTime;
-        }
-    }
-    private bool willOpen = false;
-    private bool willClose = false;
-    private bool isWeekend = false;
-    public string IsOpenString
-    {
-        get
-        {
-            if (CurrentTime.DayOfWeek == DayOfWeek.Saturday || CurrentTime.DayOfWeek == DayOfWeek.Sunday)
-            {
-                willOpen = false;
-                willClose = false;
-                isWeekend = true;
-                return "Die Mensa öffnet erst am Montag wieder.";
-            }
-            if (CurrentTime.Hour == 11)
-            {
-                if (CurrentTime.Minute >= 30)
-                {
-                    willOpen = false;
-                    willClose = true;
-                    isWeekend = false;
-                    return "Die Mensa ist geöffnet.";
-                }
-                else
-                {
-                    willOpen = true;
-                    willClose = false;
-                    isWeekend = false;
-                    return "Die Mensa ist geschlossen";
-                }
-            }
-            else if (CurrentTime.Hour > OpeningTime.Hour && CurrentTime.Hour < ClosingTime.Hour)
-            {
-                willOpen = false;
-                willClose = true;
-                isWeekend = false;
-                return "Die Mensa ist geöffnet.";
-            }
-            else
-            {
-                willOpen = true;
-                willClose = false;
-                isWeekend = false;
-                if (CurrentTime.Hour > ClosingTime.Hour)
-                {
-                    willOpen = false;
-                    willClose = false;
-                    isWeekend = false;
-                }
-            }
-            return "Die Mensa ist geschlossen.";
-        }
-    }
-    public string TimeTillOpenOrClosed
-    {
-        get
-        {
-            if (willOpen && !isWeekend)
-            {
-                TimeSpan ts = OpeningTime - CurrentTime;
-                return "Sie wird in " + ts.ToFormattedString("t") + "h öffnen.";
-            }
-            else if (willClose && !isWeekend)
-            {
-                TimeSpan ts = ClosingTime - CurrentTime;
-                return "Sie wird in " + ts.ToFormattedString("t") + "h schließen.";
-            }
-            else if (!willClose && !isWeekend)
-                return "Sie wird morgen wieder öffnen.";
-            return "";
-        }
-    }
+    
     public List<Dish> MainMenu { get; set; }
     public List<Dish> SideMenu { get; set; }
     public List<Dish> SoupMenu { get; set; }
     public List<Dish> DessertMenu { get; set; }
-    public List<Dish> UserMenu { get; set; }
-    public double UserMenuSum { get; set; }
+    public Dish UserMainMenu { get; set; }
+    public Dish[] UserMenu { get; set; }
+    
     public void GenerateIndividualMenus(HtmlDocument document, string dishType)
     {
         switch (dishType)

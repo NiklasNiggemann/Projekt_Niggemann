@@ -15,13 +15,23 @@ public partial class MenuView : TabbedPage
         MenuViewModel = new MenuViewModel();
         BindingContext = MenuViewModel;
 	}
-
-    private void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+    private void MainMenu_ItemSelected(object sender, SelectedItemChangedEventArgs e)
     {
-        MenuViewModel.Menu.UserMenu.Add(e.SelectedItem as Dish);
-        foreach (var dish in MenuViewModel.Menu.UserMenu)
-        {
-            MenuViewModel.Menu.UserMenuSum += dish.Price;
-        }
+        MenuViewModel.Menu.UserMenu[0] = e.SelectedItem as Dish;
+    }
+
+    private void SideMenu_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+    {
+        MenuViewModel.Menu.UserMenu[1] = e.SelectedItem as Dish;
+    }
+
+    private void SoupMenu_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+    {
+        MenuViewModel.Menu.UserMenu[2] = e.SelectedItem as Dish;
+    }
+
+    private void DessertMenu_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+    {
+        MenuViewModel.Menu.UserMenu[3] = e.SelectedItem as Dish;
     }
 }
