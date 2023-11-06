@@ -38,6 +38,7 @@
 
                                         <Label Text="{Binding Name}" HorizontalTextAlignment="Center" Padding="5" FontSize="Subtitle"/>
                                         <Label Text="{Binding PriceString}" HorizontalTextAlignment="Center" Padding="5" FontSize="Small"/>
+                                        <Label Text="{Binding ImgURL}" HorizontalTextAlignment="Center" Padding="5" FontSize="Small"/>
 
                                         <!-- Nährwerte -->
 
