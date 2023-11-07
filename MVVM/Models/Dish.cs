@@ -12,6 +12,7 @@ namespace Mensa_App.Classes.Models;
 
 public class Dish
 {
+    public string ImgURL { get; set; }
     public string Name { get; set; }
     public double Price { get; set; }
     public string PriceString
@@ -102,7 +103,13 @@ public class Dish
         string nutritionsString = HtmlEntity.DeEntitize(ingredientsAndNutritions[index].QuerySelector(".nutritions").InnerText);
         nutritionsString = CleanUpString("nutritions", nutritionsString);
 
-        Dish dish = new Dish(name, price / 100, ingredientsArray, nutritionsString);
+        HtmlAttributeCollection imgURLAttributes = nameAndPrice[index].QuerySelector("img").Attributes;
+        StringBuilder imgURLstringBuilder = new StringBuilder();
+        imgURLstringBuilder.Append("https://www.studierendenwerk-pb.de/");
+        imgURLstringBuilder.Append(HtmlEntity.DeEntitize(imgURLAttributes[1].Value));
+        string imgURL = imgURLstringBuilder.ToString();
+
+        Dish dish = new Dish(name, price / 100, ingredientsArray, nutritionsString, imgURL);
         return dish;
     }
 
@@ -194,7 +201,6 @@ public class Dish
                 return "ERROR";
         }
     }
-    // DishTypes: .main-dishes, .side-dishes & soups 
     public static List<Dish> GenerateList(HtmlDocument document, string dishType)
     {
         List<Dish> mainDishesList = new List<Dish>();
@@ -207,12 +213,13 @@ public class Dish
         }
         return mainDishesList;
     }
-    public Dish(string name, double price, string[] ingredients, string nutritions)
+    public Dish(string name, double price, string[] ingredients, string nutritions, string imgURL)
     {
         Name = name;
         Price = price;
         Ingredients = ingredients;
         NutritionsString = nutritions;
+        ImgURL = imgURL;
     }
     public string NutritionsString { get; set; }
 }
