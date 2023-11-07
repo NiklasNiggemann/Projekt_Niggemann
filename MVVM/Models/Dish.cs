@@ -103,7 +103,11 @@ public class Dish
         string nutritionsString = HtmlEntity.DeEntitize(ingredientsAndNutritions[index].QuerySelector(".nutritions").InnerText);
         nutritionsString = CleanUpString("nutritions", nutritionsString);
 
-        string imgURL = HtmlEntity.DeEntitize(nameAndPrice[index].QuerySelector("img").InnerText);
+        HtmlAttributeCollection imgURLAttributes = nameAndPrice[index].QuerySelector("img").Attributes;
+        StringBuilder imgURLstringBuilder = new StringBuilder();
+        imgURLstringBuilder.Append("https://www.studierendenwerk-pb.de/");
+        imgURLstringBuilder.Append(HtmlEntity.DeEntitize(imgURLAttributes[1].Value));
+        string imgURL = imgURLstringBuilder.ToString();
 
         Dish dish = new Dish(name, price / 100, ingredientsArray, nutritionsString, imgURL);
         return dish;
