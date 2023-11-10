@@ -14,9 +14,4 @@ public class MenuViewModel
     {
         Menu = new Menu();
     }
-    public MenuViewModel(string URL)
-    {
-        Menu = new Menu(URL);
-    }
-    ~MenuViewModel() { }
 }

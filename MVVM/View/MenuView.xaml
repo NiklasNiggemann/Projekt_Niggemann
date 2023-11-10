@@ -73,35 +73,54 @@
 
                                                             <Grid.ColumnDefinitions>
                                                                 <ColumnDefinition Width="150"/>
-                                                                <ColumnDefinition Width="50"/>
-                                                                <ColumnDefinition Width="50"/>
+                                                                <ColumnDefinition Width="90"/>
                                                                 <ColumnDefinition Width="100"/>
                                                             </Grid.ColumnDefinitions>
 
                                                             <Label Text="Brennwert:" FontSize="Micro" Grid.Row="0" Grid.Column="0"/>
-                                                            <Label Text="{Binding BrennwertString}" BindingContext="{Binding Nutrition}" FontSize="Micro" Grid.Row="0" Grid.Column="1"/>
-                                                            <Label Text="kJ" FontSize="Micro" Grid.Row="0" Grid.Column="2"/>
-                                                            <Label Text="Einschätzung" FontSize="Micro" Grid.Row="0" Grid.Column="3"/>
+                                                            <Grid Grid.Row="0" Grid.Column="1">
+                                                                <HorizontalStackLayout>
+                                                                    <Label Text="{Binding BrennwertString}" BindingContext="{Binding Nutrition}" FontSize="Micro" Padding="0, 0, 2, 0"/>
+                                                                    <Label Text="kJ" FontSize="Micro"/>
+                                                                </HorizontalStackLayout>
+                                                            </Grid>
+                                                            <Label Text="Einschätzung" FontSize="Micro" Grid.Row="0" Grid.Column="2"/>
 
                                                             <Label Text="Kalorien:" FontSize="Micro" Grid.Row="1" Grid.Column="0"/>
-                                                            <Label Text="{Binding KalorienString}" BindingContext="{Binding Nutrition}" FontSize="Micro" Grid.Row="1" Grid.Column="1"/>
-                                                            <Label Text="kcal" FontSize="Micro" Grid.Row="1" Grid.Column="2"/>
-                                                            <Label Text="Einschätzung" FontSize="Micro" Grid.Row="1" Grid.Column="3"/>
+                                                            <Grid Grid.Row="1" Grid.Column="1">
+                                                                <HorizontalStackLayout>
+                                                                    <Label Text="{Binding KalorienString}" BindingContext="{Binding Nutrition}" FontSize="Micro"/>
+                                                                    <Label Text="kcal" FontSize="Micro"/>
+                                                                </HorizontalStackLayout>
+                                                            </Grid>
+                                                            <Label Text="Einschätzung" FontSize="Micro" Grid.Row="1" Grid.Column="2"/>
 
                                                             <Label Text="Kohlenhydrate:" FontSize="Micro" Grid.Row="2" Grid.Column="0"/>
-                                                            <Label Text="{Binding KohlenhydrateString}" BindingContext="{Binding Nutrition}" FontSize="Micro" Grid.Row="2" Grid.Column="1"/>
-                                                            <Label Text="g" FontSize="Micro" Grid.Row="2" Grid.Column="2"/>
-                                                            <Label Text="Einschätzung" FontSize="Micro" Grid.Row="2" Grid.Column="3"/>
+                                                            <Grid Grid.Row="2" Grid.Column="1">
+                                                                <HorizontalStackLayout>
+                                                                    <Label Text="{Binding KohlenhydrateString}" BindingContext="{Binding Nutrition}" FontSize="Micro"/>
+                                                                    <Label Text="g" FontSize="Micro"/>
+                                                                </HorizontalStackLayout>
+                                                            </Grid>
+                                                            <Label Text="Einschätzung" FontSize="Micro" Grid.Row="2" Grid.Column="2"/>
 
                                                             <Label Text="Fett:" FontSize="Micro" Grid.Row="3" Grid.Column="0"/>
-                                                            <Label Text="{Binding FettString}" BindingContext="{Binding Nutrition}" FontSize="Micro" Grid.Row="3" Grid.Column="1"/>
-                                                            <Label Text="g" FontSize="Micro" Grid.Row="3" Grid.Column="2"/>
-                                                            <Label Text="Einschätzung" FontSize="Micro" Grid.Row="3" Grid.Column="3"/>
+                                                            <Grid Grid.Row="3" Grid.Column="1">
+                                                                <HorizontalStackLayout>
+                                                                    <Label Text="{Binding FettString}" BindingContext="{Binding Nutrition}" FontSize="Micro"/>
+                                                                    <Label Text="g" FontSize="Micro"/>
+                                                                </HorizontalStackLayout>
+                                                            </Grid>
+                                                            <Label Text="Einschätzung" FontSize="Micro" Grid.Row="3" Grid.Column="2"/>
 
                                                             <Label Text="Eiweiß:" FontSize="Micro" Grid.Row="4" Grid.Column="0"/>
-                                                            <Label Text="{Binding EiweißString}" BindingContext="{Binding Nutrition}" FontSize="Micro" Grid.Row="4" Grid.Column="1"/>
-                                                            <Label Text="g" FontSize="Micro" Grid.Row="4" Grid.Column="2"/>
-                                                            <Label Text="Einschätzung" FontSize="Micro" Grid.Row="4" Grid.Column="3"/>
+                                                            <Grid Grid.Row="4" Grid.Column="1">
+                                                                <HorizontalStackLayout>
+                                                                    <Label Text="{Binding EiweißString}" BindingContext="{Binding Nutrition}" FontSize="Micro"/>
+                                                                    <Label Text="g" FontSize="Micro"/>
+                                                                </HorizontalStackLayout>
+                                                            </Grid>
+                                                            <Label Text="Einschätzung" FontSize="Micro" Grid.Row="4" Grid.Column="2"/>
 
                                                         </Grid>
                                                     </VerticalStackLayout>
@@ -153,7 +172,7 @@
                                                                                 <ColumnDefinition Width="200" />
                                                                                 <ColumnDefinition Width="100" />
                                                                             </Grid.ColumnDefinitions>
-                                                                            <Label Text="{Binding Name}" FontSize="Micro" Grid.Column="0" VerticalOptions="Center" />
+                                                                            <Label Text="{Binding Name}" FontSize="Micro" Grid.Column="0" VerticalOptions="Center" ToolTipProperties.Text="{Binding Information}"/>
                                                                             <CheckBox IsChecked="{Binding IsAllergic}" WidthRequest="10" HeightRequest="10" VerticalOptions="Center" HorizontalOptions="Center" Grid.Column="1" IsEnabled="False" />
                                                                         </Grid>
                                                                     </DataTemplate>
@@ -331,6 +350,41 @@
                     <Editor WidthRequest="50"/>
                     <Label Text="kg" FontSize="Micro"/>
                 </HorizontalStackLayout>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <!-- Header Row -->
+                        <RowDefinition/>
+                        <!-- Content Rows -->
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="200" />
+                            <ColumnDefinition Width="100" />
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" Text="Stoff" FontAttributes="Bold" FontSize="Micro" VerticalOptions="Center"/>
+                        <Label Grid.Column="1" Text="Allergie" FontAttributes="Bold" FontSize="Micro" VerticalOptions="Center" HorizontalOptions="Center"/>
+                    </Grid>
+
+                    <CollectionView Grid.Row="1" ItemsSource="{Binding IngredientList}">
+                        <CollectionView.ItemsLayout>
+                            <GridItemsLayout Orientation="Vertical" Span="1" />
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="200" />
+                                        <ColumnDefinition Width="100" />
+                                    </Grid.ColumnDefinitions>
+                                    <Label Text="{Binding Name}" FontSize="Micro" Grid.Column="0" VerticalOptions="Center" ToolTipProperties.Text="{Binding Information}"/>
+                                    <CheckBox IsChecked="{Binding IsAllergic}" WidthRequest="10" HeightRequest="10" VerticalOptions="Center" HorizontalOptions="Center" Grid.Column="1" IsEnabled="False" />
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </Grid>
             </VerticalStackLayout>
         </ScrollView>
         

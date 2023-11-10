@@ -10,9 +10,19 @@ public class Ingredient
 {
     public string Name { get; set; }
     public bool IsAllergic { get; set; }
+    public string Information { get; set; }
     public Ingredient(string name)
     {
         Name = name;
-        IsAllergic = false;
+        CheckIfAllergic();
+        Information = "tödlich";
+    }
+    public void CheckIfAllergic()
+    {
+        foreach (var x in UserData.Allergies)
+        {
+            if (x == Name)
+                IsAllergic = true;
+        }
     }
 }

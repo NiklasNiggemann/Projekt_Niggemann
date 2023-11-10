@@ -12,7 +12,7 @@ namespace Mensa_App.Classes.Models;
 
 public class Menu
 {
-    ~Menu() { }
+    public HtmlDocument Document = new HtmlWeb().Load("https://www.studierendenwerk-pb.de/gastronomie/speiseplaene/mensa-basilica-hamm/");
     public Menu()
     {
         MainMenu = new List<Dish>();
@@ -22,42 +22,22 @@ public class Menu
         UserMenu = new Dish[4];
         DatesString = new string[5];
         DatesURL = new string[4];
-        HtmlWeb web = new HtmlWeb();
-        try
-        {
-            HtmlDocument document = web.Load("https://www.studierendenwerk-pb.de/gastronomie/speiseplaene/mensa-basilica-hamm/");
-            GetDates();
-            GenerateIndividualMenus(document, ".main-dishes");
-            GenerateIndividualMenus(document, ".side-dishes");
-            GenerateIndividualMenus(document, ".soups");
-        }
-        catch (System.Net.WebException ex)
-        {
+        GetDates();
 
-        }
+        GenerateMenus();
     }
-    public Menu(string URL)
+    public void CleanMenus()
     {
-        MainMenu = new List<Dish>();
-        SideMenu = new List<Dish>();
-        SoupMenu = new List<Dish>();
-        DessertMenu = new List<Dish>();
-        UserMenu = new Dish[4];
-        DatesString = new string[5];
-        DatesURL = new string[4];
-        HtmlWeb web = new HtmlWeb();
-        try
-        {
-            HtmlDocument document = web.Load($"https://www.studierendenwerk-pb.de/{URL}");
-            GetDates();
-            GenerateIndividualMenus(document, ".main-dishes");
-            GenerateIndividualMenus(document, ".side-dishes");
-            GenerateIndividualMenus(document, ".soups");
-        }
-        catch (System.Net.WebException ex)
-        {
-
-        }
+        MainMenu.Clear();
+        SideMenu.Clear();
+        SoupMenu.Clear();
+        DessertMenu.Clear();
+    }
+    public void GenerateMenus()
+    {
+        GenerateIndividualMenus(Document, ".main-dishes");
+        GenerateIndividualMenus(Document, ".side-dishes");
+        GenerateIndividualMenus(Document, ".soups");
     }
     public List<Dish> MainMenu { get; set; }
     public List<Dish> SideMenu { get; set; }

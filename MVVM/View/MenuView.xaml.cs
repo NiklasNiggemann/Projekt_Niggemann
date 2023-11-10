@@ -1,3 +1,4 @@
+using HtmlAgilityPack;
 using Mensa_App.Classes.Models;
 using Mensa_App.Classes.ViewModels;
 using Mensa_App.MVVM.Models;
@@ -13,12 +14,6 @@ public partial class MenuView : TabbedPage
     {
         InitializeComponent();
         MenuViewModel = new MenuViewModel();
-        BindingContext = MenuViewModel;
-    }
-    public MenuView(string URL)
-    {
-        InitializeComponent();
-        MenuViewModel = new MenuViewModel(URL);
         BindingContext = MenuViewModel;
     }
     private void MainMenu_ItemSelected(object sender, SelectedItemChangedEventArgs e)
@@ -48,21 +43,23 @@ public partial class MenuView : TabbedPage
 
     private void Button_Clicked_1(object sender, EventArgs e)
     {
-        MenuView newMenuView = new MenuView(MenuViewModel.Menu.DatesURL[0]);
+        MenuViewModel.Menu.CleanMenus();
+        MenuViewModel.Menu.Document = new HtmlWeb().Load($"https://www.studierendenwerk-pb.de/{MenuViewModel.Menu.DatesURL[0]}");
+        MenuViewModel.Menu.GenerateMenus();
     }
 
     private void Button_Clicked_2(object sender, EventArgs e)
     {
-        MenuViewModel = new MenuViewModel(MenuViewModel.Menu.DatesURL[1]);
+
     }
 
     private void Button_Clicked_3(object sender, EventArgs e)
     {
-        MenuViewModel = new MenuViewModel(MenuViewModel.Menu.DatesURL[2]);
+
     }
 
     private void Button_Clicked_4(object sender, EventArgs e)
     {
-        MenuViewModel = new MenuViewModel(MenuViewModel.Menu.DatesURL[3]);
+
     }
 }
