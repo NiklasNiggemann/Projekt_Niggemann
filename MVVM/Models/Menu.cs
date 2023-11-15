@@ -1,5 +1,4 @@
 ﻿using HtmlAgilityPack;
-using Mensa_App.MVVM.Models;
 using Microsoft.Maui.Platform;
 using System;
 using System.Collections.Generic;
@@ -7,6 +6,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace Mensa_App.Classes.Models;
 
@@ -23,8 +23,8 @@ public class Menu
         DatesString = new string[5];
         DatesURL = new string[4];
         GetDates();
-
         GenerateMenus();
+        ArchiveMenu();
     }
     public void CleanMenus()
     {
@@ -100,6 +100,29 @@ public class Menu
         {
             DatesURL[i] = x.Trim();
             i++;
+        }
+    }
+    public void ArchiveMenu()
+    {
+        string docPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+        foreach (var x in MainMenu)
+        {
+            using (var sr = new StreamReader($@"{docPath}\MainDishes.txt"))
+            {
+                if (sr.Read() != -1)
+                {
+                    foreach (var y in sr.ToString().Split(',')) 
+                    {
+                        if (y.ToString().Contains($"{x.Name}, {DatesString[0]}"))
+                            return;
+                    }
+                }
+            }
+            
+            using (StreamWriter outputFile = new StreamWriter(Path.Combine(docPath, "MainDishes.txt"), true))
+            {
+                outputFile.WriteLine($"{x.Name}, {x.Price.ToString().Replace(",", ".")}, {DatesString[0]};");
+            }
         }
     }
 }

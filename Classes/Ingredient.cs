@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Mensa_App.MVVM.Models;
+namespace Mensa_App.Classes;
 
 public class Ingredient
 {
@@ -19,10 +19,13 @@ public class Ingredient
     }
     public void CheckIfAllergic()
     {
-        foreach (var x in UserData.Allergies)
+        if (UserData.Allergies is not null)
         {
-            if (x == Name)
-                IsAllergic = true;
+            foreach (var x in UserData.Allergies)
+            {
+                if (x == Name)
+                    IsAllergic = true;
+            }
         }
     }
 }

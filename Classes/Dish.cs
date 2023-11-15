@@ -5,10 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 using HtmlAgilityPack;
-using Mensa_App.MVVM.Models;
-using Microsoft.Maui.Controls;
+using Mensa_App;
+using Mensa_App.Classes;
+using Mensa_App.Classes.Models;
 
-namespace Mensa_App.Classes.Models;
+namespace Mensa_App.Classes;
 
 public class Dish
 {
@@ -19,7 +20,7 @@ public class Dish
     {
         get
         {
-            return String.Format("{0:0.00}", Price) + " €";
+            return string.Format("{0:0.00}", Price) + " €";
         }
     }
     public string[] Ingredients { get; set; }
@@ -55,6 +56,8 @@ public class Dish
                     nutritionsList.Add(x);
             }
             Nutrition nutritions = new Nutrition();
+            if (nutritionsList.Count == 0)
+                return nutritions;
             nutritions.BrennwertString = nutritionsList[0].Trim();
             nutritions.KalorienString = nutritionsList[1].Trim();
             nutritions.FettString = nutritionsList[2].Trim();
@@ -208,7 +211,7 @@ public class Dish
         IList<HtmlNode> ingredientsAndNutritions = document.DocumentNode.QuerySelectorAll($"{dishType} .even");
         for (int i = 0; i < nameAndPrice.Count; i++)
         {
-            Dish mainDish = Dish.Generate(nameAndPrice, ingredientsAndNutritions, i);
+            Dish mainDish = Generate(nameAndPrice, ingredientsAndNutritions, i);
             mainDishesList.Add(mainDish);
         }
         return mainDishesList;

@@ -1,7 +1,5 @@
 using HtmlAgilityPack;
-using Mensa_App.Classes.Models;
 using Mensa_App.Classes.ViewModels;
-using Mensa_App.MVVM.Models;
 using System.Diagnostics;
 using System.Windows.Input;
 

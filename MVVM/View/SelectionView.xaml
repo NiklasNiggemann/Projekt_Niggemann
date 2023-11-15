@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Mensa_App.MVVM.View"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="Mensa_App.MVVM.View.SelectionView"
+             Title="Auswahl">
+    
+    <ScrollView>
+
+        <VerticalStackLayout>
+
+            <ListView SelectionMode="None" ItemsSource="{Binding Menu.UserMenu}" IsPullToRefreshEnabled="True" HorizontalOptions="Center" VerticalOptions="Center">
+
+                <ListView.ItemTemplate>
+
+                    <DataTemplate>
+
+                        <ViewCell>
+
+                            <VerticalStackLayout Padding="20">
+
+                                <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Padding="5">
+
+                                    <Label Text="{Binding Name}" HorizontalTextAlignment="Center" Padding="5" FontSize="Subtitle"/>
+                                    <Label Text="{Binding PriceString}" HorizontalTextAlignment="Center" Padding="5" FontSize="Small"/>
+
+                                    <!-- Nährwerte -->
+
+                                    <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Padding="10" WidthRequest="400">
+
+                                        <toolkit:Expander>
+
+                                            <toolkit:Expander.Header>
+                                                <Label Text="Nährwerte" HorizontalTextAlignment="Center" Padding="5" FontSize="Small"/>
+                                            </toolkit:Expander.Header>
+
+                                            <toolkit:Expander.Content>
+                                                <VerticalStackLayout>
+                                                    <HorizontalStackLayout Padding="5">
+                                                        <Label Text="Brennwert: " FontSize="Micro"/>
+                                                        <Label Text="{Binding BrennwertString}" BindingContext="{Binding Nutrition}" FontSize="Micro"/>
+                                                        <Label Text=" kJ" FontSize="Micro"/>
+                                                    </HorizontalStackLayout>
+
+                                                    <HorizontalStackLayout Padding="5">
+                                                        <Label Text="Kalorien: " FontSize="Micro"/>
+                                                        <Label Text="{Binding KalorienString}" BindingContext="{Binding Nutrition}" FontSize="Micro"/>
+                                                        <Label Text=" kcal" FontSize="Micro"/>
+                                                    </HorizontalStackLayout>
+
+                                                    <HorizontalStackLayout Padding="5">
+                                                        <Label Text="Kohlenhydrate: " FontSize="Micro"/>
+                                                        <Label Text="{Binding KohlenhydrateString}" BindingContext="{Binding Nutrition}" FontSize="Micro"/>
+                                                        <Label Text="g" FontSize="Micro"/>
+                                                    </HorizontalStackLayout>
+
+                                                    <HorizontalStackLayout Padding="5">
+                                                        <Label Text="Fett: " FontSize="Micro"/>
+                                                        <Label Text="{Binding FettString}" BindingContext="{Binding Nutrition}" FontSize="Micro"/>
+                                                        <Label Text="g" FontSize="Micro"/>
+                                                    </HorizontalStackLayout>
+
+                                                    <HorizontalStackLayout Padding="5">
+                                                        <Label Text="Eiweiß: " FontSize="Micro"/>
+                                                        <Label Text="{Binding EiweißString}" BindingContext="{Binding Nutrition}" FontSize="Micro"/>
+                                                        <Label Text="g" FontSize="Micro"/>
+                                                    </HorizontalStackLayout>
+                                                </VerticalStackLayout>
+                                            </toolkit:Expander.Content>
+
+                                        </toolkit:Expander>
+
+                                    </VerticalStackLayout>
+
+                                    <!-- Inhaltsstoffe -->
+
+                                    <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Padding="10" WidthRequest="400">
+
+                                        <toolkit:Expander>
+
+                                            <toolkit:Expander.Header>
+                                                <Label Text="Inhaltsstoffe" HorizontalTextAlignment="Center" Padding="5" FontSize="Small"/>
+                                            </toolkit:Expander.Header>
+
+                                            <toolkit:Expander.Content>
+                                                <VerticalStackLayout Padding="10">
+                                                    <ListView ItemsSource="{Binding IngredientList}">
+                                                        <ListView.ItemTemplate>
+                                                            <DataTemplate>
+                                                                <ViewCell>
+                                                                    <Grid Padding="10">
+                                                                        <Grid.RowDefinitions>
+                                                                            <RowDefinition Height="Auto" />
+                                                                            <RowDefinition Height="Auto" />
+                                                                        </Grid.RowDefinitions>
+                                                                        <Grid.ColumnDefinitions>
+                                                                            <ColumnDefinition Width="Auto" />
+                                                                            <ColumnDefinition Width="Auto" />
+                                                                        </Grid.ColumnDefinitions>
+                                                                        <Label Text="{Binding Name}" FontSize="Micro" Grid.Row="0" Grid.Column="0"/>
+                                                                        <CheckBox IsChecked="{Binding IsAllergic}" VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="0" Grid.Column="1"/>
+                                                                    </Grid>
+                                                                </ViewCell>
+                                                            </DataTemplate>
+                                                        </ListView.ItemTemplate>
+                                                    </ListView>
+                                                </VerticalStackLayout>
+                                            </toolkit:Expander.Content>
+
+                                        </toolkit:Expander>
+
+                                    </VerticalStackLayout>
+
+                                </VerticalStackLayout>
+
+                            </VerticalStackLayout>
+
+                        </ViewCell>
+
+                    </DataTemplate>
+
+                </ListView.ItemTemplate>
+
+            </ListView>
+
+        </VerticalStackLayout>
+
+    </ScrollView>
+
+</ContentPage>

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Mensa_App.MVVM.Models
+namespace Mensa_App.Classes
 {
     class UserData
     {
