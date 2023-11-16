@@ -1,5 +1,6 @@
 using HtmlAgilityPack;
 using Mensa_App.Classes.ViewModels;
+using Mensa_App.MVVM.ViewModels;
 using System.Diagnostics;
 using System.Windows.Input;
 
@@ -14,26 +15,12 @@ public partial class MenuView : TabbedPage
         MenuViewModel = new MenuViewModel();
         BindingContext = MenuViewModel;
     }
-    private void MainMenu_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+    public static event EventHandler<Dish> MainMenuSelected;
+    public void On_MainMenu_ItemSelected(object sender, SelectedItemChangedEventArgs e)
     {
-        MenuViewModel.Menu.UserMenu[0] = e.SelectedItem as Dish;
+        MainMenuSelected?.Invoke(this, e.SelectedItem as Dish);
     }
-
-    private void SideMenu_ItemSelected(object sender, SelectedItemChangedEventArgs e)
-    {
-        MenuViewModel.Menu.UserMenu[1] = e.SelectedItem as Dish;
-    }
-
-    private void SoupMenu_ItemSelected(object sender, SelectedItemChangedEventArgs e)
-    {
-        MenuViewModel.Menu.UserMenu[2] = e.SelectedItem as Dish;
-    }
-
-    private void DessertMenu_ItemSelected(object sender, SelectedItemChangedEventArgs e)
-    {
-        MenuViewModel.Menu.UserMenu[3] = e.SelectedItem as Dish;
-    }
-
+    
     private void Button_Clicked_0(object sender, EventArgs e)
     {
 

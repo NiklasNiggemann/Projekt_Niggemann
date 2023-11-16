@@ -1,12 +1,11 @@
 ﻿using Mensa_App.Classes.Models;
 
-namespace Mensa_App
+namespace Mensa_App;
+
+public partial class MainPage : ContentPage
 {
-    public partial class MainPage : ContentPage
+    public MainPage()
     {
-        public MainPage()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
 }

@@ -1,27 +1,28 @@
 ﻿using Mensa_App.Classes.View;
+using Mensa_App.MVVM.View;
 
-namespace Mensa_App
+namespace Mensa_App;
+
+public partial class App : Application
 {
-    public partial class App : Application
+    public App()
     {
-        public App()
-        {
-            InitializeComponent();
+        InitializeComponent();
 
-            MainPage = new MenuView();
-        }
+        var menuView = new MenuView();
+        MainPage = menuView;
+    }
 
-        protected override Window CreateWindow(IActivationState activationState)
-        {
-            var window = base.CreateWindow(activationState);
+    protected override Window CreateWindow(IActivationState activationState)
+    {
+        var window = base.CreateWindow(activationState);
 
-            const int newWidth = 600;
-            const int newHeight = 800;
+        const int newWidth = 600;
+        const int newHeight = 800;
 
-            window.Width = newWidth;
-            window.Height = newHeight;
+        window.Width = newWidth;
+        window.Height = newHeight;
 
-            return window;
-        }
+        return window;
     }
 }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Mensa_App.Classes.ViewModels;
 
-public class MenuViewModel
+public class MenuViewModel 
 {
     public Menu Menu { get; set; }
     public MenuViewModel()

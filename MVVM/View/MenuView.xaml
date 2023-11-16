@@ -23,7 +23,7 @@
 
                 <!-- Body -->
 
-                <ListView SelectionMode="Single" ItemsSource="{Binding Menu.MainMenu}" HorizontalOptions="Center" VerticalOptions="Center" ItemSelected="MainMenu_ItemSelected">
+                <ListView SelectionMode="Single" ItemsSource="{Binding Menu.MainMenu}" HorizontalOptions="Center" VerticalOptions="Center" ItemSelected="On_MainMenu_ItemSelected">
 
                     <ListView.Header>
                         

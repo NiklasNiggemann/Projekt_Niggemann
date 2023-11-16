@@ -19,12 +19,10 @@ public class Menu
         SideMenu = new List<Dish>();
         SoupMenu = new List<Dish>();
         DessertMenu = new List<Dish>();
-        UserMenu = new Dish[4];
         DatesString = new string[5];
         DatesURL = new string[4];
         GetDates();
         GenerateMenus();
-        ArchiveMenu();
     }
     public void CleanMenus()
     {
@@ -43,8 +41,7 @@ public class Menu
     public List<Dish> SideMenu { get; set; }
     public List<Dish> SoupMenu { get; set; }
     public List<Dish> DessertMenu { get; set; }
-    public Dish UserMainMenu { get; set; }
-    public Dish[] UserMenu { get; set; }
+    
 
     public void GenerateIndividualMenus(HtmlDocument document, string dishType)
     {
@@ -100,29 +97,6 @@ public class Menu
         {
             DatesURL[i] = x.Trim();
             i++;
-        }
-    }
-    public void ArchiveMenu()
-    {
-        string docPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-        foreach (var x in MainMenu)
-        {
-            using (var sr = new StreamReader($@"{docPath}\MainDishes.txt"))
-            {
-                if (sr.Read() != -1)
-                {
-                    foreach (var y in sr.ToString().Split(',')) 
-                    {
-                        if (y.ToString().Contains($"{x.Name}, {DatesString[0]}"))
-                            return;
-                    }
-                }
-            }
-            
-            using (StreamWriter outputFile = new StreamWriter(Path.Combine(docPath, "MainDishes.txt"), true))
-            {
-                outputFile.WriteLine($"{x.Name}, {x.Price.ToString().Replace(",", ".")}, {DatesString[0]};");
-            }
         }
     }
 }

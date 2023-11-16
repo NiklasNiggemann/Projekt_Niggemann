@@ -1,10 +1,9 @@
-﻿namespace Mensa_App
+﻿namespace Mensa_App;
+
+public partial class AppShell : Shell
 {
-    public partial class AppShell : Shell
+    public AppShell()
     {
-        public AppShell()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
 }
