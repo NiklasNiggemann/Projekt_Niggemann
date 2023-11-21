@@ -1,5 +1,4 @@
-﻿using Mensa_App.Classes.View;
-using Mensa_App.MVVM.View;
+﻿using Mensa_App.MVVM.View;
 
 namespace Mensa_App;
 
@@ -8,9 +7,7 @@ public partial class App : Application
     public App()
     {
         InitializeComponent();
-
-        var menuView = new MenuView();
-        MainPage = menuView;
+        MainPage = new MainPage();
     }
 
     protected override Window CreateWindow(IActivationState activationState)

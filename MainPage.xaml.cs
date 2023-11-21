@@ -1,8 +1,7 @@
-﻿using Mensa_App.Classes.Models;
-
+﻿
 namespace Mensa_App;
 
-public partial class MainPage : ContentPage
+public partial class MainPage : TabbedPage
 {
     public MainPage()
     {

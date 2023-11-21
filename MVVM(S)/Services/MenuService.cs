@@ -1,19 +1,12 @@
 ﻿using HtmlAgilityPack;
-using Microsoft.Maui.Platform;
-using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.IO;
+using Mensa_App.Classes;
 
-namespace Mensa_App.Classes.Models;
+namespace Mensa_App.MVVM.Services;
 
-public class Menu
+public class MenuService
 {
     public HtmlDocument Document = new HtmlWeb().Load("https://www.studierendenwerk-pb.de/gastronomie/speiseplaene/mensa-basilica-hamm/");
-    public Menu()
+    public MenuService()
     {
         MainMenu = new List<Dish>();
         SideMenu = new List<Dish>();
@@ -41,8 +34,6 @@ public class Menu
     public List<Dish> SideMenu { get; set; }
     public List<Dish> SoupMenu { get; set; }
     public List<Dish> DessertMenu { get; set; }
-    
-
     public void GenerateIndividualMenus(HtmlDocument document, string dishType)
     {
         switch (dishType)
@@ -65,7 +56,7 @@ public class Menu
     public string[] DatesURL { get; set; }
     public void GetDates()
     {
-        HtmlWeb web = new HtmlWeb();
+        HtmlWeb web = new();
         HtmlDocument document = web.Load("https://www.studierendenwerk-pb.de/gastronomie/speiseplaene/mensa-basilica-hamm/");
         DatesString[0] = HtmlEntity.DeEntitize(document.QuerySelector(".desktop-form .active").InnerText);
 

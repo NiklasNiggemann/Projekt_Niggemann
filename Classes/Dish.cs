@@ -1,17 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml;
+﻿using System.Text;
 using HtmlAgilityPack;
-using Mensa_App;
-using Mensa_App.Classes;
-using Mensa_App.Classes.Models;
 
 namespace Mensa_App.Classes;
 
-public class Dish
+public class Dish 
 {
     public string ImgURL { get; set; }
     public string Name { get; set; }
@@ -44,6 +36,7 @@ public class Dish
             return ingredientList;
         }
     }
+    public string NutritionsString { get; set; }
     public Nutrition Nutrition
     {
         get
@@ -65,6 +58,14 @@ public class Dish
             nutritions.EiweißString = nutritionsList[4].Trim();
             return nutritions;
         }
+    }
+    public Dish(string name, double price, string[] ingredients, string nutritions, string imgURL)
+    {
+        Name = name;
+        Price = price;
+        Ingredients = ingredients;
+        NutritionsString = nutritions;
+        ImgURL = imgURL;
     }
     public static List<Dish> DeleteDessertsFromSoupMenu(List<Dish> soupMenu)
     {
@@ -125,7 +126,6 @@ public class Dish
         Dish dish = new Dish(name, price / 100, ingredientsArray, nutritionsString, imgURL);
         return dish;
     }
-
     public static string PrepareIngredients(string element)
     {
         element = element.Trim();
@@ -226,14 +226,4 @@ public class Dish
         }
         return mainDishesList;
     }
-    public Dish(string name, double price, string[] ingredients, string nutritions, string imgURL)
-    {
-        Name = name;
-        Price = price;
-        Ingredients = ingredients;
-        NutritionsString = nutritions;
-        ImgURL = imgURL;
-    }
-    public string NutritionsString { get; set; }
-
 }
