@@ -3,9 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              xmlns:classes="clr-namespace:Mensa_App.Classes"
-             xmlns:viewmodel="clr-namespace:Mensa_App.MVVM.ViewModels"
+             xmlns:viewmodel="clr-namespace:Mensa_App.MVVMS.ViewModels"
              x:DataType="viewmodel:SelectionViewModel"
-             x:Class="Mensa_App.MVVM.View.SelectionView"
+             x:Class="Mensa_App.MVVMS.Views.SelectionView"
              Title="Auswahl">
     
     <ScrollView>
@@ -45,6 +45,14 @@
                     <Label Text="{Binding SelectedDessert.Name}" HorizontalTextAlignment="Center" Padding="5" FontSize="Subtitle"/>
 
                     <Label Text="{Binding SelectedDessert.PriceString}" HorizontalTextAlignment="Center" Padding="5" FontSize="Subtitle"/>
+
+                </HorizontalStackLayout>
+
+                <HorizontalStackLayout>
+
+                    <Label Text="Total: " HorizontalTextAlignment="Center" Padding="5" FontSize="Subtitle"/>
+
+                    <Label Text="{Binding TotalPrice}" HorizontalTextAlignment="Center" Padding="5" FontSize="Subtitle"/>
 
                 </HorizontalStackLayout>
 

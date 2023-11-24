@@ -1,7 +1,7 @@
 ﻿using HtmlAgilityPack;
 using Mensa_App.Classes;
 
-namespace Mensa_App.MVVM.Services;
+namespace Mensa_App.MVVMS.Services;
 
 public class MenuService
 {

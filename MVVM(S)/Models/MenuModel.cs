@@ -1,21 +1,13 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
-using HtmlAgilityPack;
 using Mensa_App.Classes;
-using Mensa_App.MVVM.Services;
-using Mensa_App.MVVM.ViewModels;
+using Mensa_App.MVVMS.Services;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
-namespace Mensa_App.MVVM.Models;
+namespace Mensa_App.MVVMS.Models;
 
-public partial class MenuModel : ObservableObject
+public partial class MenuModel 
 {
-    [ObservableProperty]
-    private Dish selectedMain;
-    [ObservableProperty]
-    private Dish selectedSide;
-    [ObservableProperty]
-    private Dish selectedSoup;
-    [ObservableProperty]
-    private Dish selectedDessert;
     public MenuModel()
     {
         MenuService = new MenuService();

@@ -1,37 +1,46 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
 using Mensa_App.Classes;
-using Mensa_App.MVVM.Models;
+using Mensa_App.MVVMS.Models;
+using Mensa_App.MVVMS.Views;
 
-namespace Mensa_App.MVVM.ViewModels;
+namespace Mensa_App.MVVMS.ViewModels;
 
 public partial class SelectionViewModel : ObservableObject
 {
-    public MenuModel MenuModel { get; set; }
     public SelectionViewModel()
     {
-        MenuModel = new MenuModel();
-        MenuModel.PropertyChanged += MenuModel_PropertyChanged; 
+        SelectionModel.PropertyChanged += MenuModel_PropertyChanged;
     }
+
     private void MenuModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
     {
-        if (e.PropertyName == nameof(SelectedMain)) 
-            OnPropertyChanged(nameof(SelectedMain));
+        switch(e.PropertyName)
+        {
+            case "SelectedMain":
+                SelectedMain = SelectionModel.SelectedMain;
+                break;
+            case "SelectedSide":
+                SelectedSide = SelectionModel.SelectedSide;
+                break;
+            case "SelectedSoup":
+                SelectedSoup = SelectionModel.SelectedSoup;
+                break;
+            case "SelectedDessert":
+                SelectedDessert = SelectionModel.SelectedDessert;
+                break;
+            default:
+                break;
+        }
+        
     }
-    public Dish SelectedMain
-    {
-        get => MenuModel.SelectedMain;
-    }
-    public Dish SelectedSide
-    {
-        get => MenuModel.SelectedSide;
-    }
-    public Dish SelectedSoup
-    {
-        get => MenuModel.SelectedSoup;
-    }
-    public Dish SelectedDessert
-    {
-        get => MenuModel.SelectedDessert;
-    }
+    [ObservableProperty]
+    private Dish selectedMain;
+    [ObservableProperty]
+    private Dish selectedSide;
+    [ObservableProperty]
+    private Dish selectedSoup;
+    [ObservableProperty]
+    private Dish selectedDessert;
+    [ObservableProperty]
+    private double totalPrice;
 }

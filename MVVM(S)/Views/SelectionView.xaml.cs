@@ -1,6 +1,6 @@
-using Mensa_App.MVVM.ViewModels;
+using Mensa_App.MVVMS.ViewModels;
 
-namespace Mensa_App.MVVM.View;
+namespace Mensa_App.MVVMS.Views;
 
 public partial class SelectionView : ContentPage
 {

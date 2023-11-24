@@ -1,5 +1,4 @@
-﻿using Mensa_App.MVVM.View;
-
+﻿
 namespace Mensa_App;
 
 public partial class App : Application

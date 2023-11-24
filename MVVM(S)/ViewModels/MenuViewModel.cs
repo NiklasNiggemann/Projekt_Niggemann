@@ -1,57 +1,46 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
-using Mensa_App.MVVM.Models;
+using Mensa_App.MVVMS.Models;
 using Mensa_App.Classes;
 using CommunityToolkit.Mvvm.Input;
+using Mensa_App.MVVMS.Models;
 
-namespace Mensa_App.MVVM.ViewModels;
+namespace Mensa_App.MVVMS.ViewModels;
 
 public partial class MenuViewModel : ObservableObject
 {
-    public MenuModel MenuModel { get; set; }
+    public MenuModel MyMenuModel { get; set; }
+    public List<Dish> MainMenuView { get; set; }
+    public List<Dish> SideMenuView { get; set; }
+    public List<Dish> SoupMenuView { get; set; }
+    public List<Dish> DessertMenuView { get; set; }
+
     public MenuViewModel()
     {
-        MenuModel = new MenuModel();
-        MainMenuView = MenuModel.MainMenu;
+        MyMenuModel = new MenuModel();
+        MainMenuView = MyMenuModel.MainMenu;
+        SideMenuView = MyMenuModel.SideMenu;
+        SoupMenuView = MyMenuModel.SoupMenu;
+        DessertMenuView = MyMenuModel.DessertMenu;
     }
     [RelayCommand]
-    public void ChangeSelectedMain(Dish dish)
+    public static void ChangeSelectedMain(Dish dish)
     {
-        SelectedMain_ViewModel = dish;
-        Console.WriteLine();
+        SelectionModel.SelectedMain = dish;
     }
-    public Dish SelectedMain_ViewModel
+    [RelayCommand]
+    public static void ChangeSelectedSide(Dish dish)
     {
-        get => MenuModel.SelectedMain;
-        set
-        {
-            MenuModel.SelectedMain = value;
-            OnPropertyChanged(nameof(MenuModel.SelectedMain));
-        }
+        SelectionModel.SelectedSide = dish;
     }
-    public Dish SelectedSide_ViewModel
+    [RelayCommand]
+    public static void ChangeSelectedSoup(Dish dish)
     {
-        get => MenuModel.SelectedSide;
-        set
-        {
-            MenuModel.SelectedSide = value;
-            OnPropertyChanged(nameof(MenuModel.SelectedSide));
-        }
+        SelectionModel.SelectedSoup = dish;
     }
-    public Dish SelectedSoup_ViewModel
+    [RelayCommand]
+    public static void ChangeSelectedDessert(Dish dish)
     {
-        get => MenuModel.SelectedSoup; set
-        {
-            MenuModel.SelectedSoup = value;
-            OnPropertyChanged(nameof(MenuModel.SelectedSoup));
-        }
+        SelectionModel.SelectedDessert = dish;
     }
-    public Dish SelectedDessert_ViewModel
-    {
-        get => MenuModel.SelectedDessert; set
-        {
-            MenuModel.SelectedDessert = value;
-            OnPropertyChanged(nameof(MenuModel.SelectedDessert));
-        }
-    }
-    public List<Dish> MainMenuView { get; set; }
 }
+
