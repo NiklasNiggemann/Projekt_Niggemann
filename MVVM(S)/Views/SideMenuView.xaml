@@ -8,7 +8,7 @@
             x:Class="Mensa_App.MVVMS.Views.SideMenuView"
             Title="Beilagen">
 
-    <CollectionView ItemsSource="{Binding SideMenuView}" SelectionMode="Single" SelectionChangedCommand="{Binding ChangeSelectedSideCommand}" SelectionChangedCommandParameter="{Binding Source={RelativeSource Self}, Path=SelectedItem}">
+    <CollectionView ItemsSource="{Binding SideMenuView}" SelectionMode="Multiple" SelectionChanged="CollectionView_SelectionChanged">
 
         <CollectionView.ItemTemplate>
 

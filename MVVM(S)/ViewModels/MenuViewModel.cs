@@ -2,7 +2,6 @@
 using Mensa_App.MVVMS.Models;
 using Mensa_App.Classes;
 using CommunityToolkit.Mvvm.Input;
-using Mensa_App.MVVMS.Models;
 
 namespace Mensa_App.MVVMS.ViewModels;
 
@@ -23,24 +22,9 @@ public partial class MenuViewModel : ObservableObject
         DessertMenuView = MyMenuModel.DessertMenu;
     }
     [RelayCommand]
-    public static void ChangeSelectedMain(Dish dish)
+    public static void ChangeSelectedDishes(Dish dish)
     {
-        SelectionModel.SelectedMain = dish;
-    }
-    [RelayCommand]
-    public static void ChangeSelectedSide(Dish dish)
-    {
-        SelectionModel.SelectedSide = dish;
-    }
-    [RelayCommand]
-    public static void ChangeSelectedSoup(Dish dish)
-    {
-        SelectionModel.SelectedSoup = dish;
-    }
-    [RelayCommand]
-    public static void ChangeSelectedDessert(Dish dish)
-    {
-        SelectionModel.SelectedDessert = dish;
+        SelectionModel.SelectedDishes.Add(dish);
     }
 }
 

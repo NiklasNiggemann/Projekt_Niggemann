@@ -2,6 +2,7 @@
 using Mensa_App.Classes;
 using Mensa_App.MVVMS.Models;
 using Mensa_App.MVVMS.Views;
+using System.Collections.ObjectModel;
 
 namespace Mensa_App.MVVMS.ViewModels;
 
@@ -9,38 +10,19 @@ public partial class SelectionViewModel : ObservableObject
 {
     public SelectionViewModel()
     {
-        SelectionModel.PropertyChanged += MenuModel_PropertyChanged;
+        SelectionModel selectionModel = new SelectionModel();
+        this.SelectedDishes = new ObservableCollection<Dish>();
+        SelectionModel.SelectedDishes.CollectionChanged += SelectedDishes_CollectionChanged;
     }
 
-    private void MenuModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+    private void SelectedDishes_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
     {
-        switch(e.PropertyName)
-        {
-            case "SelectedMain":
-                SelectedMain = SelectionModel.SelectedMain;
-                break;
-            case "SelectedSide":
-                SelectedSide = SelectionModel.SelectedSide;
-                break;
-            case "SelectedSoup":
-                SelectedSoup = SelectionModel.SelectedSoup;
-                break;
-            case "SelectedDessert":
-                SelectedDessert = SelectionModel.SelectedDessert;
-                break;
-            default:
-                break;
-        }
-        
+        this.SelectedDishes = SelectionModel.SelectedDishes;
+        TotalPrice = SelectionModel.TotalPrice;
     }
+
     [ObservableProperty]
-    private Dish selectedMain;
-    [ObservableProperty]
-    private Dish selectedSide;
-    [ObservableProperty]
-    private Dish selectedSoup;
-    [ObservableProperty]
-    private Dish selectedDessert;
+    private ObservableCollection<Dish> selectedDishes;
     [ObservableProperty]
     private double totalPrice;
 }

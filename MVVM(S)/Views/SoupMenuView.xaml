@@ -8,7 +8,7 @@
             x:Class="Mensa_App.MVVMS.Views.SoupMenuView"
             Title="Suppen">
 
-    <CollectionView ItemsSource="{Binding SoupMenuView}" SelectionMode="Single" SelectionChangedCommand="{Binding ChangeSelectedSoupCommand}" SelectionChangedCommandParameter="{Binding Source={RelativeSource Self}, Path=SelectedItem}">
+    <CollectionView ItemsSource="{Binding SoupMenuView}" SelectionMode="Multiple" SelectionChanged="CollectionView_SelectionChanged">
 
         <CollectionView.ItemTemplate>
 

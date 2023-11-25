@@ -10,53 +10,36 @@
     
     <ScrollView>
 
-        <VerticalStackLayout>
+        <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center">
 
-            <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center">
+            <CollectionView ItemsSource="{Binding SelectedDishes}" SelectionMode="None">
 
-                <Label Text="Auswahl:" HorizontalOptions="Center"/>
+                <CollectionView.ItemTemplate>
 
-                <HorizontalStackLayout>
+                    <DataTemplate x:DataType="classes:Dish">
 
-                    <Label Text="{Binding SelectedMain.Name}" HorizontalTextAlignment="Center" Padding="5" FontSize="Subtitle"/>
+                        <HorizontalStackLayout VerticalOptions="Center" HorizontalOptions="Center">
 
-                    <Label Text="{Binding SelectedMain.PriceString}" HorizontalTextAlignment="Center" Padding="5" FontSize="Subtitle"/>
+                            <Label Text="{Binding Name}"/>
 
-                </HorizontalStackLayout>
+                            <Label Text="{Binding PriceString}"/>
 
-                <HorizontalStackLayout>
+                        </HorizontalStackLayout>
 
-                    <Label Text="{Binding SelectedSide.Name}" HorizontalTextAlignment="Center" Padding="5" FontSize="Subtitle"/>
+                    </DataTemplate>
 
-                    <Label Text="{Binding SelectedSide.PriceString}" HorizontalTextAlignment="Center" Padding="5" FontSize="Subtitle"/>
+                </CollectionView.ItemTemplate>
 
-                </HorizontalStackLayout>
+            </CollectionView>
 
-                <HorizontalStackLayout>
+            <HorizontalStackLayout>
 
-                    <Label Text="{Binding SelectedSoup.Name}" HorizontalTextAlignment="Center" Padding="5" FontSize="Subtitle"/>
+                <Label Text="Gesamtpreis: "/>
 
-                    <Label Text="{Binding SelectedSoup.PriceString}" HorizontalTextAlignment="Center" Padding="5" FontSize="Subtitle"/>
+                <Label Text="{Binding TotalPrice}"/>
 
-                </HorizontalStackLayout>
+            </HorizontalStackLayout>
 
-                <HorizontalStackLayout>
-
-                    <Label Text="{Binding SelectedDessert.Name}" HorizontalTextAlignment="Center" Padding="5" FontSize="Subtitle"/>
-
-                    <Label Text="{Binding SelectedDessert.PriceString}" HorizontalTextAlignment="Center" Padding="5" FontSize="Subtitle"/>
-
-                </HorizontalStackLayout>
-
-                <HorizontalStackLayout>
-
-                    <Label Text="Total: " HorizontalTextAlignment="Center" Padding="5" FontSize="Subtitle"/>
-
-                    <Label Text="{Binding TotalPrice}" HorizontalTextAlignment="Center" Padding="5" FontSize="Subtitle"/>
-
-                </HorizontalStackLayout>
-
-            </VerticalStackLayout>
 
         </VerticalStackLayout>
 

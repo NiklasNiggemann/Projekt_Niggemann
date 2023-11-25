@@ -1,58 +1,26 @@
 ﻿using Mensa_App.Classes;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 
 namespace Mensa_App.MVVMS.Models;
 
-internal static class SelectionModel 
+internal class SelectionModel 
 {
-    private static Dish selectedMain;
-    public static Dish SelectedMain
+    public static ObservableCollection<Dish> SelectedDishes { get; set; }
+    public static double TotalPrice { get; set; }
+    public SelectionModel()
     {
-        get => selectedMain;
-        set
-        {
-            selectedMain = value;
-            PropertyChanged?.Invoke(SelectedMain, new PropertyChangedEventArgs(nameof(SelectedMain)));
-        }
+        SelectedDishes = new ObservableCollection<Dish>();
+        SelectedDishes.CollectionChanged += SelectedDishes_CollectionChanged;
     }
-    private static Dish selectedSide;
-    public static Dish SelectedSide
-    {
-        get => selectedSide;
-        set
-        {
-            selectedSide = value;
-            PropertyChanged?.Invoke(SelectedSide, new PropertyChangedEventArgs(nameof(SelectedSide)));
-        }
-    }
-    private static Dish selectedSoup;
-    public static Dish SelectedSoup
-    {
-        get => selectedSoup;
-        set
-        {
-            selectedSoup = value;
-            PropertyChanged?.Invoke(SelectedSoup, new PropertyChangedEventArgs(nameof(SelectedSoup)));
-        }
-    }
-    private static Dish selectedDessert;
-    public static Dish SelectedDessert
-    {
-        get => selectedDessert;
-        set
-        {
-            selectedDessert = value;
-            PropertyChanged?.Invoke(SelectedDessert, new PropertyChangedEventArgs(nameof(SelectedDessert)));
-        }
-    }
-    private static double totalPrice;
-    private static List<Dish> selectedDishes 
-    public static double TotalPrice
-    {
-        get => totalPrice;
-        set
-        {
 
+    private void SelectedDishes_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+    {
+        TotalPrice = 0;
+        foreach (var x in SelectedDishes)
+        {
+            if (x is not null)
+                TotalPrice += x.Price;
         }
     }
 

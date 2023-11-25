@@ -8,7 +8,7 @@
             x:Class="Mensa_App.MVVMS.Views.MainMenuView"
             Title="Hauptgerichte">
 
-    <CollectionView ItemsSource="{Binding MainMenuView}" SelectionMode="Single" SelectionChangedCommand="{Binding ChangeSelectedMainCommand}" SelectionChangedCommandParameter="{Binding Source={RelativeSource Self}, Path=SelectedItem}">
+    <CollectionView ItemsSource="{Binding MainMenuView}" SelectionMode="Multiple" SelectionChanged="CollectionView_SelectionChanged">
 
         <CollectionView.ItemTemplate>
                 

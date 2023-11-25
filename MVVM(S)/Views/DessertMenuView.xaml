@@ -8,7 +8,7 @@
             x:Class="Mensa_App.MVVMS.Views.DessertMenuView"
             Title="Desserts">
 
-    <CollectionView ItemsSource="{Binding DessertMenuView}" SelectionMode="Single" SelectionChangedCommand="{Binding ChangeSelectedDessertCommand}" SelectionChangedCommandParameter="{Binding Source={RelativeSource Self}, Path=SelectedItem}">
+    <CollectionView ItemsSource="{Binding DessertMenuView}" SelectionMode="Multiple" SelectionChanged="CollectionView_SelectionChanged">
 
         <CollectionView.ItemTemplate>
 
