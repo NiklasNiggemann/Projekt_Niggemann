@@ -16,7 +16,7 @@
 
                 <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center">
 
-                    <Image Source="{Binding ImgURL}" WidthRequest="150" HeightRequest="150"/>
+                    <Image Source="{Binding ImgURL}" Aspect="AspectFit" WidthRequest="400"/>
 
                     <Label Text="{Binding Name}"/>
 
