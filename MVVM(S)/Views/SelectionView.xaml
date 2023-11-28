@@ -18,11 +18,11 @@
 
                     <DataTemplate x:DataType="classes:Dish">
 
-                        <HorizontalStackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                        <HorizontalStackLayout VerticalOptions="Center" HorizontalOptions="Center" Margin="10">
 
-                            <Label Text="{Binding Name}"/>
+                            <Label Text="{Binding Name}" Margin="0, 0, 3, 0"/>
 
-                            <Label Text="{Binding PriceString}"/>
+                            <Label Text="{Binding Price, StringFormat='{}{0:C}'}"/>
 
                         </HorizontalStackLayout>
 
@@ -34,9 +34,9 @@
 
             <HorizontalStackLayout>
 
-                <Label Text="Gesamtpreis: "/>
+                <Label Text="Gesamtpreis: " Margin="0, 0, 3, 0"/>
 
-                <Label Text="{Binding TotalPrice}"/>
+                <Label Text="{Binding TotalPrice , StringFormat='{}{0:C}'}"/>
 
             </HorizontalStackLayout>
 

@@ -14,43 +14,79 @@
 
             <DataTemplate x:DataType="classes:Dish">
 
-                <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                <ScrollView>
 
-                    <Image Source="{Binding ImgURL}" WidthRequest="150" HeightRequest="150"/>
+                    <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center" Margin="10">
 
-                    <Label Text="{Binding Name}"/>
+                        <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center">
 
-                    <Label Text="{Binding PriceString}"/>
+                            <Image Source="{Binding ImgURL}" Aspect="AspectFit" WidthRequest="400"/>
 
-                    <CollectionView ItemsSource="{Binding IngredientList}">
+                            <Label Text="{Binding Name}" HorizontalOptions="Center"/>
 
-                        <CollectionView.ItemTemplate>
+                            <Label Text="{Binding Price, StringFormat='{}{0:C}'}" HorizontalOptions="Center"/>
 
-                            <DataTemplate x:DataType="classes:Ingredient">
+                        </VerticalStackLayout>
 
-                                <HorizontalStackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                        <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center" Margin="10">
 
-                                    <Label Text="{Binding Name}"/>
+                            <HorizontalStackLayout>
+                                <Label Text="Brennwert: " Margin="0, 0, 3, 0"/>
+                                <Label Text="{Binding Nutrition.KalorienString}" Margin="0, 0, 3, 0"/>
+                                <Label Text="kJ"/>
+                            </HorizontalStackLayout>
+                            <HorizontalStackLayout>
+                                <Label Text="Kalorien: " Margin="0, 0, 3, 0"/>
+                                <Label Text="{Binding Nutrition.KalorienString}" Margin="0, 0, 3, 0"/>
+                                <Label Text="kcal"/>
+                            </HorizontalStackLayout>
+                            <HorizontalStackLayout>
+                                <Label Text="Kohlenhydrate: " Margin="0, 0, 3, 0"/>
+                                <Label Text="{Binding Nutrition.KohlenhydrateString}" Margin="0, 0, 3, 0"/>
+                                <Label Text="g"/>
+                            </HorizontalStackLayout>
+                            <HorizontalStackLayout>
+                                <Label Text="Eiweiß: " Margin="0, 0, 3, 0"/>
+                                <Label Text="{Binding Nutrition.EiweißString}" Margin="0, 0, 3, 0"/>
+                                <Label Text="g"/>
+                            </HorizontalStackLayout>
+                            <HorizontalStackLayout>
+                                <Label Text="Fett: " Margin="0, 0, 3, 0"/>
+                                <Label Text="{Binding Nutrition.FettString}" Margin="0, 0, 3, 0"/>
+                                <Label Text="g"/>
+                            </HorizontalStackLayout>
 
-                                </HorizontalStackLayout>
+                        </VerticalStackLayout>
 
-                            </DataTemplate>
+                        <StackLayout VerticalOptions="Center" HorizontalOptions="Center" Margin="10">
 
-                        </CollectionView.ItemTemplate>
+                            <CollectionView ItemsSource="{Binding IngredientList}">
 
-                    </CollectionView>
+                                <CollectionView.ItemTemplate>
 
-                    <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                                    <DataTemplate x:DataType="classes:Ingredient">
 
-                        <Label Text="{Binding Nutrition.BrennwertString}"/>
-                        <Label Text="{Binding Nutrition.KalorienString}"/>
-                        <Label Text="{Binding Nutrition.KohlenhydrateString}"/>
-                        <Label Text="{Binding Nutrition.EiweißString}"/>
-                        <Label Text="{Binding Nutrition.FettString}"/>
+                                        <ScrollView>
+
+                                            <HorizontalStackLayout VerticalOptions="Center" HorizontalOptions="Center">
+
+                                                <Label Text="{Binding Name}"/>
+
+                                            </HorizontalStackLayout>
+
+                                        </ScrollView>
+
+                                    </DataTemplate>
+
+                                </CollectionView.ItemTemplate>
+
+                            </CollectionView>
+
+                        </StackLayout>
 
                     </VerticalStackLayout>
 
-                </VerticalStackLayout>
+                </ScrollView>
 
             </DataTemplate>
 

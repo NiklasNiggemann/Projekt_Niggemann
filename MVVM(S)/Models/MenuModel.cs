@@ -25,4 +25,5 @@ public partial class MenuModel
     public List<Dish> DessertMenu { get; set; }
     public string[] DatesString { get; set; }
     public string[] DatesURL { get; set; }
+
 }
