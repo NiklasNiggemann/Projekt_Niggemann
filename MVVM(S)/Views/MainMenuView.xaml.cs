@@ -6,7 +6,7 @@ namespace Mensa_App.MVVMS.Views;
 
 public partial class MainMenuView : ContentPage
 {
-    public MainMenuView() 
+    public MainMenuView()
     {
         InitializeComponent();
         BindingContext = new MenuViewModel();

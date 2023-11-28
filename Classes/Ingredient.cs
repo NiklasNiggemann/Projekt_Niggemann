@@ -9,7 +9,7 @@ public class Ingredient
     {
         Name = name;
         CheckIfAllergic();
-        Information = "tödlich";
+        Information = "Informationen";
     }
     public void CheckIfAllergic()
     {
