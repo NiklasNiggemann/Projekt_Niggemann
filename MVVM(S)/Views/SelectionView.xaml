@@ -12,34 +12,45 @@
 
         <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center">
 
-            <CollectionView ItemsSource="{Binding SelectedDishes}" SelectionMode="None">
+            <Grid>
+                
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                
+                <CollectionView ItemsSource="{Binding SelectedDishes}" SelectionMode="None">
 
-                <CollectionView.ItemTemplate>
+                    <CollectionView.ItemTemplate>
 
-                    <DataTemplate x:DataType="classes:Dish">
+                        <DataTemplate x:DataType="classes:Dish">
 
-                        <HorizontalStackLayout VerticalOptions="Center" HorizontalOptions="Center" Margin="10">
+                            <HorizontalStackLayout VerticalOptions="Center" HorizontalOptions="Center" Margin="10">
 
-                            <Label Text="{Binding Name}" Margin="0, 0, 3, 0"/>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="150"/>
+                                        <ColumnDefinition Width="50"/>
+                                    </Grid.ColumnDefinitions>
+                                </Grid>
 
-                            <Label Text="{Binding Price, StringFormat='{}{0:C}'}"/>
+                                <Label Text="{Binding Name}" Grid.Column="0"/>
 
-                        </HorizontalStackLayout>
+                                <Label Text="{Binding Price, StringFormat='{}{0:C}'}" Grid.Column="1"/>
 
-                    </DataTemplate>
+                            </HorizontalStackLayout>
 
-                </CollectionView.ItemTemplate>
+                        </DataTemplate>
 
-            </CollectionView>
+                    </CollectionView.ItemTemplate>
 
-            <HorizontalStackLayout>
+                </CollectionView>
 
-                <Label Text="Gesamtpreis: " Margin="0, 0, 3, 0"/>
+                <Label Text="Gesamtpreis: " Grid.Column="0"/>
 
-                <Label Text="{Binding TotalPrice , StringFormat='{}{0:C}'}"/>
+                <Label Text="{Binding TotalPrice , StringFormat='{}{0:C}'}" Grid.Column="1"/>
 
-            </HorizontalStackLayout>
-
+            </Grid>
 
         </VerticalStackLayout>
 

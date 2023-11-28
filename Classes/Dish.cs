@@ -8,13 +8,6 @@ public class Dish
     public string ImgURL { get; set; }
     public string Name { get; set; }
     public double Price { get; set; }
-    public string PriceString
-    {
-        get
-        {
-            return string.Format("{0:0.00}", Price) + " €";
-        }
-    }
     public string[] Ingredients { get; set; }
     public List<Ingredient> IngredientList
     {
@@ -51,11 +44,11 @@ public class Dish
             Nutrition nutritions = new Nutrition();
             if (nutritionsList.Count == 0)
                 return nutritions;
-            nutritions.BrennwertString = nutritionsList[0].Trim();
-            nutritions.KalorienString = nutritionsList[1].Trim();
-            nutritions.FettString = nutritionsList[2].Trim();
-            nutritions.KohlenhydrateString = nutritionsList[3].Trim();
-            nutritions.EiweißString = nutritionsList[4].Trim();
+            nutritions.Brennwert = Convert.ToInt32(nutritionsList[0].Trim());
+            nutritions.Kalorien = Convert.ToInt32(nutritionsList[1].Trim());
+            nutritions.Fett = Convert.ToDouble(nutritionsList[2].Trim());
+            nutritions.Kohlenhydrate = Convert.ToDouble(nutritionsList[3].Trim());
+            nutritions.Eiweiß = Convert.ToDouble(nutritionsList[4].Trim());
             return nutritions;
         }
     }
@@ -131,53 +124,19 @@ public class Dish
         element = element.Trim();
         element = element.Remove(0, element.IndexOf(" ")).Trim();
 
-        bool containsMit = true;
-        while (containsMit == true)
+        element = element.Replace("mit ", "");
+        element = element.Replace("und", "");
+
+        int startIndex = element.IndexOf("(");
+        while (startIndex != -1)
         {
-            int prevLength = element.Length;
-            if (element.Contains("mit "))
-            {
-                element = element.Remove(element.IndexOf("mit "), 4);
-            }
-            if (element.Length == prevLength)
-                containsMit = false;
+            int endIndex = element.IndexOf(")", startIndex);
+            element = element.Remove(startIndex, endIndex - startIndex + 1);
+            startIndex = element.IndexOf("(", startIndex);
         }
 
-        bool containsUnd = true;
-        while (containsUnd == true)
-        {
-            int prevLength = element.Length;
-            if (element.Contains("und"))
-            {
-                element = element.Remove(element.IndexOf("und"), 4);
-            }
-            if (element.Length == prevLength)
-                containsUnd = false;
-        }
+        element = element.Replace("sowie", "");
 
-        bool containsKlammern = true;
-        while (containsKlammern == true)
-        {
-            int prevLength = element.Length;
-            if (element.Contains("("))
-            {
-                element = element.Remove(element.IndexOf("("), element.IndexOf(")") - element.IndexOf("(") + 1);
-            }
-            if (element.Length == prevLength)
-                containsKlammern = false;
-        }
-
-        bool containsSowie = true;
-        while (containsSowie == true)
-        {
-            int prevLength = element.Length;
-            if (element.Contains("sowie"))
-            {
-                element = element.Remove(element.IndexOf("sowie"), element.IndexOf(".") - element.IndexOf("sowie") + 1);
-            }
-            if (element.Length == prevLength)
-                containsSowie = false;
-        }
         return element;
     }
     public static string PrepareNutritions(string element)

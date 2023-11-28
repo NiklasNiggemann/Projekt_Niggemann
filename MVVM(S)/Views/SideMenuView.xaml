@@ -22,39 +22,52 @@
 
                             <Image Source="{Binding ImgURL}" Aspect="AspectFit" WidthRequest="400"/>
 
-                            <Label Text="{Binding Name}" HorizontalOptions="Center"/>
+                            <Label Text="{Binding Name}" HorizontalTextAlignment="Center" FontSize="Large" HorizontalOptions="Center"/>
 
-                            <Label Text="{Binding Price, StringFormat='{}{0:C}'}" HorizontalOptions="Center"/>
+                            <Label Text="{Binding Price, StringFormat='{}{0:C}'}" FontSize="Medium" HorizontalOptions="Center"/>
 
                         </VerticalStackLayout>
 
                         <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center" Margin="10">
 
-                            <HorizontalStackLayout>
-                                <Label Text="Brennwert: " Margin="0, 0, 3, 0"/>
-                                <Label Text="{Binding Nutrition.KalorienString}" Margin="0, 0, 3, 0"/>
-                                <Label Text="kJ"/>
-                            </HorizontalStackLayout>
-                            <HorizontalStackLayout>
-                                <Label Text="Kalorien: " Margin="0, 0, 3, 0"/>
-                                <Label Text="{Binding Nutrition.KalorienString}" Margin="0, 0, 3, 0"/>
-                                <Label Text="kcal"/>
-                            </HorizontalStackLayout>
-                            <HorizontalStackLayout>
-                                <Label Text="Kohlenhydrate: " Margin="0, 0, 3, 0"/>
-                                <Label Text="{Binding Nutrition.KohlenhydrateString}" Margin="0, 0, 3, 0"/>
-                                <Label Text="g"/>
-                            </HorizontalStackLayout>
-                            <HorizontalStackLayout>
-                                <Label Text="Eiweiß: " Margin="0, 0, 3, 0"/>
-                                <Label Text="{Binding Nutrition.EiweißString}" Margin="0, 0, 3, 0"/>
-                                <Label Text="g"/>
-                            </HorizontalStackLayout>
-                            <HorizontalStackLayout>
-                                <Label Text="Fett: " Margin="0, 0, 3, 0"/>
-                                <Label Text="{Binding Nutrition.FettString}" Margin="0, 0, 3, 0"/>
-                                <Label Text="g"/>
-                            </HorizontalStackLayout>
+                            <Grid>
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="150"/>
+                                    <ColumnDefinition Width="50"/>
+                                    <ColumnDefinition Width="50"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+
+                                <Label Text="Brennwert: " Grid.Row="1" Grid.Column="0"/>
+                                <Label Text="{Binding Nutrition.Brennwert}" Grid.Row="1" Grid.Column="1"/>
+                                <Label Text="kJ" Grid.Row="1" Grid.Column="2"/>
+
+                                <Label Text="Kalorien: " Grid.Row="2" Grid.Column="0"/>
+                                <Label Text="{Binding Nutrition.Kalorien}" Grid.Row="2" Grid.Column="1"/>
+                                <Label Text="kcal" Grid.Row="2" Grid.Column="2"/>
+
+                                <Label Text="Kohlenhydrate: " Grid.Row="3" Grid.Column="0"/>
+                                <Label Text="{Binding Nutrition.Kohlenhydrate, StringFormat='{}{0:F2}'}" Grid.Row="3" Grid.Column="1"/>
+                                <Label Text="g" Grid.Row="3" Grid.Column="2"/>
+
+                                <Label Text="Eiweiß: " Grid.Row="4" Grid.Column="0"/>
+                                <Label Text="{Binding Nutrition.Eiweiß, StringFormat='{}{0:F2}'}" Grid.Row="4" Grid.Column="1"/>
+                                <Label Text="g" Grid.Row="4" Grid.Column="2"/>
+
+                                <Label Text="Fett: " Grid.Row="5" Grid.Column="0"/>
+                                <Label Text="{Binding Nutrition.Fett, StringFormat='{}{0:F2}'}" Grid.Row="5" Grid.Column="1"/>
+                                <Label Text="g" Grid.Row="5" Grid.Column="2"/>
+
+                            </Grid>
 
                         </VerticalStackLayout>
 
@@ -66,15 +79,7 @@
 
                                     <DataTemplate x:DataType="classes:Ingredient">
 
-                                        <ScrollView>
-
-                                            <HorizontalStackLayout VerticalOptions="Center" HorizontalOptions="Center">
-
-                                                <Label Text="{Binding Name}"/>
-
-                                            </HorizontalStackLayout>
-
-                                        </ScrollView>
+                                        <Label Text="{Binding Name}" Grid.Column="0"/>
 
                                     </DataTemplate>
 
