@@ -79,7 +79,13 @@
 
                                     <DataTemplate x:DataType="classes:Ingredient">
 
-                                        <Label Text="{Binding Name}" Grid.Column="0"/>
+                                        <HorizontalStackLayout VerticalOptions="Center" HorizontalOptions="Center">
+
+                                            <Label Text="{Binding Name}" Grid.Column="0" ToolTipProperties.Text="{Binding Information}"/>
+
+                                            <CheckBox IsChecked="{Binding IsAllergic}" Grid.Column="1"/>
+
+                                        </HorizontalStackLayout>
 
                                     </DataTemplate>
 

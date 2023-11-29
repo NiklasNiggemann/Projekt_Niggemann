@@ -3,12 +3,12 @@ using HtmlAgilityPack;
 
 namespace Mensa_App.Classes;
 
-public class Dish 
+public class Dish(string name, double price, string[] ingredients, string nutritions, string imgURL)
 {
-    public string ImgURL { get; set; }
-    public string Name { get; set; }
-    public double Price { get; set; }
-    public string[] Ingredients { get; set; }
+    public string ImgURL { get; set; } = imgURL;
+    public string Name { get; set; } = name;
+    public double Price { get; set; } = price;
+    public string[] Ingredients { get; set; } = ingredients;
     public List<Ingredient> IngredientList
     {
         get
@@ -29,7 +29,7 @@ public class Dish
             return ingredientList;
         }
     }
-    public string NutritionsString { get; set; }
+    public string NutritionsString { get; set; } = nutritions;
     public Nutrition Nutrition
     {
         get
@@ -52,14 +52,7 @@ public class Dish
             return nutritions;
         }
     }
-    public Dish(string name, double price, string[] ingredients, string nutritions, string imgURL)
-    {
-        Name = name;
-        Price = price;
-        Ingredients = ingredients;
-        NutritionsString = nutritions;
-        ImgURL = imgURL;
-    }
+
     public static List<Dish> DeleteDessertsFromSoupMenu(List<Dish> soupMenu)
     {
         List<Dish> cleanSoupMenu = new List<Dish>();

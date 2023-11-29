@@ -1,25 +1,8 @@
 ﻿namespace Mensa_App.Classes;
 
-public class Ingredient
+public class Ingredient(string name)
 {
-    public string Name { get; set; }
+    public string Name { get; set; } = name;
     public bool IsAllergic { get; set; }
-    public string Information { get; set; }
-    public Ingredient(string name)
-    {
-        Name = name;
-        CheckIfAllergic();
-        Information = "Informationen";
-    }
-    public void CheckIfAllergic()
-    {
-        if (UserData.Allergies is not null)
-        {
-            foreach (var x in UserData.Allergies)
-            {
-                if (x == Name)
-                    IsAllergic = true;
-            }
-        }
-    }
+    public string Information { get; set; } = "Informationen";
 }
