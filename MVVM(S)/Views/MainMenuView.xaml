@@ -78,8 +78,8 @@
                                 <CollectionView.ItemTemplate>
 
                                     <DataTemplate x:DataType="classes:Ingredient">
-                                            
-                                            <Label Text="{Binding Name}" Grid.Column="0" ToolTipProperties.Text="{Binding Information}"/>
+
+                                        <Label Text="{Binding Name}" Grid.Column="0" ToolTipProperties.Text="{Binding Information}"/>
 
                                     </DataTemplate>
 
