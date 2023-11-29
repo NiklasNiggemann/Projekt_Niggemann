@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Mensa_App.MVVMS.Views.SettingsView"
+             xmlns:viewmodel="clr-namespace:Mensa_App.MVVMS.ViewModels"
+             x:DataType="viewmodel:SettingsViewModel"
+             Title="Einstellungen">
+    <CollectionView ItemsSource="{Binding IngredientList}" SelectionMode="Multiple" x:Name="SettingsIngredientList" SelectionChanged="SettingsIngredientList_SelectionChanged">
+        <CollectionView.ItemTemplate>
+            <DataTemplate x:DataType="x:String">
+                <Label Text="{Binding .}"/>
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+    </CollectionView>
+</ContentPage>

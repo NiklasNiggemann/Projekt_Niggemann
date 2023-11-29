@@ -20,7 +20,26 @@ public partial class MenuViewModel : ObservableObject
         SideMenuView = MyMenuModel.SideMenu;
         SoupMenuView = MyMenuModel.SoupMenu;
         DessertMenuView = MyMenuModel.DessertMenu;
+        SettingsModel.UserAllergyIngredientList.CollectionChanged += UserAllergyIngredientList_CollectionChanged;
     }
+
+    private void UserAllergyIngredientList_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+    {
+        foreach (var x in MainMenuView)
+        {
+            foreach (var z in x.IngredientList)
+            {
+                foreach (var y in SettingsModel.UserAllergyIngredientList)
+                {
+                    if (z.Name == y)
+                    {
+                        Console.WriteLine();
+                    }
+                }
+            }
+        }
+    }
+
     [RelayCommand]
     public static void ChangeSelectedDishes(Dish dish)
     {

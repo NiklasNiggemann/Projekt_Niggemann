@@ -60,6 +60,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="MVVM(S)\Views\SettingsView.xaml.cs">
+	    <DependentUpon>SettingsView.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="MVVM(S)\Views\MainMenuView.xaml.cs">
 	    <DependentUpon>MainMenuView.xaml</DependentUpon>
 	  </Compile>
@@ -67,6 +70,9 @@
 
 	<ItemGroup>
 	  <MauiXaml Update="MVVM%28S%29\Views\DessertMenuView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="MVVM(S)\Views\SettingsView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="MVVM(S)\Views\MainMenuView.xaml">
