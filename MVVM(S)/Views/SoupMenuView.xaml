@@ -14,19 +14,19 @@
 
             <DataTemplate x:DataType="classes:Dish">
 
-                <ScrollView>
+                <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center" Margin="10" MinimumHeightRequest="50">
 
-                    <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center" Margin="10">
+                    <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center">
 
-                        <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                        <Image Source="{Binding ImgURL}" Aspect="AspectFit" WidthRequest="400"/>
 
-                            <Image Source="{Binding ImgURL}" Aspect="AspectFit" WidthRequest="400"/>
+                        <Label Text="{Binding Name}" HorizontalTextAlignment="Center" FontSize="Large" HorizontalOptions="Center"/>
 
-                            <Label Text="{Binding Name}" HorizontalTextAlignment="Center" FontSize="Large" HorizontalOptions="Center"/>
+                        <Label Text="{Binding Price, StringFormat='{}{0:C}'}" FontSize="Medium" HorizontalOptions="Center"/>
 
-                            <Label Text="{Binding Price, StringFormat='{}{0:C}'}" FontSize="Medium" HorizontalOptions="Center"/>
+                    </VerticalStackLayout>
 
-                        </VerticalStackLayout>
+                    <HorizontalStackLayout>
 
                         <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center" Margin="10">
 
@@ -71,7 +71,7 @@
 
                         </VerticalStackLayout>
 
-                        <StackLayout VerticalOptions="Center" HorizontalOptions="Center" Margin="10">
+                        <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center" Margin="10">
 
                             <CollectionView ItemsSource="{Binding IngredientList}">
 
@@ -87,11 +87,11 @@
 
                             </CollectionView>
 
-                        </StackLayout>
+                        </VerticalStackLayout>
 
-                    </VerticalStackLayout>
+                    </HorizontalStackLayout>
 
-                </ScrollView>
+                </VerticalStackLayout>
 
             </DataTemplate>
 

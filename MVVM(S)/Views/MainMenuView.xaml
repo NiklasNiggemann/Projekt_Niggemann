@@ -14,7 +14,7 @@
 
             <DataTemplate x:DataType="classes:Dish">
 
-                <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center" Margin="10">
+                <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center" Margin="10" MinimumHeightRequest="50">
 
                     <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center">
 
