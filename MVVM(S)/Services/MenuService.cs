@@ -15,10 +15,10 @@ public class MenuService
     public MenuService()
     {
         Document = new HtmlWeb().Load("https://www.studierendenwerk-pb.de/gastronomie/speiseplaene/mensa-basilica-hamm/");
-        MainMenu = new List<Dish>();
-        SideMenu = new List<Dish>();
-        SoupMenu = new List<Dish>();
-        DessertMenu = new List<Dish>();
+        MainMenu = [];
+        SideMenu = [];
+        SoupMenu = [];
+        DessertMenu = [];
         DatesString = new string[5];
         DatesURL = new string[4];
         GetDates();

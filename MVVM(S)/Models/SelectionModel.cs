@@ -10,7 +10,7 @@ internal class SelectionModel
     public static double TotalPrice { get; set; }
     public SelectionModel()
     {
-        SelectedDishes = new ObservableCollection<Dish>();
+        SelectedDishes = [];
         SelectedDishes.CollectionChanged += SelectedDishes_CollectionChanged;
     }
 

@@ -10,8 +10,8 @@ public partial class SelectionViewModel : ObservableObject
 {
     public SelectionViewModel()
     {
-        SelectionModel selectionModel = new SelectionModel();
-        this.SelectedDishes = new ObservableCollection<Dish>();
+        SelectionModel selectionModel = new();
+        this.SelectedDishes = [];
         SelectionModel.SelectedDishes.CollectionChanged += SelectedDishes_CollectionChanged;
     }
 

@@ -28,7 +28,7 @@ public class Dish()
         string name = CleanUpString("name", nameAndPrice[index].QuerySelector("h4").InnerText);
         double price = Convert.ToDouble(CleanUpString("price", nameAndPrice[index].QuerySelector(".price").InnerText));
 
-        List<Ingredient> ingredientList = new List<Ingredient>();
+        List<Ingredient> ingredientList = [];
         string ingredientsString = CleanUpString("ingredients", ingredientsAndNutritions[index].QuerySelector(".ingredients").InnerText);
         if (ingredientsString[..3] == "Für")
         {
@@ -44,7 +44,6 @@ public class Dish()
                     ingredientList.Add(new Ingredient(ingredient));
             }
         }
-        
 
         string nutritionsString = CleanUpString("nutritions", ingredientsAndNutritions[index].QuerySelector(".nutritions").InnerText);
 
@@ -91,19 +90,19 @@ public class Dish()
         element = element.Remove(0, element.IndexOf(" ")).Trim();
         element = element.Replace("mit ", "");
         element = element.Replace("und", "");
-        int startIndex = element.IndexOf("(");
+        int startIndex = element.IndexOf('(');
         while (startIndex != -1)
         {
-            int endIndex = element.IndexOf(")", startIndex);
+            int endIndex = element.IndexOf(')', startIndex);
             element = element.Remove(startIndex, endIndex - startIndex + 1);
-            startIndex = element.IndexOf("(", startIndex);
+            startIndex = element.IndexOf('(', startIndex);
         }
         element = element.Replace("sowie", "");
         return element;
     }
     private static string PrepareNutritions(string element)
     {
-        StringBuilder stringBuilder = new StringBuilder();
+        StringBuilder stringBuilder = new();
         foreach (char c in element)
         {
             if (char.IsDigit(c) || c == ',' || c == ' ')
@@ -121,12 +120,12 @@ public class Dish()
             case "name":
                 return element.Trim();
             case "price":
-                return element.Substring(element.IndexOf(":") + 2, 4).Replace(",", ".");
+                return element.Substring(element.IndexOf(':') + 2, 4).Replace(",", ".");
             case "ingredients":
                 return PrepareIngredients(element);
             case "nutritions":
                 element = element.Trim();
-                element = element.Remove(0, element.IndexOf(" ")).Trim();
+                element = element.Remove(0, element.IndexOf(' ')).Trim();
                 return PrepareNutritions(element);
             default:
                 return "ERROR";
@@ -134,7 +133,7 @@ public class Dish()
     }
     public static List<Dish> GenerateList(HtmlDocument document, string dishType)
     {
-        List<Dish> mainDishesList = new List<Dish>();
+        List<Dish> mainDishesList = [];
         IList<HtmlNode> nameAndPrice = document.DocumentNode.QuerySelectorAll($"{dishType} .odd");
         IList<HtmlNode> ingredientsAndNutritions = document.DocumentNode.QuerySelectorAll($"{dishType} .even");
         for (int i = 0; i < nameAndPrice.Count; i++)
