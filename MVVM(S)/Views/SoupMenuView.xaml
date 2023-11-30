@@ -73,7 +73,7 @@
 
                         <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center" Margin="10">
 
-                            <CollectionView ItemsSource="{Binding IngredientList}">
+                            <CollectionView ItemsSource="{Binding Ingredients}">
 
                                 <CollectionView.ItemTemplate>
 

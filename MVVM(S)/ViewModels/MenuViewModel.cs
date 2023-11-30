@@ -25,19 +25,7 @@ public partial class MenuViewModel : ObservableObject
 
     private void UserAllergyIngredientList_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
     {
-        foreach (var x in MainMenuView)
-        {
-            foreach (var z in x.IngredientList)
-            {
-                foreach (var y in SettingsModel.UserAllergyIngredientList)
-                {
-                    if (z.Name == y)
-                    {
-                        Console.WriteLine();
-                    }
-                }
-            }
-        }
+        
     }
 
     [RelayCommand]
