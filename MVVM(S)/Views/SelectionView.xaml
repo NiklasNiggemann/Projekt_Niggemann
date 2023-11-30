@@ -22,11 +22,11 @@
 
                             <Grid>
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="400"/>
+                                    <ColumnDefinition Width="200"/>
                                     <ColumnDefinition Width="100"/>
                                 </Grid.ColumnDefinitions>
-                                <Label Text="{Binding Name}" Grid.Column="0"/>
-                                <Label Text="{Binding Price, StringFormat='{}{0:C}'}" Grid.Column="1"/>
+                                <Label Text="{Binding Name}" Grid.Column="0" HorizontalTextAlignment="Center"/>
+                                <Label Text="{Binding Price, StringFormat='{}{0:C}'}" Grid.Column="1" HorizontalTextAlignment="Center"/>
                             </Grid>
 
                         </VerticalStackLayout>
@@ -39,11 +39,11 @@
 
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="400"/>
+                    <ColumnDefinition Width="200"/>
                     <ColumnDefinition Width="100"/>
                 </Grid.ColumnDefinitions>
-                <Label Text="Gesamtpreis: " Grid.Column="0"/>
-                <Label Text="{Binding TotalPrice , StringFormat='{}{0:C}'}" Grid.Column="1"/>
+                <Label Text="Gesamtpreis: " Grid.Column="0" HorizontalTextAlignment="Center"/>
+                <Label Text="{Binding TotalPrice , StringFormat='{}{0:C}'}" Grid.Column="1" HorizontalTextAlignment="Center"/>
             </Grid>
 
         </VerticalStackLayout>
