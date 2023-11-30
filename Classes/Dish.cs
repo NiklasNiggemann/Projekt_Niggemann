@@ -37,12 +37,14 @@ public class Dish()
         else
         {
             string[] ingredientsArray = ingredientsString.Split(' ');
+            Array.Sort(ingredientsArray);
             foreach (var ingredient in ingredientsArray)
             {
                 if (!string.IsNullOrWhiteSpace(ingredient))
                     ingredientList.Add(new Ingredient(ingredient));
             }
         }
+        
 
         string nutritionsString = CleanUpString("nutritions", ingredientsAndNutritions[index].QuerySelector(".nutritions").InnerText);
 
