@@ -13,13 +13,13 @@ public partial class MainMenuView : ContentPage
     }
     private void CollectionView_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        foreach (var x in e.PreviousSelection)
+        foreach (var selectedDish in e.PreviousSelection)
         {
-            SelectionModel.SelectedDishes.Remove(x as Dish);
+            SelectionModel.SelectedDishes.Remove(selectedDish as Dish);
         }
-        foreach (var x in e.CurrentSelection)
+        foreach (var selectedDish in e.CurrentSelection)
         {
-            SelectionModel.SelectedDishes.Add(x as Dish);
+            SelectionModel.SelectedDishes.Add(selectedDish as Dish);
         }
     }
 }
