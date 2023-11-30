@@ -1,4 +1,5 @@
 ﻿using System.Text;
+using System.Linq;
 using HtmlAgilityPack;
 
 namespace Mensa_App.Classes;
@@ -116,10 +117,8 @@ public class Dish(string name, double price, string[] ingredients, string nutrit
     {
         element = element.Trim();
         element = element.Remove(0, element.IndexOf(" ")).Trim();
-
         element = element.Replace("mit ", "");
         element = element.Replace("und", "");
-
         int startIndex = element.IndexOf("(");
         while (startIndex != -1)
         {
@@ -127,23 +126,18 @@ public class Dish(string name, double price, string[] ingredients, string nutrit
             element = element.Remove(startIndex, endIndex - startIndex + 1);
             startIndex = element.IndexOf("(", startIndex);
         }
-
         element = element.Replace("sowie", "");
-
         return element;
     }
     public static string PrepareNutritions(string element)
     {
         StringBuilder stringBuilder = new StringBuilder();
-        for (int i = 0; i < element.Length; i++)
+        foreach (char c in element)
         {
-            if (element[i] == '1' || element[i] == '2' || element[i] == '3' || element[i] == '4' || element[i] == '5' ||
-                element[i] == '6' || element[i] == '7' || element[i] == '8' || element[i] == '9' || element[i] == '0' || element[i] == ',')
+            if (char.IsDigit(c) || c == ',' || c == ' ')
             {
-                stringBuilder.Append(element[i]);
+                stringBuilder.Append(c);
             }
-            if (element[i] == ' ')
-                stringBuilder.Append(' ');
         }
         element = stringBuilder.ToString().Trim();
         return element;

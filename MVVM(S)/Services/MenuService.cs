@@ -1,13 +1,20 @@
 ﻿using HtmlAgilityPack;
 using Mensa_App.Classes;
+using System;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Mensa_App.MVVMS.Services;
 
 public class MenuService
 {
-    public HtmlDocument Document = new HtmlWeb().Load("https://www.studierendenwerk-pb.de/gastronomie/speiseplaene/mensa-basilica-hamm/");
+    public HtmlDocument Document { get; set; }
+    public List<Dish> MainMenu { get; set; }
+    public List<Dish> SideMenu { get; set; }
+    public List<Dish> SoupMenu { get; set; }
+    public List<Dish> DessertMenu { get; set; }
     public MenuService()
     {
+        Document = new HtmlWeb().Load("https://www.studierendenwerk-pb.de/gastronomie/speiseplaene/mensa-basilica-hamm/");
         MainMenu = new List<Dish>();
         SideMenu = new List<Dish>();
         SoupMenu = new List<Dish>();
@@ -30,10 +37,6 @@ public class MenuService
         GenerateIndividualMenus(Document, ".side-dishes");
         GenerateIndividualMenus(Document, ".soups");
     }
-    public List<Dish> MainMenu { get; set; }
-    public List<Dish> SideMenu { get; set; }
-    public List<Dish> SoupMenu { get; set; }
-    public List<Dish> DessertMenu { get; set; }
     public void GenerateIndividualMenus(HtmlDocument document, string dishType)
     {
         switch (dishType)
@@ -62,31 +65,15 @@ public class MenuService
 
         IList<HtmlNode> datesNode = document.DocumentNode.QuerySelectorAll(".desktop-form a");
         string[] dates = new string[datesNode.Count];
-        int i = 0;
-        foreach (var node in datesNode)
-        {
-            dates[i] = HtmlEntity.DeEntitize(node.InnerText);
-            i++;
-        }
-        i = 1;
-        foreach (var date in dates)
-        {
-            DatesString[i] = date.Trim();
-            i++;
-        }
         string[] datesURL = new string[datesNode.Count];
-        i = 0;
-        foreach (var node in datesNode)
+
+        for (int i = 0; i < datesNode.Count; i++)
         {
-            HtmlAttributeCollection getURLCollection = node.Attributes;
+            dates[i] = HtmlEntity.DeEntitize(datesNode[i].InnerText);
+            DatesString[i] = dates[i].Trim();
+            HtmlAttributeCollection getURLCollection = datesNode[i].Attributes;
             datesURL[i] = HtmlEntity.DeEntitize(getURLCollection[0].Value);
-            i++;
-        }
-        i = 0;
-        foreach (var url in datesURL)
-        {
-            DatesURL[i] = url.Trim();
-            i++;
+            DatesURL[i] = datesURL[i].Trim();
         }
     }
 }
