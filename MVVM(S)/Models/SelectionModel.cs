@@ -17,10 +17,10 @@ internal class SelectionModel
     private void SelectedDishes_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
     {
         TotalPrice = 0;
-        foreach (var x in SelectedDishes)
+        foreach (var dish in SelectedDishes)
         {
-            if (x is not null)
-                TotalPrice += x.Price;
+            if (dish is not null)
+                TotalPrice += dish.Price;
         }
     }
 

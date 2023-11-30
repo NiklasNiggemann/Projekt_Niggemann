@@ -14,11 +14,11 @@ public class Dish(string name, double price, string[] ingredients, string nutrit
         get
         {
             List<Ingredient> ingredientList = new List<Ingredient>();
-            foreach (var x in Ingredients)
+            foreach (var ingredient in Ingredients)
             {
-                if (x.Trim() != "")
+                if (ingredient.Trim() != "")
                 {
-                    ingredientList.Add(new Ingredient(x.Trim()));
+                    ingredientList.Add(new Ingredient(ingredient.Trim()));
                 }
             }
             if (ingredientList[0].Name == "Für")
@@ -36,10 +36,10 @@ public class Dish(string name, double price, string[] ingredients, string nutrit
         {
             string[] nutritionsArray = NutritionsString.Split(" ");
             List<string> nutritionsList = new List<string>();
-            foreach (var x in nutritionsArray)
+            foreach (var nutrition in nutritionsArray)
             {
-                if (x != "")
-                    nutritionsList.Add(x);
+                if (nutrition != "")
+                    nutritionsList.Add(nutrition);
             }
             Nutrition nutritions = new Nutrition();
             if (nutritionsList.Count == 0)

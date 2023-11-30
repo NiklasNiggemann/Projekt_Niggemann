@@ -63,30 +63,29 @@ public class MenuService
         IList<HtmlNode> datesNode = document.DocumentNode.QuerySelectorAll(".desktop-form a");
         string[] dates = new string[datesNode.Count];
         int i = 0;
-        foreach (var x in datesNode)
+        foreach (var node in datesNode)
         {
-            dates[i] = HtmlEntity.DeEntitize(x.InnerText);
+            dates[i] = HtmlEntity.DeEntitize(node.InnerText);
             i++;
         }
         i = 1;
-        foreach (var x in dates)
+        foreach (var date in dates)
         {
-            DatesString[i] = x.Trim();
+            DatesString[i] = date.Trim();
             i++;
         }
-
         string[] datesURL = new string[datesNode.Count];
         i = 0;
-        foreach (var x in datesNode)
+        foreach (var node in datesNode)
         {
-            HtmlAttributeCollection getURLCollection = x.Attributes;
+            HtmlAttributeCollection getURLCollection = node.Attributes;
             datesURL[i] = HtmlEntity.DeEntitize(getURLCollection[0].Value);
             i++;
         }
         i = 0;
-        foreach (var x in datesURL)
+        foreach (var url in datesURL)
         {
-            DatesURL[i] = x.Trim();
+            DatesURL[i] = url.Trim();
             i++;
         }
     }
