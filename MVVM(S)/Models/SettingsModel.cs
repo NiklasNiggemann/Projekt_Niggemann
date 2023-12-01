@@ -10,5 +10,5 @@ namespace Mensa_App.MVVMS.Models;
 public static class SettingsModel
 {
     public static ObservableCollection<string> GeneralIngredientsList { get; set; } = [ "Milch", "Farbstoff", "Weizen", "Gluten", "Eier", "Antioxidationsmittel", "Schwefeldioxid", "Sulfite", "Soja", "Sellerie", "Rind", "Senf", "Schalenfrüchte", "Sesamsamen", "Hafer", "Geflügel", "Schwein", "Konservierungsstoff", "Gerste", "Roggen", "Phosphat" ];
-    public static ObservableCollection<string> UserAllergyIngredientList { get; set; } = new ObservableCollection<string>();
+    public static ObservableCollection<string> UserAllergyIngredientList { get; set; } = [];
 }

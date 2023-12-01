@@ -12,13 +12,13 @@ public partial class SettingsView : ContentPage
 	}
     private void SettingsIngredientList_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        foreach (var x in e.PreviousSelection)
+        foreach (var ingredients in e.PreviousSelection)
         {
-            SettingsModel.UserAllergyIngredientList.Remove(x.ToString());
+            SettingsModel.UserAllergyIngredientList.Remove(ingredients.ToString());
         }
-        foreach (var x in e.CurrentSelection)
+        foreach (var ingredients in e.CurrentSelection)
         {
-            SettingsModel.UserAllergyIngredientList.Remove(x.ToString());
+            SettingsModel.UserAllergyIngredientList.Add(ingredients.ToString());
         }
     }
 }
