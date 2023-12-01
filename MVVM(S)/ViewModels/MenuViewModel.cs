@@ -3,6 +3,7 @@ using Mensa_App.MVVMS.Models;
 using Mensa_App.Classes;
 using CommunityToolkit.Mvvm.Input;
 using System.Linq;
+using System.Collections.ObjectModel;
 
 namespace Mensa_App.MVVMS.ViewModels;
 
@@ -43,13 +44,23 @@ public partial class MenuViewModel : ObservableObject
     [RelayCommand]
     public static void ChangeSelectedDishes(IList<object> selectedDishes)
     {
-        foreach (var dish in selectedDishes)
+        List<Dish> selectedDishesCache = [];
+        List<Dish> previousSelectedDishesCache = [];
+
+        foreach (var dish in SelectionModel.PreviousSelectedDishes.ToList())
         {
-            SelectionModel.SelectedDishes.Remove(dish as Dish);
+            SelectionModel.SelectedDishes.Remove(dish);
         }
-        foreach (var dish in selectedDishes)
+
+        selectedDishesCache.AddRange(selectedDishes.Cast<Dish>());
+
+        foreach (var dish in selectedDishesCache)
         {
-            SelectionModel.SelectedDishes.Add(dish as Dish);
+            SelectionModel.SelectedDishes.Add(dish);
+        }
+        foreach (var dish in SelectionModel.SelectedDishes)
+        {
+            SelectionModel.PreviousSelectedDishes.Add(dish);
         }
     }
 }
