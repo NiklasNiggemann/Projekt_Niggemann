@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using Mensa_App.Classes;
 using Mensa_App.MVVMS.Models;
 using System;
@@ -15,6 +16,18 @@ public partial class SettingsViewModel : ObservableObject
     public SettingsViewModel()
     {
         ingredientList = SettingsModel.GeneralIngredientsList;
+    }
+    [RelayCommand]
+    public void AllergyListUpdated(IList<object> selectedIngredients)
+    {
+        foreach (var ingredients in selectedIngredients)
+        {
+            SettingsModel.UserAllergyIngredientList.Remove(ingredients.ToString());
+        }
+        foreach (var ingredients in selectedIngredients)
+        {
+            SettingsModel.UserAllergyIngredientList.Add(ingredients.ToString());
+        }
     }
     [ObservableProperty]
     ObservableCollection<string> ingredientList; 

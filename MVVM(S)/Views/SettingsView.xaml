@@ -5,7 +5,7 @@
              xmlns:viewmodel="clr-namespace:Mensa_App.MVVMS.ViewModels"
              x:DataType="viewmodel:SettingsViewModel"
              Title="Einstellungen">
-    <CollectionView ItemsSource="{Binding IngredientList}" SelectionMode="Multiple" x:Name="SettingsIngredientList" SelectionChanged="SettingsIngredientList_SelectionChanged">
+    <CollectionView ItemsSource="{Binding IngredientList}" SelectionMode="Multiple" SelectionChangedCommand="{Binding Path=AllergyListUpdatedCommand}" SelectionChangedCommandParameter="{Binding Source={RelativeSource Self}, Path=SelectedItems}">
         <CollectionView.ItemTemplate>
             <DataTemplate x:DataType="x:String">
                 <Label Text="{Binding .}"/>
