@@ -41,9 +41,16 @@ public partial class MenuViewModel : ObservableObject
     }
 
     [RelayCommand]
-    public static void ChangeSelectedDishes(Dish dish)
+    public static void ChangeSelectedDishes(List<object> dishes)
     {
-        SelectionModel.SelectedDishes.Add(dish);
+        //foreach (var selectedDish in e.PreviousSelection)
+        //{
+        //    SelectionModel.SelectedDishes.Remove(selectedDish as Dish);
+        //}
+        //foreach (var selectedDish in e.CurrentSelection)
+        //{
+        //    SelectionModel.SelectedDishes.Add(selectedDish as Dish);
+        //}
     }
 }
 
