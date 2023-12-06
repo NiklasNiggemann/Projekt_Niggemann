@@ -6,8 +6,6 @@ public partial class Ingredient(string name) : ObservableObject
 {
     public string Name { get; set; } = name;
     public string Information { get; set; } = "Informationen";
-    private bool isAllergic;
-    public bool IsAllergic { get; set; }
     [ObservableProperty]
-    private Color allergyWarningColor = Colors.White;
+    private Color allergyWarningColor;
 }

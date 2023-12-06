@@ -12,9 +12,9 @@ public class MenuService
     public List<Dish> SideMenu { get; set; }
     public List<Dish> SoupMenu { get; set; }
     public List<Dish> DessertMenu { get; set; }
-    public MenuService()
+    public MenuService(string url)
     {
-        Document = new HtmlWeb().Load("https://www.studierendenwerk-pb.de/gastronomie/speiseplaene/mensa-basilica-hamm/");
+        Document = new HtmlWeb().Load("https://www.studierendenwerk-pb.de/" + url);
         MainMenu = [];
         SideMenu = [];
         SoupMenu = [];
@@ -61,7 +61,7 @@ public class MenuService
     {
         HtmlWeb web = new();
         HtmlDocument document = web.Load("https://www.studierendenwerk-pb.de/gastronomie/speiseplaene/mensa-basilica-hamm/");
-        DatesString[0] = HtmlEntity.DeEntitize(document.QuerySelector(".desktop-form .active").InnerText);
+        DatesString[0] = HtmlEntity.DeEntitize(Document.QuerySelector(".desktop-form .active").InnerText);
 
         IList<HtmlNode> datesNode = document.DocumentNode.QuerySelectorAll(".desktop-form a");
         string[] dates = new string[datesNode.Count];

@@ -8,9 +8,9 @@ namespace Mensa_App.MVVMS.Models;
 
 public partial class MenuModel 
 {
-    public MenuModel()
+    public MenuModel(string url)
     {
-        MenuService = new MenuService();
+        MenuService = new MenuService(url);
         MainMenu = MenuService.MainMenu;
         SideMenu = MenuService.SideMenu;
         SoupMenu = MenuService.SoupMenu;
