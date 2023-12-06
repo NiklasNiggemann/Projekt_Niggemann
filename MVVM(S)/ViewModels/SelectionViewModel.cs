@@ -12,13 +12,6 @@ public partial class SelectionViewModel : ObservableObject
     {
         SelectionModel selectionModel = new();
         this.SelectedDishes = [];
-        SelectionModel.SelectedDishes.CollectionChanged += SelectedDishes_CollectionChanged;
-    }
-
-    private void SelectedDishes_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
-    {
-        this.SelectedDishes = SelectionModel.SelectedDishes;
-        TotalPrice = SelectionModel.TotalPrice;
     }
 
     [ObservableProperty]

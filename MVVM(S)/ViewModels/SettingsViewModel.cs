@@ -17,18 +17,11 @@ public partial class SettingsViewModel : ObservableObject
     {
         ingredientList = SettingsModel.GeneralIngredientsList;
     }
-    [RelayCommand]
-    public void AllergyListUpdated(IList<object> selectedIngredients)
-    {
-        foreach (var ingredients in selectedIngredients)
-        {
-            SettingsModel.UserAllergyIngredientList.Remove(ingredients.ToString());
-        }
-        foreach (var ingredients in selectedIngredients)
-        {
-            SettingsModel.UserAllergyIngredientList.Add(ingredients.ToString());
-        }
-    }
     [ObservableProperty]
-    ObservableCollection<string> ingredientList; 
+    ObservableCollection<string> ingredientList;
+    [RelayCommand]
+    public void AllergyListUpdated(IList<string> selectedAllergies)
+    {
+
+    }
 }
