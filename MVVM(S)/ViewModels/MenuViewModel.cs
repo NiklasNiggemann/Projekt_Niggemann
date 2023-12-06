@@ -19,17 +19,14 @@ public partial class MenuViewModel : ObservableObject
     {
         get => MenuModel.MainMenu;
     }
-
     public List<Dish> SideMenuView
     {
         get => MenuModel.SideMenu;
     }
-
     public List<Dish> SoupMenuView
     {
         get => MenuModel.SoupMenu;
     }
-
     public List<Dish> DessertMenuView
     {
         get => MenuModel.DessertMenu;
