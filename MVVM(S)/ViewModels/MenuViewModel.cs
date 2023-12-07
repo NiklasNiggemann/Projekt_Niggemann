@@ -16,25 +16,30 @@ public partial class MenuViewModel : ObservableObject
     [NotifyPropertyChangedFor(nameof(SoupMenuView))]
     [NotifyPropertyChangedFor(nameof(DessertMenuView))]
     private MenuModel menuModel;
-    public ObservableCollection<Dish> MainMenuView { get; set; }
-    public ObservableCollection<Dish> SideMenuView { get; set; }
-    public ObservableCollection<Dish> SoupMenuView { get; set; }
-    public ObservableCollection<Dish> DessertMenuView { get; set; }
+
+    [ObservableProperty]
+    private List<Dish> mainMenuView;
+    [ObservableProperty]
+    private List<Dish> sideMenuView; 
+    [ObservableProperty]
+    private List<Dish> soupMenuView;
+    [ObservableProperty]
+    private List<Dish> dessertMenuView;
+
     public string[] DatesStringView => MenuModel.DatesString;
     public MenuViewModel(string url = "/gastronomie/speiseplaene/mensa-basilica-hamm/")
     {
         MenuModel = new MenuModel(url);
         GetMenus();
-
         SettingsModel.UserAllergyIngredientList.CollectionChanged += UserAllergyIngredientList_CollectionChanged;
 
     }
     public void GetMenus()
     {
-        MainMenuView = new(MenuModel.MainMenu);
-        SideMenuView = new(MenuModel.SideMenu);
-        SoupMenuView = new(MenuModel.SoupMenu);
-        DessertMenuView = new(MenuModel.DessertMenu);
+        MainMenuView = MenuModel.MainMenu;
+        SideMenuView = MenuModel.SideMenu;
+        SoupMenuView = MenuModel.SoupMenu;
+        DessertMenuView = MenuModel.DessertMenu;
     }
 
     [RelayCommand]
@@ -49,6 +54,7 @@ public partial class MenuViewModel : ObservableObject
         }
         MenuModel = new MenuModel(MenuModel.DatesURL[counter]);
         GetMenus();
+        UpdateAllergies();
     }
 
     private void UserAllergyIngredientList_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
@@ -58,7 +64,14 @@ public partial class MenuViewModel : ObservableObject
         CheckMenu(SoupMenuView);
         CheckMenu(DessertMenuView);
     }
-    public static void CheckMenu(ObservableCollection<Dish> menu)
+    public void UpdateAllergies()
+    {
+        CheckMenu(MainMenuView);
+        CheckMenu(SideMenuView);
+        CheckMenu(SoupMenuView);
+        CheckMenu(DessertMenuView);
+    }
+    public static void CheckMenu(List<Dish> menu)
     {
         foreach (var dish in menu)
         {
