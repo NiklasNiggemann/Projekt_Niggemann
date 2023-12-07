@@ -13,7 +13,6 @@ public partial class SelectionViewModel : ObservableObject
         SelectionModel selectionModel = new();
         this.SelectedDishes = [];
     }
-
     [ObservableProperty]
     private ObservableCollection<Dish> selectedDishes;
     [ObservableProperty]

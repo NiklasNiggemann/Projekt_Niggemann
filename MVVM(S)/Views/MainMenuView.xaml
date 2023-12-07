@@ -10,9 +10,9 @@
 
     <ScrollView>
 
-        <VerticalStackLayout>
-            
-            <CollectionView ItemsSource="{Binding DatesStringView}" SelectionMode="None">
+        <VerticalStackLayout HorizontalOptions="Center">
+
+            <CollectionView ItemsSource="{Binding DatesStringView}" SelectionMode="None" ItemsLayout="HorizontalList" HorizontalOptions="Center">
                 
                 <CollectionView.ItemTemplate>
                     
@@ -20,7 +20,7 @@
                         
                         <HorizontalStackLayout VerticalOptions="Center" HorizontalOptions="Center" Margin="10">
                             
-                            <Button Text="{Binding .}" Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:MenuViewModel}}, Path=ChangeSelectedDateCommand}" CommandParameter="{Binding .}"/>
+                            <Button Text="{Binding .}" HorizontalOptions="CenterAndExpand" Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:MenuViewModel}}, Path=ChangeSelectedDateCommand}" CommandParameter="{Binding .}"/>
                         
                         </HorizontalStackLayout>
                         

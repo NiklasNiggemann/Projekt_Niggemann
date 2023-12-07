@@ -6,10 +6,6 @@ namespace Mensa_App.MVVMS.Models;
 
 internal class SelectionModel 
 {
-    public static ObservableCollection<Dish> SelectedDishes { get; set; }
+    public static ObservableCollection<Dish> SelectedDishes => [];
     public static double TotalPrice { get; set; }
-    public SelectionModel()
-    {
-        SelectedDishes = [];
-    }
 }

@@ -4,6 +4,7 @@ using Mensa_App.Classes;
 using CommunityToolkit.Mvvm.Input;
 using System.Linq;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 
 namespace Mensa_App.MVVMS.ViewModels;
 
@@ -15,29 +16,27 @@ public partial class MenuViewModel : ObservableObject
     [NotifyPropertyChangedFor(nameof(SoupMenuView))]
     [NotifyPropertyChangedFor(nameof(DessertMenuView))]
     private MenuModel menuModel;
-    public List<Dish> MainMenuView
-    {
-        get => MenuModel.MainMenu;
-    }
-    public List<Dish> SideMenuView
-    {
-        get => MenuModel.SideMenu;
-    }
-    public List<Dish> SoupMenuView
-    {
-        get => MenuModel.SoupMenu;
-    }
-    public List<Dish> DessertMenuView
-    {
-        get => MenuModel.DessertMenu;
-    }
-    public string[] DatesStringView { get; set; }
+    public ObservableCollection<Dish> MainMenuView { get; set; }
+    public ObservableCollection<Dish> SideMenuView { get; set; }
+    public ObservableCollection<Dish> SoupMenuView { get; set; }
+    public ObservableCollection<Dish> DessertMenuView { get; set; }
+    public string[] DatesStringView => MenuModel.DatesString;
     public MenuViewModel(string url = "/gastronomie/speiseplaene/mensa-basilica-hamm/")
     {
         MenuModel = new MenuModel(url);
-        DatesStringView = MenuModel.DatesString;
+        GetMenus();
+
         SettingsModel.UserAllergyIngredientList.CollectionChanged += UserAllergyIngredientList_CollectionChanged;
+
     }
+    public void GetMenus()
+    {
+        MainMenuView = new(MenuModel.MainMenu);
+        SideMenuView = new(MenuModel.SideMenu);
+        SoupMenuView = new(MenuModel.SoupMenu);
+        DessertMenuView = new(MenuModel.DessertMenu);
+    }
+
     [RelayCommand]
     public void ChangeSelectedDate(object date)
     {
@@ -48,22 +47,34 @@ public partial class MenuViewModel : ObservableObject
                 break;
             counter++;
         }
-
-        this.MenuModel = new MenuModel(MenuModel.DatesURL[counter]);
+        MenuModel = new MenuModel(MenuModel.DatesURL[counter]);
+        GetMenus();
     }
+
     private void UserAllergyIngredientList_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
     {
-        foreach (var dish in MainMenuView)
+        CheckMenu(MainMenuView);
+        CheckMenu(SideMenuView);
+        CheckMenu(SoupMenuView);
+        CheckMenu(DessertMenuView);
+    }
+    public static void CheckMenu(ObservableCollection<Dish> menu)
+    {
+        foreach (var dish in menu)
         {
             foreach (var ingredient in dish.Ingredients)
             {
                 ingredient.AllergyWarningColor = Colors.White;
-                foreach (var allergy in SettingsModel.UserAllergyIngredientList)
+
+                if (SettingsModel.UserAllergyIngredientList.Count > 0)
                 {
-                    if (ingredient.Name == allergy)
+                    foreach (var allergy in SettingsModel.UserAllergyIngredientList)
                     {
-                        ingredient.AllergyWarningColor = Colors.Red;
-                        break;
+                        if (ingredient.Name == allergy)
+                        {
+                            ingredient.AllergyWarningColor = Colors.Red;
+                            break;
+                        }
                     }
                 }
             }

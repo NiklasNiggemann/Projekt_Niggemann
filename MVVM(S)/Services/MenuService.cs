@@ -12,6 +12,8 @@ public class MenuService
     public List<Dish> SideMenu { get; set; }
     public List<Dish> SoupMenu { get; set; }
     public List<Dish> DessertMenu { get; set; }
+    public string[] DatesString { get; set; }
+    public string[] DatesURL { get; set; }
     public MenuService(string url)
     {
         Document = new HtmlWeb().Load("https://www.studierendenwerk-pb.de/" + url);
@@ -20,16 +22,9 @@ public class MenuService
         SoupMenu = [];
         DessertMenu = [];
         DatesString = new string[5];
-        DatesURL = new string[4];
+        DatesURL = new string[5];
         GetDates();
         GenerateMenus();
-    }
-    public void CleanMenus()
-    {
-        MainMenu.Clear();
-        SideMenu.Clear();
-        SoupMenu.Clear();
-        DessertMenu.Clear();
     }
     public void GenerateMenus()
     {
@@ -54,9 +49,6 @@ public class MenuService
                 break;
         }
     }
-
-    public string[] DatesString { get; set; }
-    public string[] DatesURL { get; set; }
     public void GetDates()
     {
         HtmlWeb web = new();
@@ -67,13 +59,16 @@ public class MenuService
         string[] dates = new string[datesNode.Count];
         string[] datesURL = new string[datesNode.Count];
 
+        DatesString[0] = DateTime.Today.ToShortDateString();
+        DatesURL[0] = "/gastronomie/speiseplaene/mensa-basilica-hamm/";
+
         for (int i = 0; i < datesNode.Count; i++)
         {
             dates[i] = HtmlEntity.DeEntitize(datesNode[i].InnerText);
-            DatesString[i] = dates[i].Trim();
+            DatesString[i+1] = dates[i].Trim();
             HtmlAttributeCollection getURLCollection = datesNode[i].Attributes;
             datesURL[i] = HtmlEntity.DeEntitize(getURLCollection[0].Value);
-            DatesURL[i] = datesURL[i].Trim();
+            DatesURL[i+1] = datesURL[i].Trim();
         }
     }
 }
