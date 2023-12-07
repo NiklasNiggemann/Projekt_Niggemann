@@ -10,11 +10,6 @@ namespace Mensa_App.MVVMS.ViewModels;
 
 public partial class MenuViewModel : ObservableObject
 {
-    [ObservableProperty]
-    [NotifyPropertyChangedFor(nameof(MainMenuView))]
-    [NotifyPropertyChangedFor(nameof(SideMenuView))]
-    [NotifyPropertyChangedFor(nameof(SoupMenuView))]
-    [NotifyPropertyChangedFor(nameof(DessertMenuView))]
     private MenuModel menuModel;
 
     [ObservableProperty]
@@ -26,43 +21,40 @@ public partial class MenuViewModel : ObservableObject
     [ObservableProperty]
     private List<Dish> dessertMenuView;
 
-    public string[] DatesStringView => MenuModel.DatesString;
+    public string[] DatesStringView => menuModel.DatesString;
     public MenuViewModel(string url = "/gastronomie/speiseplaene/mensa-basilica-hamm/")
     {
-        MenuModel = new MenuModel(url);
+        menuModel = new(url);
         GetMenus();
         SettingsModel.UserAllergyIngredientList.CollectionChanged += UserAllergyIngredientList_CollectionChanged;
 
     }
     public void GetMenus()
     {
-        MainMenuView = MenuModel.MainMenu;
-        SideMenuView = MenuModel.SideMenu;
-        SoupMenuView = MenuModel.SoupMenu;
-        DessertMenuView = MenuModel.DessertMenu;
+        MainMenuView = menuModel.MainMenu;
+        SideMenuView = menuModel.SideMenu;
+        SoupMenuView = menuModel.SoupMenu;
+        DessertMenuView = menuModel.DessertMenu;
     }
 
     [RelayCommand]
     public void ChangeSelectedDate(object date)
     {
         int counter = 0;
-        foreach (var dateString in MenuModel.DatesString)
+        foreach (var dateString in menuModel.DatesString)
         {
             if (dateString == date.ToString())
                 break;
             counter++;
         }
-        MenuModel = new MenuModel(MenuModel.DatesURL[counter]);
+        menuModel = new MenuModel(menuModel.DatesURL[counter]);
         GetMenus();
         UpdateAllergies();
     }
 
     private void UserAllergyIngredientList_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
     {
-        CheckMenu(MainMenuView);
-        CheckMenu(SideMenuView);
-        CheckMenu(SoupMenuView);
-        CheckMenu(DessertMenuView);
+        UpdateAllergies();
     }
     public void UpdateAllergies()
     {
