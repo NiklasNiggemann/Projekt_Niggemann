@@ -8,95 +8,121 @@
             x:Class="Mensa_App.MVVMS.Views.DessertMenuView"
             Title="Desserts">
 
-    <CollectionView ItemsSource="{Binding DessertMenuView}" SelectionMode="Multiple" SelectionChangedCommand="{Binding Path=ChangeSelectedDishesCommand}" SelectionChangedCommandParameter="{Binding Source={RelativeSource Self}, Path=SelectedItems}">
+    <ScrollView>
 
-        <CollectionView.ItemTemplate>
+        <VerticalStackLayout HorizontalOptions="Center">
 
-            <DataTemplate x:DataType="classes:Dish">
+            <CollectionView ItemsSource="{Binding DatesStringView}" SelectionMode="None" ItemsLayout="HorizontalList" HorizontalOptions="Center">
 
-                <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center" Margin="10" MinimumHeightRequest="50">
+                <CollectionView.ItemTemplate>
 
-                    <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                    <DataTemplate x:DataType="x:String">
 
-                        <Image Source="{Binding ImgURL}" Aspect="AspectFit" WidthRequest="400"/>
+                        <HorizontalStackLayout VerticalOptions="Center" HorizontalOptions="Center" Margin="10">
 
-                        <Label Text="{Binding Name}" HorizontalTextAlignment="Center" FontSize="Large" HorizontalOptions="Center"/>
+                            <Button Text="{Binding .}" HorizontalOptions="CenterAndExpand" Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:MenuViewModel}}, Path=ChangeSelectedDateCommand}" CommandParameter="{Binding .}"/>
 
-                        <Label Text="{Binding Price, StringFormat='{}{0:C}'}" FontSize="Medium" HorizontalOptions="Center"/>
+                        </HorizontalStackLayout>
 
-                    </VerticalStackLayout>
+                    </DataTemplate>
 
-                    <HorizontalStackLayout>
+                </CollectionView.ItemTemplate>
 
-                        <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center" Margin="10">
+            </CollectionView>
 
-                            <Grid>
+            <CollectionView ItemsSource="{Binding DessertMenuView}" SelectionMode="Multiple" SelectionChangedCommand="{Binding Path=ChangeSelectedDessertDishesCommand}" SelectionChangedCommandParameter="{Binding Source={RelativeSource Self}, Path=SelectedItems}">
 
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="150"/>
-                                    <ColumnDefinition Width="50"/>
-                                    <ColumnDefinition Width="50"/>
-                                </Grid.ColumnDefinitions>
+                <CollectionView.ItemTemplate>
 
-                                <Grid.RowDefinitions>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                </Grid.RowDefinitions>
+                    <DataTemplate x:DataType="classes:Dish">
 
-                                <Label Text="Brennwert: " Grid.Row="1" Grid.Column="0"/>
-                                <Label Text="{Binding Nutrition.Brennwert}" Grid.Row="1" Grid.Column="1"/>
-                                <Label Text="kJ" Grid.Row="1" Grid.Column="2"/>
+                        <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center" Margin="10" MinimumHeightRequest="50">
 
-                                <Label Text="Kalorien: " Grid.Row="2" Grid.Column="0"/>
-                                <Label Text="{Binding Nutrition.Kalorien}" Grid.Row="2" Grid.Column="1"/>
-                                <Label Text="kcal" Grid.Row="2" Grid.Column="2"/>
+                            <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center">
 
-                                <Label Text="Kohlenhydrate: " Grid.Row="3" Grid.Column="0"/>
-                                <Label Text="{Binding Nutrition.Kohlenhydrate, StringFormat='{}{0:F2}'}" Grid.Row="3" Grid.Column="1"/>
-                                <Label Text="g" Grid.Row="3" Grid.Column="2"/>
+                                <Image Source="{Binding ImgURL}" Aspect="AspectFit" WidthRequest="400"/>
 
-                                <Label Text="Eiweiß: " Grid.Row="4" Grid.Column="0"/>
-                                <Label Text="{Binding Nutrition.Eiweiß, StringFormat='{}{0:F2}'}" Grid.Row="4" Grid.Column="1"/>
-                                <Label Text="g" Grid.Row="4" Grid.Column="2"/>
+                                <Label Text="{Binding Name}" HorizontalTextAlignment="Center" FontSize="Large" HorizontalOptions="Center"/>
 
-                                <Label Text="Fett: " Grid.Row="5" Grid.Column="0"/>
-                                <Label Text="{Binding Nutrition.Fett, StringFormat='{}{0:F2}'}" Grid.Row="5" Grid.Column="1"/>
-                                <Label Text="g" Grid.Row="5" Grid.Column="2"/>
+                                <Label Text="{Binding Price, StringFormat='{}{0:C}'}" FontSize="Medium" HorizontalOptions="Center"/>
 
-                            </Grid>
+                            </VerticalStackLayout>
+
+                            <HorizontalStackLayout>
+
+                                <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center" Margin="10">
+
+                                    <Grid>
+
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="150"/>
+                                            <ColumnDefinition Width="50"/>
+                                            <ColumnDefinition Width="50"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition/>
+                                            <RowDefinition/>
+                                            <RowDefinition/>
+                                            <RowDefinition/>
+                                            <RowDefinition/>
+                                            <RowDefinition/>
+                                        </Grid.RowDefinitions>
+
+                                        <Label Text="Brennwert: " Grid.Row="1" Grid.Column="0"/>
+                                        <Label Text="{Binding Nutrition.Brennwert}" Grid.Row="1" Grid.Column="1"/>
+                                        <Label Text="kJ" Grid.Row="1" Grid.Column="2"/>
+
+                                        <Label Text="Kalorien: " Grid.Row="2" Grid.Column="0"/>
+                                        <Label Text="{Binding Nutrition.Kalorien}" Grid.Row="2" Grid.Column="1"/>
+                                        <Label Text="kcal" Grid.Row="2" Grid.Column="2"/>
+
+                                        <Label Text="Kohlenhydrate: " Grid.Row="3" Grid.Column="0"/>
+                                        <Label Text="{Binding Nutrition.Kohlenhydrate, StringFormat='{}{0:F2}'}" Grid.Row="3" Grid.Column="1"/>
+                                        <Label Text="g" Grid.Row="3" Grid.Column="2"/>
+
+                                        <Label Text="Eiweiß: " Grid.Row="4" Grid.Column="0"/>
+                                        <Label Text="{Binding Nutrition.Eiweiß, StringFormat='{}{0:F2}'}" Grid.Row="4" Grid.Column="1"/>
+                                        <Label Text="g" Grid.Row="4" Grid.Column="2"/>
+
+                                        <Label Text="Fett: " Grid.Row="5" Grid.Column="0"/>
+                                        <Label Text="{Binding Nutrition.Fett, StringFormat='{}{0:F2}'}" Grid.Row="5" Grid.Column="1"/>
+                                        <Label Text="g" Grid.Row="5" Grid.Column="2"/>
+
+                                    </Grid>
+
+                                </VerticalStackLayout>
+
+                                <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center" Margin="10">
+
+                                    <CollectionView ItemsSource="{Binding Ingredients}">
+
+                                        <CollectionView.ItemTemplate>
+
+                                            <DataTemplate x:DataType="classes:Ingredient">
+
+                                                <Label Text="{Binding Name}" Grid.Column="0" TextColor="{Binding AllergyWarningColor}" ToolTipProperties.Text="{Binding Information}"/>
+
+                                            </DataTemplate>
+
+                                        </CollectionView.ItemTemplate>
+
+                                    </CollectionView>
+
+                                </VerticalStackLayout>
+
+                            </HorizontalStackLayout>
 
                         </VerticalStackLayout>
 
-                        <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center" Margin="10">
+                    </DataTemplate>
 
-                            <CollectionView ItemsSource="{Binding Ingredients}">
+                </CollectionView.ItemTemplate>
 
-                                <CollectionView.ItemTemplate>
+            </CollectionView>
 
-                                    <DataTemplate x:DataType="classes:Ingredient">
+        </VerticalStackLayout>
 
-                                        <Label Text="{Binding Name}" Grid.Column="0" TextColor="{Binding AllergyWarningColor}" ToolTipProperties.Text="{Binding Information}"/>
-
-                                    </DataTemplate>
-
-                                </CollectionView.ItemTemplate>
-
-                            </CollectionView>
-
-                        </VerticalStackLayout>
-
-                    </HorizontalStackLayout>
-
-                </VerticalStackLayout>
-
-            </DataTemplate>
-
-        </CollectionView.ItemTemplate>
-
-    </CollectionView>
+    </ScrollView>
 
 </ContentPage>

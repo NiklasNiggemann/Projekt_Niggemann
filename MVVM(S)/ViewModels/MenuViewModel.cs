@@ -87,9 +87,36 @@ public partial class MenuViewModel : ObservableObject
     }
 
     [RelayCommand]
-    public void ChangeSelectedDishes(IList<Dish> selectedDishes)
+    public void ChangeSelectedMainDishes(IList<Dish> selectedDishes)
     {
-
+        foreach (var selectedDish in selectedDishes)
+        {
+            SelectionViewModel.SelectedMainDishes.Add(selectedDish);
+        }
+    }
+    [RelayCommand]
+    public void ChangeSelectedSideDishes(IList<Dish> selectedDishes)
+    {
+        foreach (var selectedDish in selectedDishes)
+        {
+            SelectionViewModel.SelectedSideDishes.Add(selectedDish);
+        }
+    }
+    [RelayCommand]
+    public void ChangeSelectedSoupDishes(IList<Dish> selectedDishes)
+    {
+        foreach (var selectedDish in selectedDishes)
+        {
+            SelectionViewModel.SelectedSoupDishes.Add(selectedDish);
+        }
+    }
+    [RelayCommand]
+    public void ChangeSelectedDessertDishes(IList<Dish> selectedDishes)
+    {
+        foreach (var selectedDish in selectedDishes)
+        {
+            SelectionViewModel.SelectedDessertDishes.Add(selectedDish);
+        }
     }
 
 }

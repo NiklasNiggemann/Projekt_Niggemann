@@ -29,8 +29,8 @@
                 </CollectionView.ItemTemplate>
                 
             </CollectionView>
-            
-            <CollectionView ItemsSource="{Binding MainMenuView}" SelectionMode="Multiple" SelectionChangedCommand="{Binding Path=ChangeSelectedDishesCommand}" SelectionChangedCommandParameter="{Binding Source={RelativeSource Self}, Path=SelectedItems}">
+
+            <CollectionView ItemsSource="{Binding MainMenuView}" SelectionMode="Multiple" SelectionChangedCommand="{Binding Path=ChangeSelectedMainDishesCommand}" SelectionChangedCommandParameter="{Binding Source={RelativeSource Self}, Path=SelectedItems}">
 
                 <CollectionView.ItemTemplate>
 

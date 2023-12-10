@@ -12,7 +12,82 @@
 
         <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Margin="10">
 
-            <CollectionView ItemsSource="{Binding SelectedDishes}" SelectionMode="None">
+            <CollectionView ItemsSource="{Binding SelectedMainDishes}" SelectionMode="None">
+
+                <CollectionView.ItemTemplate>
+
+                    <DataTemplate x:DataType="classes:Dish">
+
+                        <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center">
+
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="200"/>
+                                    <ColumnDefinition Width="100"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Text="{Binding Name}" Grid.Column="0" HorizontalTextAlignment="Center"/>
+                                <Label Text="{Binding Price, StringFormat='{}{0:C}'}" Grid.Column="1" HorizontalTextAlignment="Center"/>
+                            </Grid>
+
+                        </VerticalStackLayout>
+
+                    </DataTemplate>
+
+                </CollectionView.ItemTemplate>
+
+            </CollectionView>
+
+            <CollectionView ItemsSource="{Binding SelectedSideDishes}" SelectionMode="None">
+
+                <CollectionView.ItemTemplate>
+
+                    <DataTemplate x:DataType="classes:Dish">
+
+                        <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center">
+
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="200"/>
+                                    <ColumnDefinition Width="100"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Text="{Binding Name}" Grid.Column="0" HorizontalTextAlignment="Center"/>
+                                <Label Text="{Binding Price, StringFormat='{}{0:C}'}" Grid.Column="1" HorizontalTextAlignment="Center"/>
+                            </Grid>
+
+                        </VerticalStackLayout>
+
+                    </DataTemplate>
+
+                </CollectionView.ItemTemplate>
+
+            </CollectionView>
+
+            <CollectionView ItemsSource="{Binding SelectedSoupDishes}" SelectionMode="None">
+
+                <CollectionView.ItemTemplate>
+
+                    <DataTemplate x:DataType="classes:Dish">
+
+                        <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center">
+
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="200"/>
+                                    <ColumnDefinition Width="100"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Text="{Binding Name}" Grid.Column="0" HorizontalTextAlignment="Center"/>
+                                <Label Text="{Binding Price, StringFormat='{}{0:C}'}" Grid.Column="1" HorizontalTextAlignment="Center"/>
+                            </Grid>
+
+                        </VerticalStackLayout>
+
+                    </DataTemplate>
+
+                </CollectionView.ItemTemplate>
+
+            </CollectionView>
+
+            <CollectionView ItemsSource="{Binding SelectedDessertDishes}" SelectionMode="None">
 
                 <CollectionView.ItemTemplate>
 
