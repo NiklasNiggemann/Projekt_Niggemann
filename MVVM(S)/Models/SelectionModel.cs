@@ -7,10 +7,21 @@ namespace Mensa_App.MVVMS.Models;
 
 internal partial class SelectionModel 
 {
-    public static ObservableCollection<Dish> SelectedMainDishes => [];
-    public static ObservableCollection<Dish> SelectedSideDishes => [];
-    public static ObservableCollection<Dish> SelectedSoupDishes => [];
-    public static ObservableCollection<Dish> SelectedDessertDishes => [];
-    public static double TotalPrice => 0;
+    public static ObservableCollection<Dish> SelectedDishes { get; set; }
+    public static double TotalPrice { get; set; }
+    public SelectionModel()
+    {
+        SelectedDishes = [];
+        SelectedDishes.CollectionChanged += SelectedDishes_CollectionChanged;
+    }
 
+    private void SelectedDishes_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+    {
+        TotalPrice = 0;
+        foreach (var dish in SelectedDishes)
+        {
+            if (dish is not null)
+                TotalPrice += dish.Price;
+        }
+    }
 }

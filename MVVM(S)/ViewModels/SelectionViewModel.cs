@@ -11,16 +11,18 @@ public partial class SelectionViewModel : ObservableObject
     public SelectionViewModel()
     {
         SelectionModel selectionModel = new();
-        SelectedMainDishes = [];
-        SelectedSideDishes = SelectionModel.SelectedSideDishes;
-        SelectedSoupDishes = SelectionModel.SelectedSoupDishes;
-        SelectedDessertDishes = SelectionModel.SelectedDessertDishes;
+        this.SelectedDishes = [];
+        SelectionModel.SelectedDishes.CollectionChanged += SelectedDishes_CollectionChanged;
     }
-    public static ObservableCollection<Dish> SelectedMainDishes { get; set; }
-    public static ObservableCollection<Dish> SelectedSideDishes { get; set; }
-    public static ObservableCollection<Dish> SelectedSoupDishes { get; set; }
-    public static ObservableCollection<Dish> SelectedDessertDishes { get; set; }
+
+    private void SelectedDishes_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+    {
+        this.SelectedDishes = SelectionModel.SelectedDishes;
+        TotalPrice = SelectionModel.TotalPrice;
+    }
 
     [ObservableProperty]
-    private double totalPrice;
+    private ObservableCollection<Dish> selectedDishes;
+    [ObservableProperty]
+    private double totalPrice; 
 }

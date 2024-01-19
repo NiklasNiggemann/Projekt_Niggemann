@@ -11,15 +11,11 @@ namespace Mensa_App.MVVMS.ViewModels;
 public partial class MenuViewModel : ObservableObject
 {
     private MenuModel menuModel;
+    public List<Dish> MainMenuView { get; set; }
+    public List<Dish> SideMenuView { get; set; }
+    public List<Dish> SoupMenuView { get; set; }
+    public List<Dish> DessertMenuView { get; set; }
 
-    [ObservableProperty]
-    private List<Dish> mainMenuView;
-    [ObservableProperty]
-    private List<Dish> sideMenuView; 
-    [ObservableProperty]
-    private List<Dish> soupMenuView;
-    [ObservableProperty]
-    private List<Dish> dessertMenuView;
 
     public string[] DatesStringView => menuModel.DatesString;
     public MenuViewModel(string url = "/gastronomie/speiseplaene/mensa-basilica-hamm/")
@@ -36,7 +32,6 @@ public partial class MenuViewModel : ObservableObject
         SoupMenuView = menuModel.SoupMenu;
         DessertMenuView = menuModel.DessertMenu;
     }
-
     [RelayCommand]
     public void ChangeSelectedDate(object date)
     {
@@ -51,7 +46,6 @@ public partial class MenuViewModel : ObservableObject
         GetMenus();
         UpdateAllergies();
     }
-
     private void UserAllergyIngredientList_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
     {
         UpdateAllergies();
@@ -85,39 +79,10 @@ public partial class MenuViewModel : ObservableObject
             }
         }
     }
-
     [RelayCommand]
-    public void ChangeSelectedMainDishes(IList<Dish> selectedDishes)
+    public static void ChangeSelectedDishes(Dish dish)
     {
-        foreach (var selectedDish in selectedDishes)
-        {
-            SelectionViewModel.SelectedMainDishes.Add(selectedDish);
-        }
+        SelectionModel.SelectedDishes.Add(dish);
     }
-    [RelayCommand]
-    public void ChangeSelectedSideDishes(IList<Dish> selectedDishes)
-    {
-        foreach (var selectedDish in selectedDishes)
-        {
-            SelectionViewModel.SelectedSideDishes.Add(selectedDish);
-        }
-    }
-    [RelayCommand]
-    public void ChangeSelectedSoupDishes(IList<Dish> selectedDishes)
-    {
-        foreach (var selectedDish in selectedDishes)
-        {
-            SelectionViewModel.SelectedSoupDishes.Add(selectedDish);
-        }
-    }
-    [RelayCommand]
-    public void ChangeSelectedDessertDishes(IList<Dish> selectedDishes)
-    {
-        foreach (var selectedDish in selectedDishes)
-        {
-            SelectionViewModel.SelectedDessertDishes.Add(selectedDish);
-        }
-    }
-
 }
 

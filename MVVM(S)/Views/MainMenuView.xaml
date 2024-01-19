@@ -15,9 +15,9 @@
             <CollectionView ItemsSource="{Binding DatesStringView}" SelectionMode="None" ItemsLayout="HorizontalList" HorizontalOptions="Center">
                 
                 <CollectionView.ItemTemplate>
-                    
+
                     <DataTemplate x:DataType="x:String">
-                        
+
                         <HorizontalStackLayout VerticalOptions="Center" HorizontalOptions="Center" Margin="10">
                             
                             <Button Text="{Binding .}" HorizontalOptions="CenterAndExpand" Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:MenuViewModel}}, Path=ChangeSelectedDateCommand}" CommandParameter="{Binding .}"/>
@@ -30,7 +30,7 @@
                 
             </CollectionView>
 
-            <CollectionView ItemsSource="{Binding MainMenuView}" SelectionMode="Multiple" SelectionChangedCommand="{Binding Path=ChangeSelectedMainDishesCommand}" SelectionChangedCommandParameter="{Binding Source={RelativeSource Self}, Path=SelectedItems}">
+            <CollectionView ItemsSource="{Binding MainMenuView}" SelectionMode="Multiple" SelectionChanged="CollectionView_SelectionChanged">
 
                 <CollectionView.ItemTemplate>
 

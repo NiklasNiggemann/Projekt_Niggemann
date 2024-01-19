@@ -30,7 +30,7 @@
 
             </CollectionView>
 
-            <CollectionView ItemsSource="{Binding SideMenuView}" SelectionMode="Multiple" SelectionChangedCommand="{Binding Path=ChangeSelectedSideDishesCommand}" SelectionChangedCommandParameter="{Binding Source={RelativeSource Self}, Path=SelectedItems}">
+            <CollectionView ItemsSource="{Binding SideMenuView}" SelectionMode="Multiple" SelectionChanged="CollectionView_SelectionChanged">
 
                 <CollectionView.ItemTemplate>
 
